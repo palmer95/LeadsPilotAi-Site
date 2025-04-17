@@ -26,7 +26,7 @@ export default function RootLayout({
         {/* Header */}
         <header
           style={{
-            backgroundColor: "#ffffff",
+            backgroundColor: "transparent",
             padding: "1.5rem 2rem",
             borderBottom: "1px solid #e5e7eb",
             display: "flex",
@@ -42,32 +42,55 @@ export default function RootLayout({
               display: "flex",
               alignItems: "center",
               textDecoration: "none",
+              background: "none", // Ensure no background interference
             }}
           >
             <Image
               src="/logo.png"
               alt="LeadsPilotAI Logo"
-              width={150}
-              height={40}
-              style={{ objectFit: "contain" }}
+              width={400}
+              height={120}
+              style={{
+                objectFit: "contain",
+                background: "none", // Ensure no background
+              }}
+              priority
             />
           </Link>
-          <nav style={{ display: "flex", gap: "1.5rem", fontSize: "0.95rem" }}>
+          <nav style={{ display: "flex", gap: "1.5rem", fontSize: "1rem" }}>
             <Link
               href="/product"
-              style={{ color: "#111111", textDecoration: "none" }}
+              style={{
+                color: "#111111",
+                textDecoration: "none",
+                fontWeight: 500,
+                transition: "color 0.2s",
+              }}
+              className="nav-link"
             >
               Product
             </Link>
             <Link
               href="/pricing"
-              style={{ color: "#111111", textDecoration: "none" }}
+              style={{
+                color: "#111111",
+                textDecoration: "none",
+                fontWeight: 500,
+                transition: "color 0.2s",
+              }}
+              className="nav-link"
             >
               Pricing
             </Link>
             <Link
               href="/contact"
-              style={{ color: "#111111", textDecoration: "none" }}
+              style={{
+                color: "#111111",
+                textDecoration: "none",
+                fontWeight: 500,
+                transition: "color 0.2s",
+              }}
+              className="nav-link"
             >
               Contact
             </Link>
@@ -84,8 +107,9 @@ export default function RootLayout({
             padding: "2rem",
             textAlign: "center",
             fontSize: "0.85rem",
-            color: "#999999",
+            color: "#4B5563",
             borderTop: "1px solid #e5e7eb",
+            backgroundColor: "#ffffff",
           }}
         >
           © {new Date().getFullYear()} LeadsPilotAI. All rights reserved.
