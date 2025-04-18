@@ -25,7 +25,6 @@ export default function PricingPage() {
         "Booking triggers via Discord, SMS, Slack, or Email",
         "Custom fallback context tuning",
         "Priority support",
-        "Locked in for your first 10 clients",
       ],
       cta: "Get Started",
     },
@@ -142,7 +141,7 @@ export default function PricingPage() {
                         marginBottom: "0.5rem",
                       }}
                     >
-                      • {f}
+                      {f}
                     </li>
                   ))}
                 </ul>
