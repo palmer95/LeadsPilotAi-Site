@@ -67,7 +67,8 @@ export default function ContactPage() {
             marginBottom: "2rem",
           }}
         >
-          Have a question or want to collaborate? We'd love to hear from you.
+          Have a question or want to collaborate? We would love to hear from
+          you.
         </p>
 
         <form
