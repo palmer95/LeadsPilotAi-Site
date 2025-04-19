@@ -1,7 +1,45 @@
 "use client";
-import React from "react";
+
+import { useState } from "react";
 
 export default function ContactPage() {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+  const [status, setStatus] = useState<
+    "idle" | "sending" | "success" | "error"
+  >("idle");
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setStatus("sending");
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      if (res.ok) {
+        setFormData({ name: "", email: "", message: "" });
+        setStatus("success");
+      } else {
+        setStatus("error");
+      }
+    } catch {
+      setStatus("error");
+    }
+  };
+
   return (
     <main
       style={{
@@ -11,115 +49,102 @@ export default function ContactPage() {
         padding: "4rem 1rem",
       }}
     >
-      <section
-        style={{ maxWidth: "700px", margin: "0 auto", textAlign: "center" }}
-      >
+      <section style={{ maxWidth: "600px", margin: "0 auto" }}>
         <h1
           style={{
-            fontSize: "2.5rem",
+            fontSize: "2rem",
             fontWeight: "bold",
             marginBottom: "1rem",
+            textAlign: "center",
           }}
         >
-          Need Help or Want to Chat with a Human?
+          Contact Us
         </h1>
         <p
           style={{
-            fontSize: "1.1rem",
+            textAlign: "center",
             color: "#4B5563",
-            marginBottom: "2.5rem",
+            marginBottom: "2rem",
           }}
         >
-          Our AI assistant is always available, but if you prefer real human
-          help, we’re just a message away.
+          Have a question or want to collaborate? We'd love to hear from you.
         </p>
 
-        {/* Contact Info */}
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            gap: "1.5rem",
-            alignItems: "center",
-            marginBottom: "3rem",
-          }}
-        >
-          <div>
-            <strong>Email:</strong>{" "}
-            <a
-              href="mailto:hello@leadspilotai.com"
-              style={{ color: "#2D3B8F" }}
-            >
-              hello@leadspilotai.com
-            </a>
-          </div>
-          <div>
-            <strong>Response Time:</strong> Within 1 business day
-          </div>
-          <div>
-            <strong>Live Chat:</strong> Our AI is available 24/7 in the bottom
-            right
-          </div>
-        </div>
-
-        {/* Optional Contact Form - replace with real endpoint later */}
         <form
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            gap: "1rem",
-            width: "100%",
-            maxWidth: "500px",
-            margin: "0 auto",
-          }}
+          onSubmit={handleSubmit}
+          style={{ display: "flex", flexDirection: "column", gap: "1rem" }}
         >
           <input
             type="text"
-            placeholder="Your Name"
+            name="name"
+            placeholder="Your name"
             required
-            style={inputStyle}
+            value={formData.name}
+            onChange={handleChange}
+            style={{
+              padding: "0.75rem",
+              border: "1px solid #ccc",
+              borderRadius: "6px",
+              fontSize: "1rem",
+            }}
           />
           <input
             type="email"
-            placeholder="Your Email"
+            name="email"
+            placeholder="Your email"
             required
-            style={inputStyle}
+            value={formData.email}
+            onChange={handleChange}
+            style={{
+              padding: "0.75rem",
+              border: "1px solid #ccc",
+              borderRadius: "6px",
+              fontSize: "1rem",
+            }}
           />
           <textarea
-            placeholder="What can we help you with?"
+            name="message"
+            placeholder="Your message"
             rows={5}
             required
-            style={inputStyle}
+            value={formData.message}
+            onChange={handleChange}
+            style={{
+              padding: "0.75rem",
+              border: "1px solid #ccc",
+              borderRadius: "6px",
+              fontSize: "1rem",
+            }}
           />
+
           <button
             type="submit"
-            disabled
+            disabled={status === "sending"}
             style={{
               backgroundColor: "#2D3B8F",
-              color: "#fff",
+              color: "#ffffff",
               padding: "0.75rem",
+              borderRadius: "8px",
               fontWeight: 600,
               border: "none",
-              borderRadius: "6px",
-              cursor: "not-allowed",
-              opacity: 0.6,
+              cursor: "pointer",
             }}
           >
-            Coming Soon
+            {status === "sending" ? "Sending..." : "Send Message"}
           </button>
-        </form>
 
-        <p style={{ fontSize: "0.9rem", color: "#999", marginTop: "1rem" }}>
-          Or just hit the chatbot below — it’s trained on everything we do.
-        </p>
+          {status === "success" && (
+            <p style={{ color: "green", textAlign: "center" }}>
+              ✅ Message sent successfully!
+            </p>
+          )}
+          {status === "error" && (
+            <p style={{ color: "red", textAlign: "center" }}>
+              ❌ Something went wrong. Please try again.
+            </p>
+          )}
+        </form>
       </section>
     </main>
   );
 }
-
-const inputStyle = {
-  padding: "0.75rem",
-  borderRadius: "6px",
-  border: "1px solid #ddd",
-  fontSize: "1rem",
-};

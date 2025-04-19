@@ -48,8 +48,8 @@ export default function RootLayout({
             <Image
               src="/logo.png"
               alt="LeadsPilotAI Logo"
-              width={400}
-              height={120}
+              width={600}
+              height={180}
               style={{
                 objectFit: "contain",
                 background: "none", // Ensure no background
