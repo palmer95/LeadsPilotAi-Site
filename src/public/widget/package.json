@@ -1,0 +1,12 @@
+{
+  "name": "chatbot-widget",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0"
+  },
+  "devDependencies": {
+    "esbuild": "^0.18.0"
+  }
+}
