@@ -7,9 +7,9 @@
   "welcome": "I can answer questions about services and pricing, curate services based on your needs, and even get you started with a subscription.\n\nPick from a FAQ below or type a message to get started.",
 
   "faqs": [
-    "What is your lead time?",
-    "How much do your packages cost?",
-    "What’s the process to book a shoot, and what details do you need from me?"
+    "How is Clyde trained on my site’s content?",
+    "How does Clyde integrate with my website?",
+    "How does Clyde capture and deliver leads?"
   ],
 
   "sales_triggers": [
