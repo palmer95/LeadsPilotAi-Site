@@ -1,0 +1,52 @@
+{
+  "business_name": "Leads Pilot Ai",
+  "business_type": "technology",
+  "location": "CA",
+  "description": "Your AI sales agent, live on your site 24/7 trained on your website, and captures every lead",
+
+  "welcome": "I can answer questions about services and pricing, curate services based on your needs, and even get you started with a subscription.\n\nPick from a FAQ below or type a message to get started.",
+
+  "faqs": [
+    "What is your lead time?",
+    "How much do your packages cost?",
+    "What’s the process to book a shoot, and what details do you need from me?"
+  ],
+
+  "sales_triggers": [
+    "book a shoot",
+    "schedule a tour",
+    "real estate package",
+    "photo session",
+    "quote",
+    "interested in a shoot",
+    "I want to book"
+  ],
+
+  "qualifying_questions": ["What type of business do you have"],
+
+  "packages": [
+    {
+      "name": "Starter",
+      "description": "AI assistant trained on your website. Live on your website 24/7. Lead capture and delivery via email.",
+      "price": "99",
+      "features": ["lead capture", "AI assistant"]
+    },
+    {
+      "name": "Pro",
+      "description": "Everything in Starter plus booking triggers via Discord, SMS, SLack, or Email, Custom fallback context tuning, priority support.",
+      "price": "299",
+      "features": [
+        "Everything in starter",
+        "Booking triggers via Discord, SMS, Slack, or Email",
+        "Custom fallback context tuning",
+        "Priority support"
+      ]
+    }
+  ],
+
+  "booking_trigger": {
+    "send_discord": true,
+    "send_sms": true,
+    "send_email": true
+  }
+}
