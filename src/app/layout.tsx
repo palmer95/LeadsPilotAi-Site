@@ -1,6 +1,8 @@
+// app/layout.tsx
 import "./globals.css";
 import Link from "next/link";
 import Image from "next/image";
+import Script from "next/script";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -15,6 +17,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        <Script
+          src="/chatbot.js"
+          strategy="afterInteractive"
+          data-company="leadspilotai"
+        />
+        <link rel="stylesheet" href="/chatbot.css" />
+      </head>
       <body
         style={{
           backgroundColor: "#ffffff",
@@ -42,7 +52,7 @@ export default function RootLayout({
               display: "flex",
               alignItems: "center",
               textDecoration: "none",
-              background: "none", // Ensure no background interference
+              background: "none",
             }}
           >
             <Image
@@ -52,53 +62,29 @@ export default function RootLayout({
               height={180}
               style={{
                 objectFit: "contain",
-                background: "none", // Ensure no background
+                background: "none",
               }}
               priority
             />
           </Link>
           <nav style={{ display: "flex", gap: "1.5rem", fontSize: "1rem" }}>
-            <Link
-              href="/product"
-              style={{
-                color: "#111111",
-                textDecoration: "none",
-                fontWeight: 500,
-                transition: "color 0.2s",
-              }}
-              className="nav-link"
-            >
+            <Link href="/product" className="nav-link">
               Product
             </Link>
-            <Link
-              href="/pricing"
-              style={{
-                color: "#111111",
-                textDecoration: "none",
-                fontWeight: 500,
-                transition: "color 0.2s",
-              }}
-              className="nav-link"
-            >
+            <Link href="/pricing" className="nav-link">
               Pricing
             </Link>
-            <Link
-              href="/contact"
-              style={{
-                color: "#111111",
-                textDecoration: "none",
-                fontWeight: 500,
-                transition: "color 0.2s",
-              }}
-              className="nav-link"
-            >
+            <Link href="/contact" className="nav-link">
               Contact
             </Link>
           </nav>
         </header>
 
         {/* Main content */}
-        <main>{children}</main>
+        <main style={{ maxWidth: "1200px", margin: "0 auto" }}>{children}</main>
+
+        {/* 3) Mount point for your chat bubble */}
+        <div id="chatbot-root" />
 
         {/* Footer */}
         <footer

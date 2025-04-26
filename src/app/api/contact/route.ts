@@ -5,8 +5,6 @@ export async function POST(req: Request) {
   try {
     const { name, email, message } = await req.json();
 
-    console.log("📩 Received contact form:", { name, email, message });
-
     const transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
@@ -23,7 +21,6 @@ export async function POST(req: Request) {
     };
 
     const result = await transporter.sendMail(mailOptions);
-    console.log("✅ Email sent:", result);
 
     return NextResponse.json({ success: true });
   } catch (error) {
