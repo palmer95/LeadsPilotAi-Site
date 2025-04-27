@@ -5,6 +5,8 @@
   "description": "Virtour Media offers high-end real estate media including photography, Matterport 3D tours, aerial footage, and virtual staging. Fast turnaround. Professional team. Trusted locally.",
   "welcome": "I can answer questions about services and pricing, curate marketing packages based on your needs, and even book appointments with our team.\n\nPick from a FAQ below or type a message to get started.",
 
+  "team_email": "hello@virtourmedia.com",
+
   "faqs": [
     "What is your lead time?",
     "How much do your packages cost?",
