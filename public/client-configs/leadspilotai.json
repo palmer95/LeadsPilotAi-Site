@@ -3,8 +3,9 @@
   "business_type": "technology",
   "location": "CA",
   "description": "Your AI sales agent, live on your site 24/7 trained on your website, and captures every lead",
-
   "welcome": "I can answer questions about services and pricing, curate services based on your needs, and even get you started with a subscription.\n\nPick from a FAQ below or type a message to get started.",
+
+  "team_email": "hello@leadpilotai.com",
 
   "faqs": [
     "How is Clyde trained on my site’s content?",
@@ -50,5 +51,3 @@
     "send_email": true
   }
 }
-
-<script   src="https://www.leadspilotai.com/chatbot.js"   async=""   data-company="virtour"></script>
