@@ -26,9 +26,10 @@ export default function Home() {
         <div className="testimonials">
           <div className="testimonial-card">
             <p className="testimonial-text">
-              “Clyde has been a game-changer for Virtour Media. It engages our
-              website visitors in real-time, answers their questions instantly,
-              and captures leads 24/7!”
+              “Clyde actually closes sales for us & has decreased our overhead.
+              We convert more website visitors because of leadpilotai’s
+              software. There is value for Clyde in any business, 10/10
+              recommend.”
             </p>
             <p className="testimonial-author">
               — Gavin Palmer, CEO of Virtour Media
