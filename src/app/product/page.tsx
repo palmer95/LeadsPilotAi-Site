@@ -1,50 +1,26 @@
+// app/product/page.tsx
 "use client";
 import Link from "next/link";
-import React from "react";
 
 export default function ProductPage() {
   return (
-    <main
-      style={{
-        backgroundColor: "#ffffff",
-        color: "#111111",
-        minHeight: "100vh",
-        padding: "4rem 1rem",
-      }}
-    >
-      <section
-        style={{ maxWidth: "900px", margin: "0 auto", textAlign: "center" }}
-      >
-        <h1
-          style={{
-            fontSize: "2.5rem",
-            fontWeight: "bold",
-            marginBottom: "1rem",
-          }}
-        >
-          What Your AI Sales Agent Can Do
-        </h1>
-        <p
-          style={{ fontSize: "1.1rem", color: "#4B5563", marginBottom: "3rem" }}
-        >
-          LeadsPilotAI is trained on your website, branded to match your
-          business, and powered by real AI to help you convert more visitors
-          into customers — 24/7.
-        </p>
+    <main>
+      {/* Hero Section */}
+      <section className="hero">
+        <div className="hero-content">
+          <h1 className="hero-title">What Your AI Sales Agent Can Do</h1>
+          <p className="hero-text">
+            Clyde, powered by LeadsPilotAI, is trained on your website, branded
+            to match your business, and equipped with smart AI to convert
+            visitors into customers—24/7.
+          </p>
+        </div>
+      </section>
 
-        {/* Centered Feature Cards */}
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            gap: "2rem",
-            flexWrap: "wrap",
-            marginBottom: "4rem",
-            maxWidth: "1000px",
-            marginInline: "auto",
-            textAlign: "center",
-          }}
-        >
+      {/* Features Section */}
+      <section className="benefits">
+        <h2 className="section-title">Key Features</h2>
+        <div className="product-features">
           {[
             {
               title: "Instant Q&A",
@@ -52,56 +28,25 @@ export default function ProductPage() {
             },
             {
               title: "Lead Capture",
-              desc: "Grabs emails and inquiries so you never miss a potential client.",
+              desc: "Collects emails and inquiries so you never miss a potential client.",
             },
             {
               title: "Booking Triggers",
               desc: "Notifies your team or starts bookings when someone’s ready to buy.",
             },
           ].map((item, i) => (
-            <div
-              key={i}
-              style={{
-                flex: "1 1 280px",
-                border: "1px solid #e5e7eb",
-                borderRadius: "10px",
-                padding: "1.5rem",
-                backgroundColor: "#ffffff",
-                boxShadow: "0 1px 3px rgba(0,0,0,0.04)",
-                maxWidth: "300px",
-              }}
-            >
-              <h3
-                style={{
-                  fontSize: "1.25rem",
-                  fontWeight: "600",
-                  marginBottom: "0.5rem",
-                }}
-              >
-                {item.title}
-              </h3>
-              <p style={{ fontSize: "0.95rem", color: "#4B5563" }}>
-                {item.desc}
-              </p>
+            <div key={i} className="product-feature-card">
+              <h3 className="benefit-title">{item.title}</h3>
+              <p className="benefit-text">{item.desc}</p>
             </div>
           ))}
         </div>
+      </section>
 
-        {/* How It Works */}
-        <h2
-          style={{ fontSize: "2rem", fontWeight: "bold", marginBottom: "2rem" }}
-        >
-          How It Works
-        </h2>
-        <div
-          style={{
-            display: "flex",
-            flexWrap: "wrap",
-            justifyContent: "center",
-            gap: "2rem",
-            marginBottom: "4rem",
-          }}
-        >
+      {/* How It Works Section */}
+      <section className="how-it-works">
+        <h2 className="section-title">How It Works</h2>
+        <div className="how-it-works-grid">
           {[
             {
               emoji: "📄",
@@ -111,91 +56,36 @@ export default function ProductPage() {
             {
               emoji: "🧠",
               label: "Train",
-              desc: "We embed your content and add smart fallback AI to fill in the blanks.",
+              desc: "We embed your content and add smart AI to handle any question.",
             },
             {
               emoji: "🚀",
               label: "Launch",
-              desc: "We go live on your site with a branded AI that helps you sell 24/7.",
+              desc: "Clyde goes live on your site, selling and supporting 24/7.",
             },
           ].map((step, i) => (
-            <div
-              key={i}
-              style={{
-                width: "240px",
-                textAlign: "center",
-              }}
-            >
-              <div style={{ fontSize: "2rem", marginBottom: "0.5rem" }}>
-                {step.emoji}
-              </div>
-              <h4
-                style={{
-                  fontSize: "1.1rem",
-                  fontWeight: "600",
-                  marginBottom: "0.5rem",
-                }}
-              >
-                {step.label}
-              </h4>
-              <p style={{ fontSize: "0.95rem", color: "#4B5563" }}>
-                {step.desc}
-              </p>
+            <div key={i} className="how-it-works-card">
+              <div className="how-it-works-icon">{step.emoji}</div>
+              <h4 className="how-it-works-title">{step.label}</h4>
+              <p className="how-it-works-text">{step.desc}</p>
             </div>
           ))}
         </div>
+      </section>
 
-        {/* CTA */}
-        <div style={{ marginTop: "2rem" }}>
-          <h3
-            style={{
-              fontSize: "1.5rem",
-              fontWeight: "bold",
-              marginBottom: "1rem",
-            }}
-          >
-            Ready to get your AI assistant live?
-          </h3>
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              gap: "1rem",
-              flexWrap: "wrap",
-            }}
-          >
-            <Link href="/pricing">
-              <button
-                style={{
-                  backgroundColor: "#2D3B8F",
-                  color: "#ffffff",
-                  padding: "0.75rem 1.5rem",
-                  borderRadius: "8px",
-                  fontWeight: 600,
-                  border: "none",
-                  cursor: "pointer",
-                }}
-              >
-                View Pricing
-              </button>
-            </Link>
-            <Link href="/contact">
-              <button
-                style={{
-                  backgroundColor: "transparent",
-                  color: "#2D3B8F",
-                  padding: "0.75rem 1.5rem",
-                  borderRadius: "8px",
-                  fontWeight: 500,
-                  textDecoration: "underline",
-                  border: "none",
-                  cursor: "pointer",
-                }}
-              >
-                Request a Demo
-              </button>
-            </Link>
-          </div>
+      {/* CTA Section */}
+      <section className="cta">
+        <h2 className="cta-title">Ready to Get Clyde Live?</h2>
+        <p className="cta-text">
+          Transform your website into a 24/7 sales machine with Clyde.
+        </p>
+        <div className="hero-cta">
+          <Link href="/pricing">
+            <button className="btn-primary">View Pricing</button>
+          </Link>
+          <Link href="/contact">
+            <button className="btn-secondary">Request a Demo</button>
+          </Link>
         </div>
       </section>
     </main>

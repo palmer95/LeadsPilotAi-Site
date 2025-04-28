@@ -1,9 +1,9 @@
 // app/layout.tsx
 import "./globals.css";
-import Link from "next/link";
-import Image from "next/image";
-import Script from "next/script";
+import Header from "../components/Header";
+import Link from "next/link"; // Added missing import
 import type { Metadata } from "next";
+import Script from "next/script";
 
 export const metadata: Metadata = {
   title: "LeadsPilotAI",
@@ -18,6 +18,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        <link
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800;900&display=swap"
+          rel="stylesheet"
+        />
         <Script
           src="/chatbot.js"
           strategy="afterInteractive"
@@ -25,80 +29,40 @@ export default function RootLayout({
         />
         <link rel="stylesheet" href="/chatbot.css" />
       </head>
-      <body
-        style={{
-          backgroundColor: "#ffffff",
-          color: "#111111",
-          margin: 0,
-          fontFamily: "Arial, Helvetica, sans-serif",
-        }}
-      >
+      <body>
         {/* Header */}
-        <header
-          style={{
-            backgroundColor: "transparent",
-            padding: "1.5rem 2rem",
-            borderBottom: "1px solid #e5e7eb",
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-            maxWidth: "1200px",
-            margin: "0 auto",
-          }}
-        >
-          <Link
-            href="/"
-            style={{
-              display: "flex",
-              alignItems: "center",
-              textDecoration: "none",
-              background: "none",
-            }}
-          >
-            <Image
-              src="/logo.png"
-              alt="LeadsPilotAI Logo"
-              width={600}
-              height={180}
-              style={{
-                objectFit: "contain",
-                background: "none",
-              }}
-              priority
-            />
-          </Link>
-          <nav style={{ display: "flex", gap: "1.5rem", fontSize: "1rem" }}>
-            <Link href="/product" className="nav-link">
-              Product
-            </Link>
-            <Link href="/pricing" className="nav-link">
-              Pricing
-            </Link>
-            <Link href="/contact" className="nav-link">
-              Contact
-            </Link>
-          </nav>
-        </header>
+        <Header />
 
         {/* Main content */}
-        <main style={{ maxWidth: "1200px", margin: "0 auto" }}>{children}</main>
+        <main>{children}</main>
 
-        {/* 3) Mount point for your chat bubble */}
+        {/* Chatbot mount point */}
         <div id="chatbot-root" />
 
         {/* Footer */}
-        <footer
-          style={{
-            marginTop: "4rem",
-            padding: "2rem",
-            textAlign: "center",
-            fontSize: "0.85rem",
-            color: "#4B5563",
-            borderTop: "1px solid #e5e7eb",
-            backgroundColor: "#ffffff",
-          }}
-        >
-          © {new Date().getFullYear()} LeadsPilotAI. All rights reserved.
+        <footer className="footer">
+          <div className="footer-content">
+            <div>
+              <h4 className="footer-brand">LeadsPilotAI</h4>
+              <p className="footer-text">
+                Empowering businesses with AI-driven sales solutions.
+              </p>
+            </div>
+            <div className="footer-links">
+              <Link href="/product" className="footer-link">
+                Product
+              </Link>
+              <Link href="/pricing" className="footer-link">
+                Pricing
+              </Link>
+              <Link href="/contact" className="footer-link">
+                Contact
+              </Link>
+            </div>
+          </div>
+          <p className="footer-copyright">
+            © {new Date().getFullYear()} LeadsPilotAI. All rights reserved.
+          </p>
         </footer>
       </body>
     </html>

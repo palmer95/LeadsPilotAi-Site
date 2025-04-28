@@ -1,216 +1,92 @@
-"use client";
+// app/page.tsx
 import Link from "next/link";
 
 export default function Home() {
   return (
-    <main
-      style={{
-        backgroundColor: "#ffffff",
-        color: "#111111",
-        minHeight: "100vh",
-        padding: "4rem 1rem",
-      }}
-    >
-      <section
-        style={{ maxWidth: "900px", margin: "0 auto", textAlign: "center" }}
-      >
-        {/* Hero */}
-        <h1
-          style={{ fontSize: "3rem", fontWeight: "bold", marginBottom: "1rem" }}
-        >
-          Your AI Sales Agent, Live on Your Site 24/7
-        </h1>
-        <p
-          style={{
-            fontSize: "1.25rem",
-            color: "#4B5563",
-            marginBottom: "2rem",
-          }}
-        >
-          Instantly answer questions, capture leads, and book clients — all
-          branded for your business.
+    <main>
+      {/* Hero Section */}
+      <section className="hero">
+        <div className="hero-content">
+          <h1 className="hero-title">Turn Your Website Into a Sales Machine</h1>
+          <p className="hero-text">
+            Clyde, your AI Sales Agent, engages visitors, answers questions, and
+            books meetings 24/7.
+          </p>
+          <div className="hero-cta">
+            <Link href="/contact">
+              <button className="btn-primary">Get Started</button>
+            </Link>
+            <Link href="/pricing">
+              <button className="btn-secondary">View Pricing</button>
+            </Link>
+          </div>
+        </div>
+
+        {/* Testimonials Section */}
+        <div className="testimonials">
+          <div className="testimonial-card">
+            <p className="testimonial-text">
+              “Clyde has been a game-changer for Virtour Media. It engages our
+              website visitors in real-time, answers their questions instantly,
+              and captures leads 24/7!”
+            </p>
+            <p className="testimonial-author">
+              — Gavin Palmer, CEO of Virtour Media
+            </p>
+          </div>
+        </div>
+        <p className="testimonials-note">More success stories coming soon!</p>
+
+        {/* Prompt to Interact with Clyde */}
+        <p className="clyde-prompt">
+          Want to see Clyde in action?{" "}
+          <span className="clyde-prompt-highlight">
+            Click on the bubble below!
+          </span>
         </p>
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            gap: "1rem",
-            flexWrap: "wrap",
-            marginBottom: "3rem",
-          }}
-        >
-          <Link href="/product">
-            <button
-              style={{
-                backgroundColor: "#2D3B8F",
-                color: "#ffffff",
-                padding: "0.75rem 1.5rem",
-                borderRadius: "8px",
-                fontWeight: 600,
-                border: "none",
-                cursor: "pointer",
-              }}
-            >
-              See It in Action
-            </button>
-          </Link>
-          <Link href="/contact">
-            <button
-              style={{
-                backgroundColor: "transparent",
-                color: "#2D3B8F",
-                padding: "0.75rem 1.5rem",
-                borderRadius: "8px",
-                fontWeight: 500,
-                textDecoration: "underline",
-                border: "none",
-                cursor: "pointer",
-              }}
-            >
-              Get Early Access
-            </button>
-          </Link>
-        </div>
+      </section>
 
-        {/* Benefits */}
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            gap: "2rem",
-            flexWrap: "wrap",
-            marginBottom: "4rem",
-          }}
-        >
-          {[
-            {
-              emoji: "💬",
-              title: "Answers Instantly",
-              desc: "No more missed questions — your AI agent responds in real time, 24/7.",
-            },
-            {
-              emoji: "📥",
-              title: "Captures Every Lead",
-              desc: "Emails, phone numbers, and interest — collected and sent to you automatically.",
-            },
-            {
-              emoji: "⚡",
-              title: "Books While You Sleep",
-              desc: "Triggers alerts or bookings via SMS, Discord, or Slack the moment a lead is ready.",
-            },
-          ].map((item, i) => (
-            <div
-              key={i}
-              style={{
-                width: "260px",
-                textAlign: "center",
-                padding: "1rem",
-              }}
-            >
-              <div style={{ fontSize: "2rem", marginBottom: "0.5rem" }}>
-                {item.emoji}
-              </div>
-              <h4
-                style={{
-                  fontSize: "1.1rem",
-                  fontWeight: "600",
-                  marginBottom: "0.5rem",
-                }}
-              >
-                {item.title}
-              </h4>
-              <p style={{ fontSize: "0.95rem", color: "#4B5563" }}>
-                {item.desc}
-              </p>
-            </div>
-          ))}
+      {/* Benefits Section */}
+      <section className="benefits">
+        <h2 className="section-title">Why Choose LeadsPilotAI?</h2>
+        <p className="section-text">
+          Clyde is more than a chatbot — it’s a sales agent that works 24/7 to
+          grow your business.
+        </p>
+        <div className="benefits-grid">
+          <div className="benefit-card">
+            <div className="benefit-icon">🎯</div>
+            <h3 className="benefit-title">Custom-Branded</h3>
+            <p className="benefit-text">
+              Seamlessly matches your website’s look and tone.
+            </p>
+          </div>
+          <div className="benefit-card">
+            <div className="benefit-icon">🧠</div>
+            <h3 className="benefit-title">Smart AI</h3>
+            <p className="benefit-text">
+              Answers any query, even beyond your site’s content.
+            </p>
+          </div>
+          <div className="benefit-card">
+            <div className="benefit-icon">📅</div>
+            <h3 className="benefit-title">Booking-Ready</h3>
+            <p className="benefit-text">
+              Notifies your team instantly when a lead is ready.
+            </p>
+          </div>
         </div>
+      </section>
 
-        {/* What Makes Us Different */}
-        <h2
-          style={{ fontSize: "2rem", fontWeight: "bold", marginBottom: "2rem" }}
-        >
-          What Makes Us Different
-        </h2>
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            flexWrap: "wrap",
-            gap: "2rem",
-            marginBottom: "4rem",
-          }}
-        >
-          {[
-            {
-              emoji: "🎯",
-              label: "Custom-Branded",
-              desc: "Matches your website’s tone and look — it’s not a generic widget.",
-            },
-            {
-              emoji: "🧠",
-              label: "Smart Fallback AI",
-              desc: "Answers everything — even questions not covered on your site.",
-            },
-            {
-              emoji: "📲",
-              label: "Booking-Ready",
-              desc: "Notifies your team and sends texts when a customer’s ready to book.",
-            },
-          ].map((item, i) => (
-            <div
-              key={i}
-              style={{
-                width: "240px",
-                textAlign: "center",
-              }}
-            >
-              <div style={{ fontSize: "2rem", marginBottom: "0.5rem" }}>
-                {item.emoji}
-              </div>
-              <h4
-                style={{
-                  fontSize: "1.1rem",
-                  fontWeight: "600",
-                  marginBottom: "0.5rem",
-                }}
-              >
-                {item.label}
-              </h4>
-              <p style={{ fontSize: "0.95rem", color: "#4B5563" }}>
-                {item.desc}
-              </p>
-            </div>
-          ))}
-        </div>
-
-        {/* Final CTA */}
-        <div>
-          <h3
-            style={{
-              fontSize: "1.5rem",
-              fontWeight: "bold",
-              marginBottom: "1rem",
-            }}
-          >
-            Ready to turn your website into a 24/7 sales machine?
-          </h3>
-          <Link href="/pricing">
-            <button
-              style={{
-                backgroundColor: "#2D3B8F",
-                color: "#ffffff",
-                padding: "0.75rem 1.5rem",
-                borderRadius: "8px",
-                fontWeight: 600,
-                border: "none",
-                cursor: "pointer",
-              }}
-            >
-              View Pricing
-            </button>
-          </Link>
-        </div>
+      {/* CTA Section */}
+      <section className="cta">
+        <h2 className="cta-title">Turn Your Website Into a Sales Machine</h2>
+        <p className="cta-text">
+          Get started with Clyde and never miss a lead again.
+        </p>
+        <Link href="/pricing">
+          <button className="btn-cta">View Pricing</button>
+        </Link>
       </section>
     </main>
   );

@@ -1,5 +1,5 @@
+// app/contact/page.tsx
 "use client";
-
 import { useState } from "react";
 
 export default function ContactPage() {
@@ -41,40 +41,14 @@ export default function ContactPage() {
   };
 
   return (
-    <main
-      style={{
-        backgroundColor: "#ffffff",
-        color: "#111111",
-        minHeight: "100vh",
-        padding: "4rem 1rem",
-      }}
-    >
-      <section style={{ maxWidth: "600px", margin: "0 auto" }}>
-        <h1
-          style={{
-            fontSize: "2rem",
-            fontWeight: "bold",
-            marginBottom: "1rem",
-            textAlign: "center",
-          }}
-        >
-          Contact Us
-        </h1>
-        <p
-          style={{
-            textAlign: "center",
-            color: "#4B5563",
-            marginBottom: "2rem",
-          }}
-        >
-          Have a question or want to collaborate? We would love to hear from
-          you.
+    <main>
+      <section className="contact">
+        <h1 className="hero-title">Contact Us</h1>
+        <p className="hero-text">
+          Have a question or want to collaborate? Reach out, and we’ll get back
+          to you promptly.
         </p>
-
-        <form
-          onSubmit={handleSubmit}
-          style={{ display: "flex", flexDirection: "column", gap: "1rem" }}
-        >
+        <form className="contact-form" onSubmit={handleSubmit}>
           <input
             type="text"
             name="name"
@@ -82,12 +56,7 @@ export default function ContactPage() {
             required
             value={formData.name}
             onChange={handleChange}
-            style={{
-              padding: "0.75rem",
-              border: "1px solid #ccc",
-              borderRadius: "6px",
-              fontSize: "1rem",
-            }}
+            className="contact-input"
           />
           <input
             type="email"
@@ -96,12 +65,7 @@ export default function ContactPage() {
             required
             value={formData.email}
             onChange={handleChange}
-            style={{
-              padding: "0.75rem",
-              border: "1px solid #ccc",
-              borderRadius: "6px",
-              fontSize: "1rem",
-            }}
+            className="contact-input"
           />
           <textarea
             name="message"
@@ -110,37 +74,22 @@ export default function ContactPage() {
             required
             value={formData.message}
             onChange={handleChange}
-            style={{
-              padding: "0.75rem",
-              border: "1px solid #ccc",
-              borderRadius: "6px",
-              fontSize: "1rem",
-            }}
+            className="contact-textarea"
           />
-
           <button
             type="submit"
             disabled={status === "sending"}
-            style={{
-              backgroundColor: "#2D3B8F",
-              color: "#ffffff",
-              padding: "0.75rem",
-              borderRadius: "8px",
-              fontWeight: 600,
-              border: "none",
-              cursor: "pointer",
-            }}
+            className="contact-button"
           >
             {status === "sending" ? "Sending..." : "Send Message"}
           </button>
-
           {status === "success" && (
-            <p style={{ color: "green", textAlign: "center" }}>
+            <p className="contact-status success">
               ✅ Message sent successfully!
             </p>
           )}
           {status === "error" && (
-            <p style={{ color: "red", textAlign: "center" }}>
+            <p className="contact-status error">
               ❌ Something went wrong. Please try again.
             </p>
           )}
