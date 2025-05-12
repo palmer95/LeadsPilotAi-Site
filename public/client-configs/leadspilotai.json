@@ -13,15 +13,7 @@
     "How does Clyde capture and deliver leads?"
   ],
 
-  "sales_triggers": [
-    "book a shoot",
-    "schedule a tour",
-    "real estate package",
-    "photo session",
-    "quote",
-    "interested in a shoot",
-    "I want to book"
-  ],
+  "sales_triggers": ["subscribe", "add", "purchase"],
 
   "qualifying_questions": ["What type of business do you have"],
 
