@@ -537,7 +537,7 @@ body {
 .contact-button {
   background: linear-gradient(90deg, var(--primary), var(--accent));
   color: #ffffff;
-  padding: 0.75rem;
+  padding: 1.5rem;
   border-radius: 8px;
   font-size: 1rem;
   font-weight: 600;
