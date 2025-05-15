@@ -1,72 +1,12 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { Suspense } from "react";
+import LoginForm from "./LoginForm";
 
-export default function AdminLoginPage() {
-  const router = useRouter();
-  const params = useSearchParams();
-  const token = params.get("token") ?? "";
-
-  const [password, setPassword] = useState("");
-  const [error, setError] = useState<string | null>(null);
-  const [loading, setLoading] = useState(false);
-
-  useEffect(() => {
-    if (!token) setError("Invite token is missing.");
-  }, [token]);
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setLoading(true);
-    setError(null);
-    const res = await fetch(
-      "https://leadspilotai.onrender.com/api/admin/login-with-token",
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        credentials: "include",
-        body: JSON.stringify({ token, password }),
-      }
-    );
-    const body = await res.json();
-    if (res.ok && body.success) {
-      router.push("/admin");
-    } else {
-      setError(body.error || "Login failed");
-      setLoading(false);
-    }
-  };
-
+export default function AdminLoginPageWrapper() {
   return (
-    <>
-      <section className="contact">
-        <div className="contact-form">
-          <h1 className="section-title">Set Your Admin Password</h1>
-
-          {error && <p className="contact-status error">{error}</p>}
-
-          <form>
-            <input
-              type="password"
-              placeholder="New password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              className="contact-input"
-              required
-            />
-          </form>
-
-          <button
-            type="submit"
-            className="contact-button"
-            onClick={handleSubmit}
-            disabled={loading}
-          >
-            {loading ? "Setting…" : "Set Password & Log In"}
-          </button>
-        </div>
-      </section>
-    </>
+    <Suspense fallback={<div>Loading...</div>}>
+      <LoginForm />
+    </Suspense>
   );
 }
