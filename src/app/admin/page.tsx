@@ -47,6 +47,7 @@ export default function AdminDashboard() {
 
         setLoading(false);
       } catch (err) {
+        console.error(err);
         // if any 401 or network error, redirect to login
         router.push("/admin/login");
       }

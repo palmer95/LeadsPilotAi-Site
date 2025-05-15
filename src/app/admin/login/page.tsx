@@ -46,7 +46,7 @@ export default function AdminLoginPage() {
 
           {error && <p className="contact-status error">{error}</p>}
 
-          <form onSubmit={handleSubmit}>
+          <form>
             <input
               type="password"
               placeholder="New password"
