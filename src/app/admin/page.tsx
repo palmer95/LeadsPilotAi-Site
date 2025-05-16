@@ -8,9 +8,9 @@ export default function AdminDashboard() {
   const router = useRouter();
   const [leadCount, setLeadCount] = useState<number | null>(null);
   const [faqCount, setFaqCount] = useState<number | null>(null);
-  const [calendarConnected, setCalendarConnected] = useState<boolean | null>(
-    null
-  );
+  // const [calendarConnected, setCalendarConnected] = useState<boolean | null>(
+  //   null
+  // );
   const [loading, setLoading] = useState(true);
 
   // If unauthorized, redirect to login
