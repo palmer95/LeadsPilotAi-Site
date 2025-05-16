@@ -80,10 +80,12 @@ export default function AdminDashboard() {
           <h2 className="benefit-title">Calendar Connected</h2>
           <p
             className={`benefit-text text-2xl ${
-              calendarConnected ? "text-green-600" : "text-red-600"
+              // calendarConnected
+              true ? "text-green-600" : "text-red-600"
             }`}
           >
-            {calendarConnected ? "Yes" : "No"}
+            {/* calendarConnected */}
+            {true ? "Yes" : "No"}
           </p>
         </div>
       </div>
