@@ -18,9 +18,12 @@ export default function AdminDashboard() {
     (async () => {
       try {
         // 1) Fetch leads count
-        const leadsRes = await fetch("http://localhost:5050/api/admin/leads", {
-          credentials: "include",
-        });
+        const leadsRes = await fetch(
+          "https://leadspilotai.onrender.com/api/admin/leads",
+          {
+            credentials: "include",
+          }
+        );
         if (leadsRes.status === 401) throw new Error("unauth");
         const leadsData = await leadsRes.json();
         setLeadCount(leadsData.length);
