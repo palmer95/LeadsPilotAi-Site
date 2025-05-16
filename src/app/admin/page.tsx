@@ -38,15 +38,16 @@ export default function AdminDashboard() {
         const faqsData = await faqsRes.json();
         setFaqCount(faqsData.length);
 
+        // TODO: calendar status integration
         // 3) Fetch calendar status
-        const calRes = await fetch(
-          "https://leadspilotai.onrender.com/api/admin/calendar",
-          {
-            credentials: "include",
-          }
-        );
-        const calData = await calRes.json();
-        setCalendarConnected(calData.connected);
+        // const calRes = await fetch(
+        //   "https://leadspilotai.onrender.com/api/admin/calendar",
+        //   {
+        //     credentials: "include",
+        //   }
+        // );
+        // const calData = await calRes.json();
+        // setCalendarConnected(calData.connected);
 
         setLoading(false);
       } catch (err) {
