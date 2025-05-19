@@ -2,12 +2,37 @@
 "use client";
 import Link from "next/link";
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(false);
+  const router = useRouter();
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+
+  useEffect(() => {
+    // Check if user is logged in
+    (async () => {
+      const res = await fetch(
+        "https://leadspilotai.onrender.com/api/admin/check-session",
+        {
+          credentials: "include",
+        }
+      );
+      setLoggedIn(res.ok);
+    })();
+  }, []);
+
+  const handleLogout = async () => {
+    await fetch("https://leadspilotai.onrender.com/api/admin/logout", {
+      method: "POST",
+      credentials: "include",
+    });
+    setLoggedIn(false);
+    router.push("/admin/login");
+  };
 
   return (
     <header className="header">
@@ -32,6 +57,15 @@ export default function Header() {
           <Link href="/contact" className="nav-link">
             Contact
           </Link>
+          {loggedIn ? (
+            <button onClick={handleLogout} className="nav-link">
+              Sign Out
+            </button>
+          ) : (
+            <Link href="/admin/login" className="nav-link">
+              Sign In
+            </Link>
+          )}
         </nav>
       </div>
       <button className="hamburger" onClick={toggleMenu}>
@@ -47,6 +81,15 @@ export default function Header() {
         <Link href="/contact" className="nav-link" onClick={toggleMenu}>
           Contact
         </Link>
+        {loggedIn ? (
+          <button onClick={handleLogout} className="nav-link">
+            Sign Out
+          </button>
+        ) : (
+          <Link href="/admin/login" className="nav-link">
+            Sign In
+          </Link>
+        )}
       </nav>
     </header>
   );

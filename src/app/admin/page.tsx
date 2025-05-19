@@ -73,10 +73,6 @@ export default function AdminDashboard() {
           <p className="benefit-text text-2xl">{leadCount}</p>
         </div>
         <div className="benefit-card">
-          <h2 className="benefit-title">FAQs Configured</h2>
-          <p className="benefit-text text-2xl">{faqCount}</p>
-        </div>
-        <div className="benefit-card">
           <h2 className="benefit-title">Calendar Connected</h2>
           <p
             className={`benefit-text text-2xl ${
