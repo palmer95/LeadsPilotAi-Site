@@ -7,7 +7,7 @@ import { useRouter } from "next/navigation";
 export default function AdminDashboard() {
   const router = useRouter();
   const [leadCount, setLeadCount] = useState<number | null>(null);
-  const [faqCount, setFaqCount] = useState<number | null>(null);
+  //const [faqCount, setFaqCount] = useState<number | null>(null);
   // const [calendarConnected, setCalendarConnected] = useState<boolean | null>(
   //   null
   // );
@@ -29,14 +29,14 @@ export default function AdminDashboard() {
         setLeadCount(leadsData.length);
 
         // 2) Fetch FAQs count
-        const faqsRes = await fetch(
-          "https://leadspilotai.onrender.com/api/admin/faqs",
-          {
-            credentials: "include",
-          }
-        );
-        const faqsData = await faqsRes.json();
-        setFaqCount(faqsData.length);
+        // const faqsRes = await fetch(
+        //   "https://leadspilotai.onrender.com/api/admin/faqs",
+        //   {
+        //     credentials: "include",
+        //   }
+        // );
+        // const faqsData = await faqsRes.json();
+        //setFaqCount(faqsData.length);
 
         // TODO: calendar status integration
         // 3) Fetch calendar status
