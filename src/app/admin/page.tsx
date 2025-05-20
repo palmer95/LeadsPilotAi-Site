@@ -19,7 +19,7 @@ export default function AdminDashboard() {
       try {
         // 1) Fetch leads count
         const leadsRes = await fetch(
-          "https://leadspilotai.onrender.com/api/admin/leads",
+          "https://leadspilotai.onrender.com/api/admin/data/leads",
           {
             credentials: "include",
           }
