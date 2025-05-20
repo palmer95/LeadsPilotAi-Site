@@ -3,7 +3,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import CryptoJS from "crypto-js";
+import crypto from "crypto-js";
 
 export default function AdminLoginPage() {
   const router = useRouter();
@@ -17,7 +17,7 @@ export default function AdminLoginPage() {
     setLoading(true);
     setError(null);
 
-    const hashedPassword = CryptoJS.SHA256(password).toString();
+    const hashedPassword = crypto.SHA256(password).toString();
 
     const res = await fetch(
       "https://leadspilotai.onrender.com/api/admin/login",
