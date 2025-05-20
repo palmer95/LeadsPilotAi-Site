@@ -8,9 +8,9 @@ export default function AdminDashboard() {
   const router = useRouter();
   const [leadCount, setLeadCount] = useState<number | null>(null);
   //const [faqCount, setFaqCount] = useState<number | null>(null);
-  // const [calendarConnected, setCalendarConnected] = useState<boolean | null>(
-  //   null
-  // );
+  const [calendarConnected, setCalendarConnected] = useState<boolean | null>(
+    null
+  );
   const [loading, setLoading] = useState(true);
 
   // If unauthorized, redirect to login
@@ -39,15 +39,15 @@ export default function AdminDashboard() {
         //setFaqCount(faqsData.length);
 
         // TODO: calendar status integration
-        // 3) Fetch calendar status
-        // const calRes = await fetch(
-        //   "https://leadspilotai.onrender.com/api/admin/calendar",
-        //   {
-        //     credentials: "include",
-        //   }
-        // );
-        // const calData = await calRes.json();
-        // setCalendarConnected(calData.connected);
+        //3) Fetch calendar status
+        const calRes = await fetch(
+          "https://leadspilotai.onrender.com/api/admin/calendar",
+          {
+            credentials: "include",
+          }
+        );
+        const calData = await calRes.json();
+        setCalendarConnected(calData.connected);
 
         setLoading(false);
       } catch (err) {
@@ -76,13 +76,19 @@ export default function AdminDashboard() {
           <h2 className="benefit-title">Calendar Connected</h2>
           <p
             className={`benefit-text text-2xl ${
-              // calendarConnected
-              true ? "text-green-600" : "text-red-600"
+              calendarConnected ? "text-green-600" : "text-red-600"
             }`}
           >
-            {/* calendarConnected */}
-            {true ? "Yes" : "No"}
+            {calendarConnected ? "Yes" : "No"}
           </p>
+          {!calendarConnected && (
+            <a
+              href="https://leadspilotai.onrender.com/api/admin/calendar/oauth-start"
+              className="text-blue-600 underline text-sm mt-2 inline-block"
+            >
+              Connect Google Calendar →
+            </a>
+          )}
         </div>
       </div>
     </section>
