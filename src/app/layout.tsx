@@ -2,7 +2,7 @@
 import "./globals.css";
 import Header from "../components/Header";
 import Link from "next/link"; // Added missing import
-import type { Metadata } from "next";
+import type { Metadata } from "next"; // dummy commit to rebuild
 import Script from "next/script";
 
 export const metadata: Metadata = {
