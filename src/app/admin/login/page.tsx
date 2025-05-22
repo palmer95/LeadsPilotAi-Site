@@ -3,7 +3,6 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import crypto from "crypto-js";
 
 export default function AdminLoginPage() {
   const router = useRouter();
@@ -17,15 +16,13 @@ export default function AdminLoginPage() {
     setLoading(true);
     setError(null);
 
-    const hashedPassword = crypto.SHA256(password).toString();
-
     const res = await fetch(
       "https://leadspilotai.onrender.com/api/admin/login",
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         credentials: "include",
-        body: JSON.stringify({ email, password: hashedPassword }),
+        body: JSON.stringify({ email, password }),
       }
     );
 

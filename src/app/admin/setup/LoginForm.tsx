@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
-import crypto from "crypto-js"; // Add this library
 
 export default function LoginForm() {
   const router = useRouter();
@@ -19,16 +18,13 @@ export default function LoginForm() {
     setLoading(true);
     setError(null);
 
-    // Hash the password with SHA-256
-    const hashedPassword = crypto.SHA256(password).toString();
-
     const res = await fetch(
       "https://leadspilotai.onrender.com/api/admin/login-with-token",
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         credentials: "include",
-        body: JSON.stringify({ token, password: hashedPassword }),
+        body: JSON.stringify({ token, password }),
       }
     );
 
