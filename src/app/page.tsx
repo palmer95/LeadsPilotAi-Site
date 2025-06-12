@@ -32,7 +32,7 @@ export default function Home() {
               recommend.”
             </p>
             <p className="testimonial-author">
-              — Gavin Palmer, CEO of Virtour Media
+              — Gavin Palmer, Owner of Virtour Media
             </p>
           </div>
         </div>
