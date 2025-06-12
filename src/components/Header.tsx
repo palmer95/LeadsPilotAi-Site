@@ -15,13 +15,24 @@ export default function Header() {
   useEffect(() => {
     // Check if user is logged in
     (async () => {
-      const res = await fetch(
-        "https://leadspilotai.onrender.com/api/admin/check-session",
-        {
-          credentials: "include",
-        }
-      );
-      setLoggedIn(res.ok);
+      const token = localStorage.getItem("authToken");
+      if (!token) {
+        setLoggedIn(false);
+        return;
+      }
+      try {
+        const res = await fetch(
+          "https://leadspilotai.onrender.com/api/admin/verify-token",
+          {
+            headers: { Authorization: `Bearer ${token}` },
+          }
+        );
+        const data = await res.json();
+        setLoggedIn(res.ok && data.logged_in);
+      } catch (error) {
+        console.error("Error: ", error);
+        setLoggedIn(false);
+      }
     })();
   }, []);
 

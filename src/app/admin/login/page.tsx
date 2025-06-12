@@ -21,16 +21,16 @@ export default function AdminLoginPage() {
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        credentials: "include",
         body: JSON.stringify({ email, password }),
       }
     );
 
-    const body = await res.json();
-    if (res.ok && body.success) {
+    const data = await res.json();
+    if (res.ok && data.token) {
+      localStorage.setItem("authToken", data.token);
       router.push("/admin");
     } else {
-      setError(body.error || "Login failed");
+      setError(data.error || "Login failed");
       setLoading(false);
     }
   };
