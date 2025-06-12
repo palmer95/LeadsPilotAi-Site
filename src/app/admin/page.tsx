@@ -58,6 +58,33 @@ export default function AdminDashboard() {
     })();
   }, [router]);
 
+  const startCalendarOauth = async () => {
+    try {
+      const token = localStorage.getItem("authToken");
+      if (!token) {
+        console.error("No token found, please log in");
+        return;
+      }
+      const res = await fetch(
+        "https://leadspilotai.onrender.com/api/admin/calendar/oauth-start",
+        {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      if (res.redirected) {
+        window.location.href = res.url; // Follow the OAuth redirect
+      } else {
+        const data = await res.json();
+        console.error("OAuth start failed:", data.error);
+      }
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  };
+
   if (loading) {
     return (
       <div className="section-text text-center mt-20">Loading dashboard…</div>
@@ -82,12 +109,13 @@ export default function AdminDashboard() {
             {calendarConnected ? "Yes" : "No"}
           </p>
           {!calendarConnected && (
-            <a
-              href="https://leadspilotai.onrender.com/api/admin/calendar/oauth-start"
+            <button
+              onClick={startCalendarOauth}
+              //href="https://leadspilotai.onrender.com/api/admin/calendar/oauth-start"
               className="text-blue-600 underline text-sm mt-2 inline-block"
             >
               Connect Google Calendar →
-            </a>
+            </button>
           )}
         </div>
       </div>
