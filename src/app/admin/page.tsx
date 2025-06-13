@@ -69,41 +69,19 @@ export default function AdminDashboard() {
     })();
   }, [router]);
 
-  const startCalendarOauth = async () => {
-    setLoading(true);
-    try {
-      const token = localStorage.getItem("authToken");
-      if (!token) {
-        console.error("No token found, please log in");
-        alert("Please log in to connect your calendar");
-        router.push("/admin/login");
-        return;
-      }
-      const res = await fetch(
-        "https://leadspilotai.onrender.com/api/admin/calendar/oauth-start",
-        {
-          method: "GET",
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
-      if (res.redirected) {
-        window.location.href = res.url;
-      } else {
-        const data = await res.json();
-        console.error("OAuth start failed:", data.error);
-        alert(
-          "Failed to start calendar connection: " +
-            (data.error || "Unknown error")
-        );
-      }
-    } catch (error) {
-      console.error("Error:", error);
-      alert("An error occurred while connecting the calendar");
-    } finally {
-      setLoading(false);
+  const startCalendarOauth = () => {
+    const token = localStorage.getItem("authToken");
+    if (!token) {
+      console.error("No token found, please log in");
+      alert("Please log in to connect your calendar");
+      router.push("/admin/login");
+      return;
     }
+    // Directly navigate to oauth-start with token in query param
+    const oauthUrl = `https://leadspilotai.onrender.com/api/admin/calendar/oauth-start?token=${encodeURIComponent(
+      token
+    )}`;
+    window.location.href = oauthUrl;
   };
 
   if (loading) {
