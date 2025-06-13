@@ -16,6 +16,7 @@ export default function AdminLoginPage() {
     setLoading(true);
     setError(null);
 
+    localStorage.removeItem("authToken"); // Clear any stale token
     const res = await fetch(
       "https://leadspilotai.onrender.com/api/admin/login",
       {
