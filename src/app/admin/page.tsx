@@ -1,4 +1,3 @@
-// src/app/admin/page.tsx
 "use client";
 
 import { useState, useEffect } from "react";
@@ -7,62 +6,77 @@ import { useRouter } from "next/navigation";
 export default function AdminDashboard() {
   const router = useRouter();
   const [leadCount, setLeadCount] = useState<number | null>(null);
-  //const [faqCount, setFaqCount] = useState<number | null>(null);
   const [calendarConnected, setCalendarConnected] = useState<boolean | null>(
     null
   );
   const [loading, setLoading] = useState(true);
 
-  // If unauthorized, redirect to login
   useEffect(() => {
     (async () => {
       try {
-        // 1) Fetch leads count
+        const token = localStorage.getItem("authToken");
+        if (!token) {
+          throw new Error("No token found");
+        }
+
+        // Verify token
+        const verifyRes = await fetch(
+          "https://leadspilotai.onrender.com/api/admin/verify-token",
+          {
+            headers: { Authorization: `Bearer ${token}` },
+          }
+        );
+        if (!verifyRes.ok) {
+          throw new Error("Unauthorized");
+        }
+        const verifyData = await verifyRes.json();
+        if (!verifyData.logged_in) {
+          throw new Error("Not logged in");
+        }
+
+        // Fetch leads count
         const leadsRes = await fetch(
           "https://leadspilotai.onrender.com/api/admin/data/leads",
           {
-            credentials: "include",
+            headers: { Authorization: `Bearer ${token}` },
           }
         );
-        if (leadsRes.status === 401) throw new Error("unauth");
+        if (!leadsRes.ok) {
+          throw new Error("Failed to fetch leads");
+        }
         const leadsData = await leadsRes.json();
         setLeadCount(leadsData.length);
 
-        // 2) Fetch FAQs count
-        // const faqsRes = await fetch(
-        //   "https://leadspilotai.onrender.com/api/admin/faqs",
-        //   {
-        //     credentials: "include",
-        //   }
-        // );
-        // const faqsData = await faqsRes.json();
-        //setFaqCount(faqsData.length);
-
-        // TODO: calendar status integration
-        //3) Fetch calendar status
+        // Fetch calendar status
         const calRes = await fetch(
-          "https://leadspilotai.onrender.com/api/admin/calendar",
+          "https://leadspilotai.onrender.com/api/admin/calendar/",
           {
-            credentials: "include",
+            headers: { Authorization: `Bearer ${token}` },
           }
         );
+        if (!calRes.ok) {
+          throw new Error("Failed to fetch calendar status");
+        }
         const calData = await calRes.json();
         setCalendarConnected(calData.connected);
 
         setLoading(false);
       } catch (err) {
-        console.error(err);
-        // if any 401 or network error, redirect to login
+        console.error("Dashboard error:", err);
+        localStorage.removeItem("authToken");
         router.push("/admin/login");
       }
     })();
   }, [router]);
 
   const startCalendarOauth = async () => {
+    setLoading(true);
     try {
       const token = localStorage.getItem("authToken");
       if (!token) {
         console.error("No token found, please log in");
+        alert("Please log in to connect your calendar");
+        router.push("/admin/login");
         return;
       }
       const res = await fetch(
@@ -75,13 +89,20 @@ export default function AdminDashboard() {
         }
       );
       if (res.redirected) {
-        window.location.href = res.url; // Follow the OAuth redirect
+        window.location.href = res.url;
       } else {
         const data = await res.json();
         console.error("OAuth start failed:", data.error);
+        alert(
+          "Failed to start calendar connection: " +
+            (data.error || "Unknown error")
+        );
       }
     } catch (error) {
       console.error("Error:", error);
+      alert("An error occurred while connecting the calendar");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -111,10 +132,12 @@ export default function AdminDashboard() {
           {!calendarConnected && (
             <button
               onClick={startCalendarOauth}
-              //href="https://leadspilotai.onrender.com/api/admin/calendar/oauth-start"
-              className="text-blue-600 underline text-sm mt-2 inline-block"
+              disabled={loading}
+              className={`text-blue-600 underline text-sm mt-2 inline-block ${
+                loading ? "opacity-50 cursor-not-allowed" : ""
+              }`}
             >
-              Connect Google Calendar →
+              {loading ? "Connecting..." : "Connect Google Calendar →"}
             </button>
           )}
         </div>
