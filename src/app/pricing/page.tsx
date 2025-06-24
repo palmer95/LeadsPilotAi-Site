@@ -8,22 +8,14 @@ export default function PricingPage() {
 
   const tiers = [
     {
-      title: "Starter",
-      price: "$99/mo",
-      features: [
-        "AI assistant trained on your website",
-        "Live on your site 24/7",
-        "Lead capture & delivery via email",
-      ],
-      cta: "Contact Us",
-    },
-    {
       title: "Pro (Early Adopter)",
       price: "$249/mo",
       features: [
-        "Everything in Starter",
-        "Booking triggers via Discord, SMS, Slack, or Email",
+        "AI assistant trained on your website",
+        "Live on your site 24/7",
+        "Lead capture & delivery via email and or sms",
         "Custom fallback context tuning",
+        "Appointment booking",
         "Priority support",
       ],
       cta: "Get Started",
