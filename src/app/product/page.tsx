@@ -73,6 +73,67 @@ export default function ProductPage() {
         </div>
       </section>
 
+      {/* Comparison Chart */}
+      <section className="comparison">
+        <h2 className="section-title">How We Compare</h2>
+        <div className="comparison-table-wrapper overflow-auto">
+          <table className="comparison-table">
+            <thead>
+              <tr>
+                <th>Feature</th>
+                <th>Clyde (LeadsPilotAI)</th>
+                <th>ManyChat / Tidio</th>
+                <th>Drift / Intercom</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Custom-trained on your site</td>
+                <td>✅</td>
+                <td>❌</td>
+                <td>✅ (but expensive)</td>
+              </tr>
+              <tr>
+                <td>AI handles Q&A 24/7</td>
+                <td>✅</td>
+                <td>✅</td>
+                <td>✅</td>
+              </tr>
+              <tr>
+                <td>Real-time appointment booking</td>
+                <td>✅</td>
+                <td>❌</td>
+                <td>❌</td>
+              </tr>
+              <tr>
+                <td>Pricing</td>
+                <td>$249–$299/mo</td>
+                <td>$15–$100/mo</td>
+                <td>$800–$1,500/mo</td>
+              </tr>
+              <tr>
+                <td>Lead capture & routing</td>
+                <td>✅</td>
+                <td>✅</td>
+                <td>✅</td>
+              </tr>
+              <tr>
+                <td>Custom fallback context tuning</td>
+                <td>✅</td>
+                <td>❌</td>
+                <td>✅ (with support)</td>
+              </tr>
+              <tr>
+                <td>Fully embeddable</td>
+                <td>✅</td>
+                <td>✅</td>
+                <td>✅</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
       {/* CTA Section */}
       <section className="cta">
         <h2 className="cta-title">Ready to Get Clyde Live?</h2>
