@@ -1,4 +1,3 @@
-// app/pricing/page.tsx
 "use client";
 import Link from "next/link";
 import { useState } from "react";
@@ -13,10 +12,10 @@ export default function PricingPage() {
       features: [
         "AI assistant trained on your website",
         "Live on your site 24/7",
-        "Lead capture & delivery via email and or sms",
+        "Lead capture & delivery via email or SMS",
+        "Integrated Google Calendar appointment booking",
         "Custom fallback context tuning",
-        "Appointment booking",
-        "Priority support",
+        "Priority support & onboarding",
       ],
       cta: "Get Started",
     },
@@ -25,7 +24,7 @@ export default function PricingPage() {
       price: "$5,000",
       features: [
         "Fully custom AI assistant",
-        "No ongoing monthly subscription",
+        "No ongoing subscription",
         "You own the implementation",
         "Includes setup, training & handoff",
         "Requires $29/mo for hosting & API maintenance",
