@@ -57,5 +57,13 @@
     "send_discord": true,
     "send_sms": true,
     "send_email": true
+  },
+
+  "business_hours": {
+    "monday": ["10:00", "19:00"],
+    "tuesday": ["10:00", "19:00"],
+    "wednesday": ["10:00", "19:00"],
+    "thursday": ["10:00", "19:00"],
+    "friday": ["10:00", "19:00"]
   }
 }
