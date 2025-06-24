@@ -10,6 +10,7 @@ export default function AdminDashboard() {
     null
   );
   const [loading, setLoading] = useState(true);
+  const [oauthLoading, setOauthLoading] = useState(false);
 
   useEffect(() => {
     (async () => {
@@ -29,6 +30,7 @@ export default function AdminDashboard() {
         if (!verifyRes.ok) {
           throw new Error("Unauthorized");
         }
+
         const verifyData = await verifyRes.json();
         if (!verifyData.logged_in) {
           throw new Error("Not logged in");
@@ -59,25 +61,20 @@ export default function AdminDashboard() {
         }
         const calData = await calRes.json();
         setCalendarConnected(calData.connected);
-
-        setLoading(false);
       } catch (err) {
         console.error("Dashboard error:", err);
         localStorage.removeItem("authToken");
         router.push("/admin/login");
+      } finally {
+        setLoading(false); // only runs once all data is fetched or error occurs
       }
     })();
   }, [router]);
 
   const startCalendarOauth = () => {
     const token = localStorage.getItem("authToken");
-    if (!token) {
-      console.error("No token found, please log in");
-      alert("Please log in to connect your calendar");
-      router.push("/admin/login");
-      return;
-    }
-    // Directly navigate to oauth-start with token in query param
+    if (!token || oauthLoading) return;
+    setOauthLoading(true);
     const oauthUrl = `https://leadspilotai.onrender.com/api/admin/calendar/oauth-start?token=${encodeURIComponent(
       token
     )}`;
@@ -86,7 +83,9 @@ export default function AdminDashboard() {
 
   if (loading) {
     return (
-      <div className="section-text text-center mt-20">Loading dashboard…</div>
+      <div role="status" className="section-text text-center mt-20">
+        Loading dashboard…
+      </div>
     );
   }
 
@@ -110,12 +109,12 @@ export default function AdminDashboard() {
           {!calendarConnected && (
             <button
               onClick={startCalendarOauth}
-              disabled={loading}
+              disabled={oauthLoading}
               className={`text-blue-600 underline text-sm mt-2 inline-block ${
-                loading ? "opacity-50 cursor-not-allowed" : ""
+                oauthLoading ? "opacity-50 cursor-not-allowed" : ""
               }`}
             >
-              {loading ? "Connecting..." : "Connect Google Calendar →"}
+              {oauthLoading ? "Connecting..." : "Connect Google Calendar →"}
             </button>
           )}
         </div>
