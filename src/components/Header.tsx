@@ -68,13 +68,16 @@ export default function Header() {
           <Link href="/contact" className="nav-link">
             Contact
           </Link>
+          <Link href="/admin" className="nav-link">
+            Admin
+          </Link>
           {loggedIn ? (
             <button onClick={handleLogout} className="nav-link">
               Sign Out
             </button>
           ) : (
             <Link href="/admin/login" className="nav-link">
-              Sign In
+              <button>Sign In</button>
             </Link>
           )}
         </nav>
