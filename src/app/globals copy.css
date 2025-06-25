@@ -41,7 +41,7 @@ body {
   backdrop-filter: blur(8px);
   padding: 1.5rem 2rem;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-between; /* Keep hamburger on the right */
   align-items: center;
   z-index: 10;
   box-shadow: 0 2px 4px var(--shadow);
@@ -53,7 +53,7 @@ body {
 .header-left {
   display: flex;
   align-items: center;
-  gap: 2rem;
+  gap: 2rem; /* Space between logo and nav links */
 }
 
 .logo {
@@ -658,69 +658,14 @@ body {
   margin-top: 2rem;
 }
 
-/* Comparison Chart */
-.comparison {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 4rem 2rem;
-  text-align: center;
-}
-
-.comparison-table-wrapper {
-  max-width: 100%;
-  margin: 0 auto;
-  padding: 0 1rem;
-  overflow-x: auto;
-}
-
-.comparison-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-family: "Inter", sans-serif;
-  color: var(--text);
-  text-align: left;
-  background: #ffffff;
-  border: 2px solid #000000; /* Black outline */
-}
-
-.table-header {
-  background: var(--primary);
-  color: #ffffff;
-  padding: 1.5rem;
-  font-size: 1.1rem;
-  font-weight: 600;
-  border-bottom: 2px solid #000000; /* Black bottom border */
-}
-
-.table-header.highlight {
-  background: var(--accent); /* Darker shade for Clyde's column */
-}
-
-.table-cell {
-  padding: 1.2rem;
-  border: 1px solid #000000; /* Black cell borders */
-  font-size: 1rem;
-  vertical-align: middle;
-  background: #ffffff; /* White cells */
-}
-
-.table-cell.highlight {
-  background: rgba(0, 118, 255, 0.1); /* Light blue highlight for Clyde */
-  font-weight: 500;
-}
-
-.table-cell:first-child {
-  font-weight: 600;
-  background: #f5f5f7; /* Neutral background for feature column */
-}
-
+/* Mobile Styles */
 @media (max-width: 768px) {
   .header {
     padding: 1rem;
   }
 
   .header-left {
-    gap: 1rem;
+    gap: 1rem; /* Reduce gap on mobile */
   }
 
   .logo-img {
@@ -728,7 +673,7 @@ body {
   }
 
   .nav {
-    display: none;
+    display: none; /* Hide nav links on mobile, as before */
   }
 
   .hamburger {
@@ -855,21 +800,108 @@ body {
     flex-direction: column;
     gap: 1rem;
   }
-
-  .comparison {
-    padding: 2rem 1rem;
-  }
-
+  /* comparison tables */
   .comparison-table-wrapper {
-    padding: 0;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+    overflow-x: auto;
   }
 
-  .table-header,
+  .comparison-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: "Inter", sans-serif;
+    color: #333;
+    text-align: left;
+    background: #ffffff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .table-header {
+    background: #4a90e2;
+    color: #ffffff;
+    padding: 1.5rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-bottom: 2px solid #357abd;
+  }
+
+  .table-header.highlight {
+    background: #2e6cb3; /* Darker shade for Clyde's column */
+  }
+
   .table-cell {
-    padding: 1rem;
-    font-size: 0.9rem;
+    padding: 1.2rem;
+    border: 1px solid #e0e4e8;
+    font-size: 1rem;
+    vertical-align: middle;
   }
-}
 
-/* Ensure font is imported if not already */
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+  .table-cell.highlight {
+    background: #e6f0fa;
+    font-weight: 500;
+    color: #1a202c;
+  }
+
+  .table-cell:first-child {
+    font-weight: 600;
+    color: #1a202c;
+    background: #f9fafb;
+  }
+
+  .section-title {
+    font-size: 2.25rem;
+    font-weight: 700;
+    color: #1a202c;
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  .btn-primary {
+    background: linear-gradient(135deg, #4a90e2 0%, #357abd 100%);
+    color: #ffffff;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 600;
+    border: none;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  .btn-secondary {
+    background: #ffffff;
+    color: #4a90e2;
+    padding: 0.75rem 1.5rem;
+    border: 2px solid #4a90e2;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .btn-secondary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  @media (max-width: 768px) {
+    .comparison-table-wrapper {
+      padding: 1rem;
+    }
+
+    .table-header,
+    .table-cell {
+      padding: 1rem;
+      font-size: 0.9rem;
+    }
+  }
+
+  /* Ensure font is imported if not already */
+  @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+}
