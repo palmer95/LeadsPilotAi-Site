@@ -1,3 +1,4 @@
+// app/pricing/page.tsx
 "use client";
 import Link from "next/link";
 import { useState } from "react";
@@ -44,7 +45,7 @@ export default function PricingPage() {
     },
   ];
 
-  const comparison = [
+  const comparison1 = [
     {
       feature: "Custom-trained on your site",
       clyde: "✅",
@@ -86,6 +87,45 @@ export default function PricingPage() {
       clyde: "$249–$299/mo",
       manychat: "$15–$100/mo",
       drift: "$800–$1,500/mo",
+    },
+  ];
+
+  const comparison2 = [
+    {
+      feature: "Custom-trained on your site",
+      clyde: "✅",
+      callbox: "✅ (via ABM setup)",
+      hubspot: "✅ (Premium add-on)",
+    },
+    {
+      feature: "AI handles Q&A 24/7",
+      clyde: "✅",
+      callbox: "✅ (with automation)",
+      hubspot: "✅ (via AI tools)",
+    },
+    {
+      feature: "Real-time appointment booking",
+      clyde: "✅",
+      callbox: "✅ (via integrations)",
+      hubspot: "❌ (third-party)",
+    },
+    {
+      feature: "Lead capture & routing",
+      clyde: "✅",
+      callbox: "✅",
+      hubspot: "✅",
+    },
+    {
+      feature: "Custom fallback context tuning",
+      clyde: "✅",
+      callbox: "🔶 (limited customization)",
+      hubspot: "✅ (with support)",
+    },
+    {
+      feature: "Pricing",
+      clyde: "$249–$299/mo",
+      callbox: "Custom quote",
+      hubspot: "$74–$2,000+/mo",
     },
   ];
 
@@ -131,9 +171,9 @@ export default function PricingPage() {
         </div>
       </section>
 
-      {/* Comparison Chart */}
+      {/* Comparison Chart 1 */}
       <section className="comparison-section">
-        <h2 className="section-title">How We Compare</h2>
+        <h2 className="section-title">How We Compare (1)</h2>
         <div className="comparison-table">
           <div className="comparison-header">
             <div className="comparison-cell feature-col">Feature</div>
@@ -143,12 +183,35 @@ export default function PricingPage() {
             <div className="comparison-cell">ManyChat / Tidio</div>
             <div className="comparison-cell">Drift / Intercom</div>
           </div>
-          {comparison.map((row, idx) => (
+          {comparison1.map((row, idx) => (
             <div className="comparison-row" key={idx}>
               <div className="comparison-cell feature-col">{row.feature}</div>
               <div className="comparison-cell highlight">{row.clyde}</div>
               <div className="comparison-cell">{row.manychat}</div>
               <div className="comparison-cell">{row.drift}</div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Comparison Chart 2 */}
+      <section className="comparison-section">
+        <h2 className="section-title">How We Compare (2)</h2>
+        <div className="comparison-table">
+          <div className="comparison-header">
+            <div className="comparison-cell feature-col">Feature</div>
+            <div className="comparison-cell highlight">
+              Clyde (LeadsPilotAI)
+            </div>
+            <div className="comparison-cell">Callbox</div>
+            <div className="comparison-cell">HubSpot</div>
+          </div>
+          {comparison2.map((row, idx) => (
+            <div className="comparison-row" key={idx}>
+              <div className="comparison-cell feature-col">{row.feature}</div>
+              <div className="comparison-cell highlight">{row.clyde}</div>
+              <div className="comparison-cell">{row.callbox}</div>
+              <div className="comparison-cell">{row.hubspot}</div>
             </div>
           ))}
         </div>
