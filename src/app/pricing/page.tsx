@@ -88,7 +88,7 @@ export default function PricingPage() {
       </section>
 
       {/* Comparison Chart */}
-      <section className="comparison-section">
+      <section className="comparison">
         <h2 className="section-title">How We Compare</h2>
         <div className="comparison-table-wrapper">
           <table className="comparison-table">
