@@ -87,7 +87,7 @@ export default function ProductPage() {
               </tr>
             </thead>
             <tbody>
-              <tr className="table-row">
+              <tr>
                 <td className="table-cell">
                   Custom AI trained on your website
                 </td>
@@ -95,43 +95,43 @@ export default function ProductPage() {
                 <td className="table-cell">✅ (Premium add-on, $500+/mo)</td>
                 <td className="table-cell">❌ Limited customization</td>
               </tr>
-              <tr className="table-row">
+              <tr>
                 <td className="table-cell">24/7 AI-powered Q&A</td>
                 <td className="table-cell highlight">✅ Advanced</td>
                 <td className="table-cell">✅ Basic (Fin AI limited)</td>
                 <td className="table-cell">✅ Basic</td>
               </tr>
-              <tr className="table-row">
+              <tr>
                 <td className="table-cell">Real-time appointment booking</td>
                 <td className="table-cell highlight">✅ Native</td>
                 <td className="table-cell">❌ (Third-party integration)</td>
                 <td className="table-cell">❌ (Third-party integration)</td>
               </tr>
-              <tr className="table-row">
+              <tr>
                 <td className="table-cell">Pricing (per month)</td>
                 <td className="table-cell highlight">$249–$299</td>
                 <td className="table-cell">$74–$2,000+</td>
                 <td className="table-cell">$2,500+</td>
               </tr>
-              <tr className="table-row">
+              <tr>
                 <td className="table-cell">Lead capture & routing</td>
                 <td className="table-cell highlight">✅ Automated</td>
                 <td className="table-cell">✅ Manual setup</td>
                 <td className="table-cell">✅ Manual setup</td>
               </tr>
-              <tr className="table-row">
+              <tr>
                 <td className="table-cell">Custom fallback context tuning</td>
                 <td className="table-cell highlight">✅ Fully customizable</td>
                 <td className="table-cell">✅ (With support, extra cost)</td>
                 <td className="table-cell">❌ Limited</td>
               </tr>
-              <tr className="table-row">
+              <tr>
                 <td className="table-cell">Ease of setup</td>
                 <td className="table-cell highlight">✅ 1-hour onboarding</td>
                 <td className="table-cell">❌ Complex, 3–5 days</td>
                 <td className="table-cell">❌ Complex, 5+ days</td>
               </tr>
-              <tr className="table-row">
+              <tr>
                 <td className="table-cell">Fully embeddable widget</td>
                 <td className="table-cell highlight">✅ Seamless</td>
                 <td className="table-cell">✅ Branded</td>
