@@ -45,90 +45,6 @@ export default function PricingPage() {
     },
   ];
 
-  const comparison1 = [
-    {
-      feature: "Custom-trained on your site",
-      clyde: "✅",
-      manychat: "❌",
-      drift: "🔶 Enterprise-only",
-    },
-    {
-      feature: "AI handles Q&A 24/7",
-      clyde: "✅",
-      manychat: "✅",
-      drift: "✅",
-    },
-    {
-      feature: "Real-time appointment booking",
-      clyde: "✅ (Google Calendar)",
-      manychat: "❌",
-      drift: "❌",
-    },
-    {
-      feature: "Lead capture & routing",
-      clyde: "✅",
-      manychat: "✅",
-      drift: "✅",
-    },
-    {
-      feature: "Custom fallback context tuning",
-      clyde: "✅",
-      manychat: "❌",
-      drift: "✅ (via support)",
-    },
-    {
-      feature: "Fully embeddable",
-      clyde: "✅",
-      manychat: "✅",
-      drift: "✅",
-    },
-    {
-      feature: "Pricing",
-      clyde: "$249–$299/mo",
-      manychat: "$15–$100/mo",
-      drift: "$800–$1,500/mo",
-    },
-  ];
-
-  const comparison2 = [
-    {
-      feature: "Custom-trained on your site",
-      clyde: "✅",
-      callbox: "✅ (via ABM setup)",
-      hubspot: "✅ (Premium add-on)",
-    },
-    {
-      feature: "AI handles Q&A 24/7",
-      clyde: "✅",
-      callbox: "✅ (with automation)",
-      hubspot: "✅ (via AI tools)",
-    },
-    {
-      feature: "Real-time appointment booking",
-      clyde: "✅ (Google Calendar)",
-      callbox: "✅ (via integrations)",
-      hubspot: "❌ (third-party)",
-    },
-    {
-      feature: "Lead capture & routing",
-      clyde: "✅",
-      callbox: "✅",
-      hubspot: "✅",
-    },
-    {
-      feature: "Custom fallback context tuning",
-      clyde: "✅",
-      callbox: "🔶 (limited customization)",
-      hubspot: "✅ (with support)",
-    },
-    {
-      feature: "Pricing",
-      clyde: "$249–$299/mo",
-      callbox: "Custom quote",
-      hubspot: "$74–$2,000+/mo",
-    },
-  ];
-
   return (
     <main>
       {/* Hero */}
@@ -171,55 +87,48 @@ export default function PricingPage() {
         </div>
       </section>
 
-      {/* Comparison Chart 1 */}
+      {/* Comparison Chart */}
       <section className="comparison-section">
-        <h2 className="section-title">How We Compare (1)</h2>
+        <h2 className="section-title">How We Compare</h2>
         <div className="comparison-table-wrapper">
           <table className="comparison-table">
             <thead>
               <tr>
                 <th className="table-header">Feature</th>
                 <th className="table-header highlight">Clyde (LeadsPilotAI)</th>
-                <th className="table-header">ManyChat / Tidio</th>
-                <th className="table-header">Drift / Intercom</th>
+                <th className="table-header">Intercom</th>
+                <th className="table-header">Drift</th>
               </tr>
             </thead>
             <tbody>
-              {comparison1.map((row, idx) => (
-                <tr key={idx}>
-                  <td className="table-cell">{row.feature}</td>
-                  <td className="table-cell highlight">{row.clyde}</td>
-                  <td className="table-cell">{row.manychat}</td>
-                  <td className="table-cell">{row.drift}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      </section>
-
-      {/* Comparison Chart 2 */}
-      <section className="comparison-section">
-        <h2 className="section-title">How We Compare (2)</h2>
-        <div className="comparison-table-wrapper">
-          <table className="comparison-table">
-            <thead>
               <tr>
-                <th className="table-header">Feature</th>
-                <th className="table-header highlight">Clyde (LeadsPilotAI)</th>
-                <th className="table-header">Callbox</th>
-                <th className="table-header">HubSpot</th>
+                <td className="table-cell">
+                  Custom AI trained on your website
+                </td>
+                <td className="table-cell highlight">✅ Included</td>
+                <td className="table-cell">✅ (Premium add-on, $500+/mo)</td>
+                <td className="table-cell">❌ Limited customization</td>
               </tr>
-            </thead>
-            <tbody>
-              {comparison2.map((row, idx) => (
-                <tr key={idx}>
-                  <td className="table-cell">{row.feature}</td>
-                  <td className="table-cell highlight">{row.clyde}</td>
-                  <td className="table-cell">{row.callbox}</td>
-                  <td className="table-cell">{row.hubspot}</td>
-                </tr>
-              ))}
+              <tr>
+                <td className="table-cell">24/7 AI-powered Q&A</td>
+                <td className="table-cell highlight">✅ Advanced</td>
+                <td className="table-cell">✅ Basic (Fin AI limited)</td>
+                <td className="table-cell">✅ Basic</td>
+              </tr>
+              <tr>
+                <td className="table-cell">Real-time appointment booking</td>
+                <td className="table-cell highlight">
+                  ✅ Native (Google Calendar)
+                </td>
+                <td className="table-cell">❌ (Third-party integration)</td>
+                <td className="table-cell">❌ (Third-party integration)</td>
+              </tr>
+              <tr>
+                <td className="table-cell">Pricing (per month)</td>
+                <td className="table-cell highlight">$249–$299</td>
+                <td className="table-cell">$74–$2,000+</td>
+                <td className="table-cell">$2,500+</td>
+              </tr>
             </tbody>
           </table>
         </div>
