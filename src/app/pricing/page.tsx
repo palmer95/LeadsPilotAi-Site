@@ -60,7 +60,7 @@ export default function PricingPage() {
     },
     {
       feature: "Real-time appointment booking",
-      clyde: "✅",
+      clyde: "✅ (Google Calendar)",
       manychat: "❌",
       drift: "❌",
     },
@@ -105,7 +105,7 @@ export default function PricingPage() {
     },
     {
       feature: "Real-time appointment booking",
-      clyde: "✅",
+      clyde: "✅ (Google Calendar)",
       callbox: "✅ (via integrations)",
       hubspot: "❌ (third-party)",
     },
@@ -174,46 +174,54 @@ export default function PricingPage() {
       {/* Comparison Chart 1 */}
       <section className="comparison-section">
         <h2 className="section-title">How We Compare (1)</h2>
-        <div className="comparison-table">
-          <div className="comparison-header">
-            <div className="comparison-cell feature-col">Feature</div>
-            <div className="comparison-cell highlight">
-              Clyde (LeadsPilotAI)
-            </div>
-            <div className="comparison-cell">ManyChat / Tidio</div>
-            <div className="comparison-cell">Drift / Intercom</div>
-          </div>
-          {comparison1.map((row, idx) => (
-            <div className="comparison-row" key={idx}>
-              <div className="comparison-cell feature-col">{row.feature}</div>
-              <div className="comparison-cell highlight">{row.clyde}</div>
-              <div className="comparison-cell">{row.manychat}</div>
-              <div className="comparison-cell">{row.drift}</div>
-            </div>
-          ))}
+        <div className="comparison-table-wrapper">
+          <table className="comparison-table">
+            <thead>
+              <tr>
+                <th className="table-header">Feature</th>
+                <th className="table-header highlight">Clyde (LeadsPilotAI)</th>
+                <th className="table-header">ManyChat / Tidio</th>
+                <th className="table-header">Drift / Intercom</th>
+              </tr>
+            </thead>
+            <tbody>
+              {comparison1.map((row, idx) => (
+                <tr key={idx}>
+                  <td className="table-cell">{row.feature}</td>
+                  <td className="table-cell highlight">{row.clyde}</td>
+                  <td className="table-cell">{row.manychat}</td>
+                  <td className="table-cell">{row.drift}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
       </section>
 
       {/* Comparison Chart 2 */}
       <section className="comparison-section">
         <h2 className="section-title">How We Compare (2)</h2>
-        <div className="comparison-table">
-          <div className="comparison-header">
-            <div className="comparison-cell feature-col">Feature</div>
-            <div className="comparison-cell highlight">
-              Clyde (LeadsPilotAI)
-            </div>
-            <div className="comparison-cell">Callbox</div>
-            <div className="comparison-cell">HubSpot</div>
-          </div>
-          {comparison2.map((row, idx) => (
-            <div className="comparison-row" key={idx}>
-              <div className="comparison-cell feature-col">{row.feature}</div>
-              <div className="comparison-cell highlight">{row.clyde}</div>
-              <div className="comparison-cell">{row.callbox}</div>
-              <div className="comparison-cell">{row.hubspot}</div>
-            </div>
-          ))}
+        <div className="comparison-table-wrapper">
+          <table className="comparison-table">
+            <thead>
+              <tr>
+                <th className="table-header">Feature</th>
+                <th className="table-header highlight">Clyde (LeadsPilotAI)</th>
+                <th className="table-header">Callbox</th>
+                <th className="table-header">HubSpot</th>
+              </tr>
+            </thead>
+            <tbody>
+              {comparison2.map((row, idx) => (
+                <tr key={idx}>
+                  <td className="table-cell">{row.feature}</td>
+                  <td className="table-cell highlight">{row.clyde}</td>
+                  <td className="table-cell">{row.callbox}</td>
+                  <td className="table-cell">{row.hubspot}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
       </section>
 

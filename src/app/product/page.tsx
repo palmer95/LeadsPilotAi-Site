@@ -12,7 +12,8 @@ export default function ProductPage() {
           <p className="hero-text">
             Clyde, powered by LeadsPilotAI, is trained on your website, branded
             to match your business, and equipped with smart AI to convert
-            visitors into customers—24/7.
+            visitors into customers—24/7, now with native Google Calendar
+            integration.
           </p>
         </div>
       </section>
