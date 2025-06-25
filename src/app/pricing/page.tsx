@@ -44,9 +44,54 @@ export default function PricingPage() {
     },
   ];
 
+  const comparison = [
+    {
+      feature: "Custom-trained on your site",
+      clyde: "✅",
+      manychat: "❌",
+      drift: "🔶 Enterprise-only",
+    },
+    {
+      feature: "AI handles Q&A 24/7",
+      clyde: "✅",
+      manychat: "✅",
+      drift: "✅",
+    },
+    {
+      feature: "Real-time appointment booking",
+      clyde: "✅",
+      manychat: "❌",
+      drift: "❌",
+    },
+    {
+      feature: "Lead capture & routing",
+      clyde: "✅",
+      manychat: "✅",
+      drift: "✅",
+    },
+    {
+      feature: "Custom fallback context tuning",
+      clyde: "✅",
+      manychat: "❌",
+      drift: "✅ (via support)",
+    },
+    {
+      feature: "Fully embeddable",
+      clyde: "✅",
+      manychat: "✅",
+      drift: "✅",
+    },
+    {
+      feature: "Pricing",
+      clyde: "$249–$299/mo",
+      manychat: "$15–$100/mo",
+      drift: "$800–$1,500/mo",
+    },
+  ];
+
   return (
     <main>
-      {/* Hero Section */}
+      {/* Hero */}
       <section className="hero">
         <div className="hero-content">
           <h1 className="hero-title">Simple, Transparent Pricing</h1>
@@ -86,79 +131,30 @@ export default function PricingPage() {
         </div>
       </section>
 
-      {/* Comparison Table */}
-      <section className="comparison">
-        <h2 className="section-title">How We Stack Up</h2>
-        <p className="section-text">
-          See why LeadsPilotAI offers the best value at our price point.
-        </p>
-        <div className="comparison-table-wrapper">
-          <table className="comparison-table">
-            <thead>
-              <tr>
-                <th>Features</th>
-                <th>LeadsPilotAI</th>
-                <th>Drift</th>
-                <th>Intercom</th>
-                <th>ChatGPT Plugin</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Trained on your site</td>
-                <td>✅</td>
-                <td>❌</td>
-                <td>✅</td>
-                <td>❌</td>
-              </tr>
-              <tr>
-                <td>Embedded as a bubble</td>
-                <td>✅</td>
-                <td>✅</td>
-                <td>✅</td>
-                <td>❌</td>
-              </tr>
-              <tr>
-                <td>Lead capture + email/SMS</td>
-                <td>✅</td>
-                <td>✅</td>
-                <td>✅</td>
-                <td>❌</td>
-              </tr>
-              <tr>
-                <td>Google Calendar booking</td>
-                <td>✅</td>
-                <td>❌</td>
-                <td>✅</td>
-                <td>❌</td>
-              </tr>
-              <tr>
-                <td>Human-like fallback tuning</td>
-                <td>✅</td>
-                <td>❌</td>
-                <td>❌</td>
-                <td>❌</td>
-              </tr>
-              <tr>
-                <td>White-label & custom CSS</td>
-                <td>✅</td>
-                <td>❌</td>
-                <td>❌</td>
-                <td>❌</td>
-              </tr>
-              <tr>
-                <td>Transparent pricing</td>
-                <td>✅</td>
-                <td>❌</td>
-                <td>❌</td>
-                <td>✅</td>
-              </tr>
-            </tbody>
-          </table>
+      {/* Comparison Chart */}
+      <section className="comparison-section">
+        <h2 className="section-title">How We Compare</h2>
+        <div className="comparison-table">
+          <div className="comparison-header">
+            <div className="comparison-cell feature-col">Feature</div>
+            <div className="comparison-cell highlight">
+              Clyde (LeadsPilotAI)
+            </div>
+            <div className="comparison-cell">ManyChat / Tidio</div>
+            <div className="comparison-cell">Drift / Intercom</div>
+          </div>
+          {comparison.map((row, idx) => (
+            <div className="comparison-row" key={idx}>
+              <div className="comparison-cell feature-col">{row.feature}</div>
+              <div className="comparison-cell highlight">{row.clyde}</div>
+              <div className="comparison-cell">{row.manychat}</div>
+              <div className="comparison-cell">{row.drift}</div>
+            </div>
+          ))}
         </div>
       </section>
 
-      {/* CTA Section */}
+      {/* CTA */}
       <section className="cta">
         <h2 className="cta-title">Not Sure Which Plan Fits?</h2>
         <p className="cta-text">
