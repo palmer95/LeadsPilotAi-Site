@@ -1,7 +1,5 @@
 // app/page.tsx
 import Link from "next/link";
-// Suggestion: In a real implementation, you might use an icon library like 'lucide-react'
-// For now, we'll use text placeholders for icons.
 
 export default function Home() {
   return (
@@ -13,7 +11,7 @@ export default function Home() {
             <h1 className="hero-headline">
               Your Best Salesperson Works 24/7.
               <br />
-              And it's an AI.
+              And it&apos;s an AI.
             </h1>
             <p className="hero-subheadline">
               LeadsPilotAI is the premium AI sales assistant for elite service
@@ -44,21 +42,20 @@ export default function Home() {
           </h2>
           <p className="section-intro">
             Every day, high-intent prospects visit your site, consider your
-            services, and leave without a trace. You're losing opportunities
-            after hours, on weekends, and even during the day when your team is
-            busy. It's time to plug the leak.
+            services, and leave without a trace. You&apos;re losing
+            opportunities after hours, on weekends, and even during the day when
+            your team is busy. It&apos;s time to plug the leak.
           </p>
         </div>
       </section>
 
-      {/* 3. Features/Benefits Grid - Elevating the Language */}
+      {/* 3. Features/Benefits Grid - Now with Emojis! */}
       <section id="features" className="features-section">
         <div className="container">
           <div className="features-grid">
             {/* Feature 1 */}
             <div className="feature-card">
-              {/* Replace with a real icon, e.g., <Clock size={32} /> */}
-              <div className="feature-icon">[Icon: 24/7 Clock]</div>
+              <div className="feature-icon">🎯</div>
               <h3 className="feature-title">Capture Every Opportunity</h3>
               <p className="feature-description">
                 Clyde, your AI Assistant, engages prospects the moment they land
@@ -69,8 +66,7 @@ export default function Home() {
 
             {/* Feature 2 */}
             <div className="feature-card">
-              {/* Replace with a real icon, e.g., <Filter size={32} /> */}
-              <div className="feature-icon">[Icon: Funnel/Filter]</div>
+              <div className="feature-icon">🧠</div>
               <h3 className="feature-title">
                 Autonomous Qualification & Booking
               </h3>
@@ -84,14 +80,13 @@ export default function Home() {
 
             {/* Feature 3 */}
             <div className="feature-card">
-              {/* Replace with a real icon, e.g., <Sparkles size={32} /> */}
-              <div className="feature-icon">[Icon: Brand/Sparkle]</div>
+              <div className="feature-icon">📅</div>
               <h3 className="feature-title">
                 An Extension of Your Premium Brand
               </h3>
               <p className="feature-description">
                 Your client experience is paramount. Clyde is fully customizable
-                to match your brand's voice, tone, and visual identity,
+                to match your brand&apos;s voice, tone, and visual identity,
                 providing a polished, professional first impression that builds
                 trust.
               </p>
