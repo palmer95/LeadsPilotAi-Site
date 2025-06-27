@@ -1,21 +1,22 @@
-/*
-  globals.css - The Clean Slate Fix
-  This file is designed to ONLY style the new homepage component.
-  It is simplified and removes all conflicting old class names.
-*/
+/* src/app/globals.css */
+/* This version restores your original, preferred visual style and applies it to the new homepage structure. */
 
-/* 1. Modern Reset & Thematic Variables */
 :root {
-  --primary: #3b82f6; /* A strong, confident blue */
-  --primary-dark: #2563eb;
-  --text-primary: #1f2937; /* Dark gray for high-readability text */
-  --text-secondary: #4b5563;
-  --bg-primary: #ffffff;
-  --bg-secondary: #f9fafb; /* A very light off-white for sections */
-  --border-color: #e5e7eb;
-  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1),
-    0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --primary: #0076ff;
+  --accent: #5c5cff;
+  --background: #e6f4ff;
+  --text: #002a50;
+  --neutral: #f5f5f7;
+  --shadow: rgba(0, 0, 0, 0.1);
+  --shadow-hover: rgba(0, 0, 0, 0.2);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #d1e6ff;
+    --text: #001f3f;
+    --neutral: #e0e0e7;
+  }
 }
 
 * {
@@ -25,14 +26,13 @@
 }
 
 body {
-  background: var(--bg-primary);
-  color: var(--text-secondary);
-  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    sans-serif;
+  background: var(--background);
+  color: var(--text);
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
   line-height: 1.6;
+  overflow-x: hidden;
 }
 
-/* 2. Generic Container & Button Styles */
 .container {
   width: 100%;
   max-width: 1200px;
@@ -46,208 +46,246 @@ body {
   text-align: center;
 }
 
+/* Header (from your original) */
+.header {
+  position: sticky;
+  top: 0;
+  background-color: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(8px);
+  padding: 1.5rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 10;
+  box-shadow: 0 2px 4px var(--shadow);
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+/* ... other header styles from original ... */
+
+/* --- BUTTONS (Your Original Style) --- */
 .btn {
-  display: inline-block;
-  padding: 0.875rem 1.75rem;
-  border-radius: 0.5rem;
+  text-decoration: none;
+}
+.btn-primary {
+  background: linear-gradient(90deg, var(--primary), var(--accent));
+  color: #ffffff;
+  padding: 1rem 2rem;
+  border-radius: 12px;
   font-size: 1rem;
   font-weight: 600;
   border: none;
   cursor: pointer;
   transition: transform 0.2s, box-shadow 0.2s;
-  text-decoration: none;
-}
-
-.btn-lg {
-  padding: 1rem 2rem;
-  font-size: 1.125rem;
-}
-
-.btn-primary {
-  background-color: var(--primary);
-  color: #ffffff;
-  box-shadow: var(--shadow-md);
+  box-shadow: 0 4px 12px var(--shadow);
 }
 .btn-primary:hover {
-  background-color: var(--primary-dark);
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-lg);
+  transform: scale(1.05);
+  box-shadow: 0 6px 16px var(--shadow-hover);
 }
-
 .btn-secondary {
-  background-color: var(--bg-primary);
+  background: transparent;
   color: var(--primary);
-  border: 1px solid var(--border-color);
+  padding: 1rem 2rem;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  border: 2px solid var(--primary);
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
 }
 .btn-secondary:hover {
-  background-color: var(--bg-secondary);
+  background: var(--primary);
+  color: #ffffff;
+}
+.btn-lg {
+  font-size: 1.1rem;
+  padding: 1.1rem 2.2rem;
 }
 
-/* 3. Homepage Section Styles (Matching page.tsx EXACTLY) */
+/* --- NEW HOMEPAGE SECTIONS - STYLED WITH YOUR ORIGINAL AESTHETIC --- */
 
-/* Hero Section */
 .hero-section {
-  padding: 6rem 0 4rem 0;
-  background-color: var(--bg-secondary);
+  padding: 4rem 2rem;
+  text-align: center;
 }
 .hero-headline {
   font-size: 3.5rem;
   font-weight: 900;
-  color: var(--text-primary);
-  margin-bottom: 1.5rem;
   line-height: 1.2;
+  color: var(--text);
+  margin-bottom: 1rem;
 }
 .hero-subheadline {
   font-size: 1.25rem;
-  max-width: 700px;
-  margin: 0 auto 2rem auto;
-  color: var(--text-secondary);
+  color: var(--text);
+  margin-bottom: 2rem;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
 }
 .hero-cta-buttons {
   display: flex;
   gap: 1rem;
-  justify-content: center;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
-/* Problem/Solution Section */
 .problem-solution-section {
-  padding: 5rem 0;
+  padding: 4rem 2rem;
+  text-align: center;
 }
 .section-title {
-  font-size: 2.5rem;
+  font-size: 3rem;
   font-weight: 800;
-  color: var(--text-primary);
+  color: var(--text);
   margin-bottom: 1rem;
 }
 .section-intro {
-  font-size: 1.125rem;
-  max-width: 700px;
+  font-size: 1.25rem;
+  color: var(--text);
+  margin-bottom: 3rem;
+  max-width: 800px;
   margin: 0 auto 3rem auto;
 }
 
-/* Features Section */
 .features-section {
-  padding: 5rem 0;
-  background-color: var(--bg-secondary);
+  background-color: #ffffff;
+  padding: 4rem 2rem;
+  text-align: center;
 }
 .features-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
-  text-align: center;
+  max-width: 1200px;
+  margin: 2rem auto 0 auto;
 }
 .feature-card {
-  padding: 1rem;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 16px;
+  padding: 1.5rem;
+  text-align: center;
+  box-shadow: 0 4px 16px var(--shadow);
+  transition: transform 0.3s;
+}
+.feature-card:hover {
+  transform: translateY(-8px);
 }
 .feature-icon {
   font-size: 2.5rem;
   margin-bottom: 1rem;
+  color: var(--accent);
 }
 .feature-title {
   font-size: 1.25rem;
   font-weight: 700;
-  color: var(--text-primary);
+  color: var(--text);
   margin-bottom: 0.5rem;
 }
 .feature-description {
-  font-size: 1rem;
+  font-size: 0.95rem;
+  color: var(--text);
 }
 
-/* Testimonial Section */
 .testimonial-section {
-  padding: 5rem 0;
-  background-color: #111827; /* A dark, premium background */
-  color: #ffffff;
+  padding: 4rem 2rem;
 }
 .testimonial-wrapper {
   max-width: 800px;
   margin: 0 auto;
-  text-align: center;
 }
 .testimonial-eyebrow {
+  text-align: center;
   font-size: 1rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  opacity: 0.6;
+  color: var(--text);
+  opacity: 0.7;
   margin-bottom: 2rem;
 }
+.testimonial-card {
+  /* Using your original testimonial card style */
+  width: 100%;
+  max-width: 600px;
+  background-color: #ffffff;
+  border-radius: 16px;
+  padding: 2rem;
+  text-align: center;
+  box-shadow: 0 4px 16px var(--shadow);
+  transition: transform 0.3s;
+  margin: 0 auto;
+}
+.testimonial-card:hover {
+  transform: translateY(-8px);
+}
 .testimonial-quote {
-  font-size: 1.75rem;
-  font-weight: 500;
+  font-size: 1.1rem;
+  color: var(--text);
+  margin-bottom: 1rem;
   font-style: italic;
-  line-height: 1.5;
-  margin: 0;
 }
 .testimonial-citation {
-  display: block;
-  margin-top: 1.5rem;
-  font-style: normal;
+  font-size: 0.95rem;
+  color: var(--text);
   font-weight: 600;
-  opacity: 0.8;
 }
 
-/* Final CTA Section */
 .final-cta-section {
-  padding: 5rem 0;
+  background: linear-gradient(90deg, var(--primary), var(--accent));
+  color: #ffffff;
+  text-align: center;
+  padding: 4rem 2rem;
 }
 .cta-headline {
   font-size: 2.5rem;
   font-weight: 800;
-  color: var(--text-primary);
   margin-bottom: 1rem;
 }
 .cta-subheadline {
-  font-size: 1.125rem;
-  max-width: 600px;
+  font-size: 1.25rem;
   margin: 0 auto 2rem auto;
+  max-width: 600px;
+}
+.btn-cta {
+  /* Your original CTA button style */
+  background-color: #ffffff;
+  color: var(--primary);
+  padding: 1rem 2rem;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 4px 12px var(--shadow-hover);
+}
+.btn-cta:hover {
+  transform: scale(1.05);
 }
 
-/* Clyde Interaction Prompt */
 .clyde-interaction-prompt {
   text-align: center;
   padding: 3rem 0;
-  background-color: var(--bg-secondary);
-  border-top: 1px solid var(--border-color);
-}
-.clyde-interaction-prompt p {
-  font-weight: 500;
-  color: var(--text-secondary);
 }
 .clyde-interaction-prompt .highlight {
   color: var(--primary);
+  font-weight: 600;
 }
 
-/* 4. Mobile Responsiveness */
+/* MOBILE STYLES */
 @media (max-width: 768px) {
   .hero-headline {
     font-size: 2.5rem;
   }
-  .section-title,
-  .cta-headline {
-    font-size: 2rem;
+  .section-title {
+    font-size: 2.25rem;
   }
-  .hero-subheadline,
-  .section-intro,
-  .cta-subheadline {
-    font-size: 1rem;
-  }
-
-  .hero-section {
-    padding: 4rem 0;
-  }
-  .problem-solution-section,
-  .features-section,
-  .testimonial-section,
-  .final-cta-section {
-    padding: 3rem 0;
-  }
-
   .features-grid {
-    grid-template-columns: 1fr; /* Stack on mobile */
+    grid-template-columns: 1fr;
   }
-
   .hero-cta-buttons {
     flex-direction: column;
     align-items: center;
@@ -257,3 +295,5 @@ body {
     max-width: 320px;
   }
 }
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap");
