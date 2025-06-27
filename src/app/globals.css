@@ -1,39 +1,27 @@
-/* src/app/globals.css */
+/*
+  globals.css - The Clean Slate Fix
+  This file is designed to ONLY style the new homepage component.
+  It is simplified and removes all conflicting old class names.
+*/
 
-/* ---
-   1. NEW, PREMIUM BRAND PALETTE & VARIABLES
-   A more sophisticated color scheme for a high-end feel.
---- */
+/* 1. Modern Reset & Thematic Variables */
 :root {
-  /* Core Colors */
   --primary: #3b82f6; /* A strong, confident blue */
   --primary-dark: #2563eb;
-  --accent: #6366f1; /* A secondary color for gradients and highlights */
-
-  /* Text & Background */
   --text-primary: #1f2937; /* Dark gray for high-readability text */
   --text-secondary: #4b5563;
   --bg-primary: #ffffff;
   --bg-secondary: #f9fafb; /* A very light off-white for sections */
-
-  /* UI Elements */
   --border-color: #e5e7eb;
-  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
   --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
   --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1),
     0 4px 6px -4px rgb(0 0 0 / 0.1);
 }
 
-/* Base styles for a clean foundation */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-}
-
-html,
-body {
-  overflow-x: hidden;
 }
 
 body {
@@ -44,9 +32,7 @@ body {
   line-height: 1.6;
 }
 
-/* ---
-   2. REFINED TYPOGRAPHY & LAYOUT
---- */
+/* 2. Generic Container & Button Styles */
 .container {
   width: 100%;
   max-width: 1200px;
@@ -60,28 +46,6 @@ body {
   text-align: center;
 }
 
-.section-title,
-.cta-headline {
-  font-size: 2.5rem;
-  font-weight: 800;
-  line-height: 1.2;
-  color: var(--text-primary);
-  margin-bottom: 1rem;
-}
-
-.section-intro,
-.hero-subheadline,
-.cta-subheadline {
-  font-size: 1.125rem;
-  max-width: 700px;
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 3rem;
-}
-
-/* ---
-   3. MODERNIZED COMPONENTS & BUTTONS
---- */
 .btn {
   display: inline-block;
   padding: 0.875rem 1.75rem;
@@ -91,7 +55,7 @@ body {
   border: none;
   cursor: pointer;
   transition: transform 0.2s, box-shadow 0.2s;
-  text-decoration: none; /* For Link components */
+  text-decoration: none;
 }
 
 .btn-lg {
@@ -104,7 +68,6 @@ body {
   color: #ffffff;
   box-shadow: var(--shadow-md);
 }
-
 .btn-primary:hover {
   background-color: var(--primary-dark);
   transform: translateY(-2px);
@@ -112,162 +75,168 @@ body {
 }
 
 .btn-secondary {
-  background-color: transparent;
+  background-color: var(--bg-primary);
   color: var(--primary);
   border: 1px solid var(--border-color);
-  box-shadow: var(--shadow-sm);
 }
-
 .btn-secondary:hover {
   background-color: var(--bg-secondary);
-  border-color: #d1d5db;
 }
 
-/* ---
-   4. NEW HOMEPAGE SECTION STYLES
-   Using the new class names from page.tsx
---- */
+/* 3. Homepage Section Styles (Matching page.tsx EXACTLY) */
+
+/* Hero Section */
 .hero-section {
-  padding: 6rem 0;
-  background-color: var(--bg-secondary); /* A subtle off-white */
+  padding: 6rem 0 4rem 0;
+  background-color: var(--bg-secondary);
 }
-
 .hero-headline {
   font-size: 3.5rem;
   font-weight: 900;
   color: var(--text-primary);
   margin-bottom: 1.5rem;
+  line-height: 1.2;
 }
-
+.hero-subheadline {
+  font-size: 1.25rem;
+  max-width: 700px;
+  margin: 0 auto 2rem auto;
+  color: var(--text-secondary);
+}
 .hero-cta-buttons {
   display: flex;
   gap: 1rem;
   justify-content: center;
+  flex-wrap: wrap;
 }
 
-.problem-solution-section,
-.features-section,
-.testimonial-section,
-.final-cta-section {
+/* Problem/Solution Section */
+.problem-solution-section {
   padding: 5rem 0;
 }
-
-.features-section {
-  background-color: var(--bg-secondary);
+.section-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+}
+.section-intro {
+  font-size: 1.125rem;
+  max-width: 700px;
+  margin: 0 auto 3rem auto;
 }
 
+/* Features Section */
+.features-section {
+  padding: 5rem 0;
+  background-color: var(--bg-secondary);
+}
 .features-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
   text-align: center;
 }
-
 .feature-card {
-  padding: 2rem;
+  padding: 1rem;
 }
-
 .feature-icon {
   font-size: 2.5rem;
   margin-bottom: 1rem;
 }
-
 .feature-title {
   font-size: 1.25rem;
   font-weight: 700;
   color: var(--text-primary);
   margin-bottom: 0.5rem;
 }
-
 .feature-description {
   font-size: 1rem;
 }
 
+/* Testimonial Section */
 .testimonial-section {
-  background-color: var(--primary);
+  padding: 5rem 0;
+  background-color: #111827; /* A dark, premium background */
   color: #ffffff;
 }
-
 .testimonial-wrapper {
   max-width: 800px;
   margin: 0 auto;
   text-align: center;
 }
-
 .testimonial-eyebrow {
   font-size: 1rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  opacity: 0.8;
+  opacity: 0.6;
   margin-bottom: 2rem;
 }
-
 .testimonial-quote {
-  font-size: 1.5rem;
+  font-size: 1.75rem;
   font-weight: 500;
   font-style: italic;
   line-height: 1.5;
   margin: 0;
 }
-
 .testimonial-citation {
   display: block;
   margin-top: 1.5rem;
   font-style: normal;
   font-weight: 600;
+  opacity: 0.8;
 }
 
+/* Final CTA Section */
+.final-cta-section {
+  padding: 5rem 0;
+}
+.cta-headline {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+}
+.cta-subheadline {
+  font-size: 1.125rem;
+  max-width: 600px;
+  margin: 0 auto 2rem auto;
+}
+
+/* Clyde Interaction Prompt */
 .clyde-interaction-prompt {
   text-align: center;
-  padding: 2rem 0;
+  padding: 3rem 0;
   background-color: var(--bg-secondary);
-  font-weight: 500;
+  border-top: 1px solid var(--border-color);
 }
-
+.clyde-interaction-prompt p {
+  font-weight: 500;
+  color: var(--text-secondary);
+}
 .clyde-interaction-prompt .highlight {
   color: var(--primary);
 }
 
-/* ---
-   5. BACKWARDS COMPATIBILITY & MOBILE
-   Ensuring old class names don't break and making it responsive
---- */
-
-/* Styling old classes to look good with the new theme */
-.benefits,
-.cta {
-  padding: 5rem 0;
-}
-.benefits {
-  background-color: var(--bg-secondary);
-  text-align: center;
-}
-.cta {
-  background-color: var(--primary);
-  color: white;
-  text-align: center;
-}
-
-/* Mobile Responsiveness */
+/* 4. Mobile Responsiveness */
 @media (max-width: 768px) {
-  .section-title,
-  .cta-headline,
   .hero-headline {
-    font-size: 2.25rem;
+    font-size: 2.5rem;
   }
-
-  .section-intro,
+  .section-title,
+  .cta-headline {
+    font-size: 2rem;
+  }
   .hero-subheadline,
+  .section-intro,
   .cta-subheadline {
     font-size: 1rem;
-    margin-bottom: 2rem;
   }
 
   .hero-section {
     padding: 4rem 0;
   }
-
   .problem-solution-section,
   .features-section,
   .testimonial-section,
@@ -275,33 +244,16 @@ body {
     padding: 3rem 0;
   }
 
+  .features-grid {
+    grid-template-columns: 1fr; /* Stack on mobile */
+  }
+
   .hero-cta-buttons {
     flex-direction: column;
     align-items: center;
   }
-
   .btn {
     width: 100%;
     max-width: 320px;
   }
 }
-
-/* Keeping necessary old styles for other pages, but simplified */
-/* You may want to create a dedicated CSS file for each page later */
-.header {
-  /* Assuming header is shared */
-  position: sticky;
-  top: 0;
-  background-color: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(8px);
-  padding: 1rem 1.5rem;
-  z-index: 10;
-  box-shadow: var(--shadow-sm);
-  border-bottom: 1px solid var(--border-color);
-}
-.header .container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-/* Other header styles... */
