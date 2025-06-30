@@ -11,6 +11,12 @@ export default function Home() {
             AI SALES & SUPPORT AGENT THAT INCREASES BOOKINGS AND CAPTURES LEADS
           </h1>
 
+          <p>
+            The first-to-market AI-powered chatbot with calendar integration.
+            Revolutionizing customer support and automating business
+            scalability.
+          </p>
+
           <div className="hero-cta">
             <Link href="/contact">
               <button className="btn-primary">Get Started</button>
