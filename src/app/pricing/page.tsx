@@ -104,7 +104,7 @@ export default function PricingPage() {
               <tr>
                 <td className="table-cell">Pricing (per month)</td>
                 <td className="table-cell highlight">
-                  <strong>✅ $499</strong>
+                  <strong>✅ $299</strong>
                 </td>
                 <td className="table-cell">🟡 $500+ (for custom AI)</td>
                 <td className="table-cell">🟡 $2,500+</td>
