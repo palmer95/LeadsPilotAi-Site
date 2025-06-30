@@ -7,7 +7,9 @@ export default function Home() {
       {/* Hero Section */}
       <section className="hero">
         <div className="hero-content">
-          <h1 className="hero-title">Turn Your Website Into a Sales Machine</h1>
+          <h1 className="hero-title">
+            AI SALES & SUPPORT AGENT THAT INCREASES BOOKINGS AND CAPTURES LEADS
+          </h1>
           <p className="hero-text">
             Clyde, your AI Sales Agent, engages visitors, answers questions, and
             books meetings 24/7.

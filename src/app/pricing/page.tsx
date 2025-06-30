@@ -106,7 +106,9 @@ export default function PricingPage() {
                   Custom AI trained on your website
                 </td>
                 <td className="table-cell highlight">✅ Included</td>
-                <td className="table-cell">✅ (Premium add-on, $500+/mo)</td>
+                <td className="table-cell">
+                  ❌ (Offered only as an add-on for $500+/mo)
+                </td>
                 <td className="table-cell">❌ Limited customization</td>
               </tr>
               <tr>

@@ -8,7 +8,9 @@ export default function ProductPage() {
       {/* Hero Section */}
       <section className="hero">
         <div className="hero-content">
-          <h1 className="hero-title">What Your AI Sales Agent Can Do</h1>
+          <h1 className="hero-title">
+            WHAT OUR AI SALES & SUPPORT AGENT CAN DO FOR YOUR BUSINESS
+          </h1>
           <p className="hero-text">
             Clyde, powered by LeadsPilotAI, is trained on your website, branded
             to match your business, and equipped with smart AI to convert
@@ -89,11 +91,19 @@ export default function ProductPage() {
             </thead>
             <tbody>
               <tr>
+                <tr>
+                  <td className="table-cell">Pricing (per month)</td>
+                  <td className="table-cell highlight">$299</td>
+                  <td className="table-cell">$500+ (for custom AI)</td>
+                  <td className="table-cell">$2,500+</td>
+                </tr>
                 <td className="table-cell">
                   Custom AI trained on your website
                 </td>
                 <td className="table-cell highlight">✅ Included</td>
-                <td className="table-cell">✅ (Premium add-on, $500+/mo)</td>
+                <td className="table-cell">
+                  ❌ offered only as an add-on, $500+/mo
+                </td>
                 <td className="table-cell">❌ Limited customization</td>
               </tr>
               <tr>
@@ -107,12 +117,6 @@ export default function ProductPage() {
                 <td className="table-cell highlight">✅ Native</td>
                 <td className="table-cell">❌ (Third-party integration)</td>
                 <td className="table-cell">❌ (Third-party integration)</td>
-              </tr>
-              <tr>
-                <td className="table-cell">Pricing (per month)</td>
-                <td className="table-cell highlight">$299</td>
-                <td className="table-cell">$500+ (for custom AI)</td>
-                <td className="table-cell">$2,500+</td>
               </tr>
               <tr>
                 <td className="table-cell">Lead capture & routing</td>
