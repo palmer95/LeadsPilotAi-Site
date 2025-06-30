@@ -87,7 +87,6 @@ export default function PricingPage() {
         </div>
       </section>
 
-      {/* Comparison Chart */}
       <section className="comparison">
         <h2 className="section-title">How We Compare</h2>
         <div className="comparison-table-wrapper">
@@ -101,22 +100,21 @@ export default function PricingPage() {
               </tr>
             </thead>
             <tbody>
+              {/* --- Corrected Structure Below --- */}
               <tr>
-                <tr>
-                  <td className="table-cell">Pricing (per month)</td>
-                  <td className="table-cell highlight">
-                    <strong>✅ $299</strong>
-                  </td>
-                  <td className="table-cell">🟡 $500+ (for custom AI)</td>
-                  <td className="table-cell">🟡 $2,500+</td>
-                </tr>
+                <td className="table-cell">Pricing (per month)</td>
+                <td className="table-cell highlight">
+                  <strong>✅ $499</strong>
+                </td>
+                <td className="table-cell">🟡 $500+ (for custom AI)</td>
+                <td className="table-cell">🟡 $2,500+</td>
+              </tr>
+              <tr>
                 <td className="table-cell">
                   Custom AI trained on your website
                 </td>
                 <td className="table-cell highlight">✅ Included</td>
-                <td className="table-cell">
-                  ❌ Offered only as an add-on, $500+/mo
-                </td>
+                <td className="table-cell">❌ Offered only as an add-on</td>
                 <td className="table-cell">❌ Limited customization</td>
               </tr>
               <tr>
@@ -125,25 +123,23 @@ export default function PricingPage() {
                   ✅ Advanced Large Language Model
                 </td>
                 <td className="table-cell">
-                  {" "}
-                  🟡 Basic,support with limited capibilities
+                  🟡 Basic, with limited capabilities
                 </td>
                 <td className="table-cell">
-                  {" "}
-                  🟡 Basic,support with limited capibilities
+                  🟡 Basic, with limited capabilities
                 </td>
               </tr>
               <tr>
                 <td className="table-cell">Real-time appointment booking</td>
-                <td className="table-cell highlight">✅ Native</td>
-                <td className="table-cell">❌ (Third-party integration)</td>
-                <td className="table-cell">❌ (Third-party integration)</td>
+                <td className="table-cell highlight">✅ Native Integration</td>
+                <td className="table-cell">❌ Requires third-party tools</td>
+                <td className="table-cell">❌ Requires third-party tools</td>
               </tr>
               <tr>
                 <td className="table-cell">Lead capture & routing</td>
                 <td className="table-cell highlight">✅ Automated</td>
-                <td className="table-cell">❌ Manual setup</td>
-                <td className="table-cell">❌ Manual setup</td>
+                <td className="table-cell">❌ Manual setup required</td>
+                <td className="table-cell">❌ Manual setup required</td>
               </tr>
               <tr>
                 <td className="table-cell">Custom fallback context tuning</td>
@@ -160,7 +156,7 @@ export default function PricingPage() {
               <tr>
                 <td className="table-cell">Fully embeddable widget</td>
                 <td className="table-cell highlight">
-                  ✅ White labeled to your business
+                  ✅ White-labeled to your business
                 </td>
                 <td className="table-cell">🟡 Branded</td>
                 <td className="table-cell">🟡 Branded</td>

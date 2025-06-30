@@ -11,100 +11,12 @@ export default function ProductPage() {
           <h1 className="hero-title">
             WHAT OUR AI SALES & SUPPORT AGENT CAN DO FOR YOUR BUSINESS
           </h1>
-          {/* Comparison Chart */}
-          <section className="comparison">
-            <h2 className="section-title">How We Compare</h2>
-            <div className="comparison-table-wrapper">
-              <table className="comparison-table">
-                <thead>
-                  <tr>
-                    <th className="table-header">Feature</th>
-                    <th className="table-header highlight">
-                      Clyde (LeadsPilotAI)
-                    </th>
-                    <th className="table-header">Intercom</th>
-                    <th className="table-header">Drift</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <tr>
-                      <td className="table-cell">Pricing (per month)</td>
-                      <td className="table-cell highlight">
-                        <strong>✅ $299</strong>
-                      </td>
-                      <td className="table-cell">🟡 $500+ (for custom AI)</td>
-                      <td className="table-cell">🟡 $2,500+</td>
-                    </tr>
-                    <td className="table-cell">
-                      Custom AI trained on your website
-                    </td>
-                    <td className="table-cell highlight">✅ Included</td>
-                    <td className="table-cell">
-                      ❌ Offered only as an add-on, $500+/mo
-                    </td>
-                    <td className="table-cell">❌ Limited customization</td>
-                  </tr>
-                  <tr>
-                    <td className="table-cell">24/7 AI-powered Q&A</td>
-                    <td className="table-cell highlight">
-                      ✅ Advanced Large Language Model
-                    </td>
-                    <td className="table-cell">
-                      {" "}
-                      🟡 Basic,support with limited capibilities
-                    </td>
-                    <td className="table-cell">
-                      {" "}
-                      🟡 Basic,support with limited capibilities
-                    </td>
-                  </tr>
-                  <tr>
-                    <td className="table-cell">
-                      Real-time appointment booking
-                    </td>
-                    <td className="table-cell highlight">✅ Native</td>
-                    <td className="table-cell">❌ (Third-party integration)</td>
-                    <td className="table-cell">❌ (Third-party integration)</td>
-                  </tr>
-                  <tr>
-                    <td className="table-cell">Lead capture & routing</td>
-                    <td className="table-cell highlight">✅ Automated</td>
-                    <td className="table-cell">❌ Manual setup</td>
-                    <td className="table-cell">❌ Manual setup</td>
-                  </tr>
-                  <tr>
-                    <td className="table-cell">
-                      Custom fallback context tuning
-                    </td>
-                    <td className="table-cell highlight">
-                      ✅ Fully customizable
-                    </td>
-                    <td className="table-cell">
-                      🟡 (With support, extra cost)
-                    </td>
-                    <td className="table-cell">❌ Limited</td>
-                  </tr>
-                  <tr>
-                    <td className="table-cell">Ease of setup</td>
-                    <td className="table-cell highlight">
-                      ✅ 1-hour onboarding
-                    </td>
-                    <td className="table-cell">❌ Complex, 3–5 days</td>
-                    <td className="table-cell">❌ Complex, 5+ days</td>
-                  </tr>
-                  <tr>
-                    <td className="table-cell">Fully embeddable widget</td>
-                    <td className="table-cell highlight">
-                      ✅ White labeled to your business
-                    </td>
-                    <td className="table-cell">🟡 Branded</td>
-                    <td className="table-cell">🟡 Branded</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </section>
+          <p className="hero-text">
+            Clyde, powered by LeadsPilotAI, is trained on your website, branded
+            to match your business, and equipped with smart AI to convert
+            visitors into customers—24/7, now with native Google Calendar
+            integration.
+          </p>
         </div>
       </section>
 
@@ -178,22 +90,21 @@ export default function ProductPage() {
               </tr>
             </thead>
             <tbody>
+              {/* --- Corrected Structure Below --- */}
               <tr>
-                <tr>
-                  <td className="table-cell">Pricing (per month)</td>
-                  <td className="table-cell highlight">
-                    <strong>✅ $299</strong>
-                  </td>
-                  <td className="table-cell">🟡 $500+ (for custom AI)</td>
-                  <td className="table-cell">🟡 $2,500+</td>
-                </tr>
+                <td className="table-cell">Pricing (per month)</td>
+                <td className="table-cell highlight">
+                  <strong>✅ $499</strong>
+                </td>
+                <td className="table-cell">🟡 $500+ (for custom AI)</td>
+                <td className="table-cell">🟡 $2,500+</td>
+              </tr>
+              <tr>
                 <td className="table-cell">
                   Custom AI trained on your website
                 </td>
                 <td className="table-cell highlight">✅ Included</td>
-                <td className="table-cell">
-                  ❌ Offered only as an add-on, $500+/mo
-                </td>
+                <td className="table-cell">❌ Offered only as an add-on</td>
                 <td className="table-cell">❌ Limited customization</td>
               </tr>
               <tr>
@@ -202,25 +113,23 @@ export default function ProductPage() {
                   ✅ Advanced Large Language Model
                 </td>
                 <td className="table-cell">
-                  {" "}
-                  🟡 Basic,support with limited capibilities
+                  🟡 Basic, with limited capabilities
                 </td>
                 <td className="table-cell">
-                  {" "}
-                  🟡 Basic,support with limited capibilities
+                  🟡 Basic, with limited capabilities
                 </td>
               </tr>
               <tr>
                 <td className="table-cell">Real-time appointment booking</td>
-                <td className="table-cell highlight">✅ Native</td>
-                <td className="table-cell">❌ (Third-party integration)</td>
-                <td className="table-cell">❌ (Third-party integration)</td>
+                <td className="table-cell highlight">✅ Native Integration</td>
+                <td className="table-cell">❌ Requires third-party tools</td>
+                <td className="table-cell">❌ Requires third-party tools</td>
               </tr>
               <tr>
                 <td className="table-cell">Lead capture & routing</td>
                 <td className="table-cell highlight">✅ Automated</td>
-                <td className="table-cell">❌ Manual setup</td>
-                <td className="table-cell">❌ Manual setup</td>
+                <td className="table-cell">❌ Manual setup required</td>
+                <td className="table-cell">❌ Manual setup required</td>
               </tr>
               <tr>
                 <td className="table-cell">Custom fallback context tuning</td>
@@ -237,7 +146,7 @@ export default function ProductPage() {
               <tr>
                 <td className="table-cell">Fully embeddable widget</td>
                 <td className="table-cell highlight">
-                  ✅ White labeled to your business
+                  ✅ White-labeled to your business
                 </td>
                 <td className="table-cell">🟡 Branded</td>
                 <td className="table-cell">🟡 Branded</td>
