@@ -102,34 +102,68 @@ export default function PricingPage() {
             </thead>
             <tbody>
               <tr>
+                <tr>
+                  <td className="table-cell">Pricing (per month)</td>
+                  <td className="table-cell highlight">
+                    <strong>✅ $299</strong>
+                  </td>
+                  <td className="table-cell">🟡 $500+ (for custom AI)</td>
+                  <td className="table-cell">🟡 $2,500+</td>
+                </tr>
                 <td className="table-cell">
                   Custom AI trained on your website
                 </td>
                 <td className="table-cell highlight">✅ Included</td>
                 <td className="table-cell">
-                  ❌ (Offered only as an add-on for $500+/mo)
+                  ❌ Offered only as an add-on, $500+/mo
                 </td>
                 <td className="table-cell">❌ Limited customization</td>
               </tr>
               <tr>
                 <td className="table-cell">24/7 AI-powered Q&A</td>
-                <td className="table-cell highlight">✅ Advanced</td>
-                <td className="table-cell">✅ Basic (Fin AI limited)</td>
-                <td className="table-cell">✅ Basic</td>
+                <td className="table-cell highlight">
+                  ✅ Advanced Large Language Model
+                </td>
+                <td className="table-cell">
+                  {" "}
+                  🟡 Basic,support with limited capibilities
+                </td>
+                <td className="table-cell">
+                  {" "}
+                  🟡 Basic,support with limited capibilities
+                </td>
               </tr>
               <tr>
                 <td className="table-cell">Real-time appointment booking</td>
-                <td className="table-cell highlight">
-                  ✅ Native (Google Calendar)
-                </td>
+                <td className="table-cell highlight">✅ Native</td>
                 <td className="table-cell">❌ (Third-party integration)</td>
                 <td className="table-cell">❌ (Third-party integration)</td>
               </tr>
               <tr>
-                <td className="table-cell">Pricing (per month)</td>
-                <td className="table-cell highlight">$299</td>
-                <td className="table-cell">$500+ (for custom AI)</td>
-                <td className="table-cell">$2,500+</td>
+                <td className="table-cell">Lead capture & routing</td>
+                <td className="table-cell highlight">✅ Automated</td>
+                <td className="table-cell">❌ Manual setup</td>
+                <td className="table-cell">❌ Manual setup</td>
+              </tr>
+              <tr>
+                <td className="table-cell">Custom fallback context tuning</td>
+                <td className="table-cell highlight">✅ Fully customizable</td>
+                <td className="table-cell">🟡 (With support, extra cost)</td>
+                <td className="table-cell">❌ Limited</td>
+              </tr>
+              <tr>
+                <td className="table-cell">Ease of setup</td>
+                <td className="table-cell highlight">✅ 1-hour onboarding</td>
+                <td className="table-cell">❌ Complex, 3–5 days</td>
+                <td className="table-cell">❌ Complex, 5+ days</td>
+              </tr>
+              <tr>
+                <td className="table-cell">Fully embeddable widget</td>
+                <td className="table-cell highlight">
+                  ✅ White labeled to your business
+                </td>
+                <td className="table-cell">🟡 Branded</td>
+                <td className="table-cell">🟡 Branded</td>
               </tr>
             </tbody>
           </table>
