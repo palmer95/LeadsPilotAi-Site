@@ -10,6 +10,16 @@ export default function Home() {
           <h1 className="hero-title">
             AI SALES & SUPPORT AGENT THAT INCREASES BOOKINGS AND CAPTURES LEADS
           </h1>
+
+          <div className="hero-cta">
+            <Link href="/contact">
+              <button className="btn-primary">Get Started</button>
+            </Link>
+            <Link href="/pricing">
+              <button className="btn-secondary">View Pricing</button>
+            </Link>
+          </div>
+
           {/* Comparison Chart */}
           <section className="comparison">
             <h2 className="section-title">How We Compare To The Market</h2>
@@ -107,14 +117,6 @@ export default function Home() {
               </table>
             </div>
           </section>
-          <div className="hero-cta">
-            <Link href="/contact">
-              <button className="btn-primary">Get Started</button>
-            </Link>
-            <Link href="/pricing">
-              <button className="btn-secondary">View Pricing</button>
-            </Link>
-          </div>
         </div>
 
         {/* Testimonials Section */}
