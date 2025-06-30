@@ -15,9 +15,6 @@ export default function Home() {
             <Link href="/contact">
               <button className="btn-primary">Get Started</button>
             </Link>
-            <Link href="/pricing">
-              <button className="btn-secondary">View Pricing</button>
-            </Link>
           </div>
 
           {/* Comparison Chart */}
@@ -117,6 +114,10 @@ export default function Home() {
               </table>
             </div>
           </section>
+
+          <Link href="/pricing">
+            <button className="btn-secondary">View Pricing</button>
+          </Link>
         </div>
 
         {/* Testimonials Section */}
