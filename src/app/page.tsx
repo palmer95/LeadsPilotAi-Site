@@ -11,7 +11,7 @@ export default function Home() {
             AI SALES & SUPPORT AGENT THAT INCREASES BOOKINGS AND CAPTURES LEADS
           </h1>
 
-          <p>
+          <p className="subtitle">
             The first-to-market AI-powered chatbot with calendar integration.
             Revolutionizing customer support and automating business
             scalability.
