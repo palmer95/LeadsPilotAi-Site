@@ -4,12 +4,12 @@ import Link from "next/link";
 import { useState } from "react";
 
 export default function PricingPage() {
-  const [selected, setSelected] = useState("Pro (Early Adopter)");
+  const [selected, setSelected] = useState("Pro");
 
   const tiers = [
     {
-      title: "Pro (Early Adopter)",
-      price: "$249/mo",
+      title: "Pro",
+      price: "$299/mo",
       features: [
         "AI assistant trained on your website",
         "Live on your site 24/7",
@@ -125,7 +125,7 @@ export default function PricingPage() {
               </tr>
               <tr>
                 <td className="table-cell">Pricing (per month)</td>
-                <td className="table-cell highlight">$249–$299</td>
+                <td className="table-cell highlight">$299</td>
                 <td className="table-cell">$500+ (for custom AI)</td>
                 <td className="table-cell">$2,500+</td>
               </tr>

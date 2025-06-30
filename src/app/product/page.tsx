@@ -110,7 +110,7 @@ export default function ProductPage() {
               </tr>
               <tr>
                 <td className="table-cell">Pricing (per month)</td>
-                <td className="table-cell highlight">$249–$299</td>
+                <td className="table-cell highlight">$299</td>
                 <td className="table-cell">$500+ (for custom AI)</td>
                 <td className="table-cell">$2,500+</td>
               </tr>
