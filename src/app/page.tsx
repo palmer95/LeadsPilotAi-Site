@@ -12,7 +12,7 @@ export default function Home() {
           </h1>
           {/* Comparison Chart */}
           <section className="comparison">
-            <h2 className="section-title">How We Compare</h2>
+            <h2 className="section-title">How We Compare To The Market</h2>
             <div className="comparison-table-wrapper">
               <table className="comparison-table">
                 <thead>
@@ -127,7 +127,7 @@ export default function Home() {
               recommend.”
             </p>
             <p className="testimonial-author">
-              — Gavin Palmer, Owner of Virtour Media
+              — Gavin Palmer, CEO of Virtour Media
             </p>
           </div>
         </div>

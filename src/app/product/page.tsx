@@ -78,7 +78,7 @@ export default function ProductPage() {
 
       {/* Comparison Chart */}
       <section className="comparison">
-        <h2 className="section-title">How We Compare</h2>
+        <h2 className="section-title">How We Compare To The Market</h2>
         <div className="comparison-table-wrapper">
           <table className="comparison-table">
             <thead>
