@@ -326,7 +326,7 @@ body {
 }
 
 .subtitle {
-  color: #ffffff; /* White text */
+  color: black; /* White text */
   font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     sans-serif;
   font-size: 1.25rem; /* 20px */
