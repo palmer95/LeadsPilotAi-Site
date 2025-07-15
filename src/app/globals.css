@@ -39,6 +39,52 @@ body {
   padding: 0 1.5rem;
 }
 
+/* --- HEADER & NAVIGATION --- */
+.header-cta-group {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.admin-link {
+  display: block;
+}
+
+/* Hamburger Menu Button */
+.hamburger-menu {
+  display: none; /* Hidden on desktop */
+  flex-direction: column;
+  justify-content: space-around;
+  width: 2rem;
+  height: 2rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 10;
+}
+.hamburger-menu .bar {
+  width: 2rem;
+  height: 0.25rem;
+  background: var(--dark-navy);
+  border-radius: 10px;
+  transition: all 0.3s linear;
+}
+
+/* Mobile Navigation Panel */
+.mobile-nav-panel {
+  display: none;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 1.5rem;
+  background: var(--white);
+  border-top: 1px solid var(--border-color);
+  width: 100%;
+}
+.mobile-nav-panel .nav-link {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
 /* 2. HEADER & FOOTER STYLING */
 .site-header {
   padding: 1.5rem 0;
@@ -597,6 +643,17 @@ body {
   }
   .contact-subheadline {
     font-size: 1.125rem;
+  }
+  .main-nav,
+  .header-cta .btn,
+  .admin-link {
+    display: none; /* Hide desktop nav and buttons */
+  }
+  .hamburger-menu {
+    display: flex; /* Show hamburger on mobile */
+  }
+  .mobile-nav-panel.is-open {
+    display: flex; /* Show panel when active */
   }
 }
 

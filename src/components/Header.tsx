@@ -1,110 +1,77 @@
-// components/Header.tsx
-"use client";
-import Link from "next/link";
-import Image from "next/image";
+// app/components/Header.tsx
+"use client"; // This must be a client component to use state and events
+
 import { useState, useEffect } from "react";
-import { useRouter } from "next/navigation";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [loggedIn, setLoggedIn] = useState(false);
-  const router = useRouter();
+  const pathname = usePathname();
 
-  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
-
+  // Close the mobile menu whenever the page changes
   useEffect(() => {
-    // Check if user is logged in
-    (async () => {
-      const token = localStorage.getItem("authToken");
-      if (!token) {
-        setLoggedIn(false);
-        return;
-      }
-      try {
-        const res = await fetch(
-          "https://leadspilotai.onrender.com/api/admin/verify-token",
-          {
-            headers: { Authorization: `Bearer ${token}` },
-          }
-        );
-        const data = await res.json();
-        setLoggedIn(res.ok && data.logged_in);
-      } catch (error) {
-        console.error("Error: ", error);
-        setLoggedIn(false);
-      }
-    })();
-  }, []);
-
-  const handleLogout = async () => {
-    await fetch("https://leadspilotai.onrender.com/api/admin/logout", {
-      method: "POST",
-      credentials: "include",
-    });
-    setLoggedIn(false);
-    router.push("/admin/login");
-  };
+    setIsMenuOpen(false);
+  }, [pathname]);
 
   return (
-    <header className="header">
-      <div className="header-left">
-        <Link href="/" className="logo">
-          <Image
-            src="/logo.png"
-            alt="LeadsPilotAI Logo"
-            width={360}
-            height={120}
-            className="logo-img"
-            priority
-          />
-        </Link>
-        <nav className="nav">
-          <Link href="/product" className="nav-link">
-            Product
+    <header className="site-header">
+      <div className="container">
+        <div className="header-content">
+          <Link href="/" passHref>
+            <div className="logo">LeadsPilotAI</div>
           </Link>
-          <Link href="/pricing" className="nav-link">
-            Pricing
-          </Link>
-          <Link href="/contact" className="nav-link">
-            Contact
-          </Link>
-          <Link href="/admin" className="nav-link">
-            Admin
-          </Link>
-          {loggedIn ? (
-            <button onClick={handleLogout} className="nav-link">
-              Sign Out
-            </button>
-          ) : (
-            <Link href="/admin/login" className="nav-link">
-              <button>Sign In</button>
+
+          {/* Desktop Navigation */}
+          <nav className="main-nav">
+            <Link href="/#features" className="nav-link">
+              Features
             </Link>
-          )}
-        </nav>
+            <Link href="/pricing" className="nav-link">
+              Pricing
+            </Link>
+            <Link href="/contact" className="nav-link">
+              Contact
+            </Link>
+          </nav>
+
+          <div className="header-cta-group">
+            <Link href="/admin" className="nav-link admin-link">
+              Admin Login
+            </Link>
+            <Link href="/contact" passHref>
+              <button className="btn btn-primary">Get Started</button>
+            </Link>
+
+            {/* Hamburger Menu Button */}
+            <button
+              className="hamburger-menu"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+            >
+              {/* This creates the three lines of the icon */}
+              <div className="bar"></div>
+              <div className="bar"></div>
+              <div className="bar"></div>
+            </button>
+          </div>
+        </div>
       </div>
-      <button className="hamburger" onClick={toggleMenu}>
-        ☰
-      </button>
-      <nav className={`nav-mobile ${isMenuOpen ? "active" : ""}`}>
-        <Link href="/product" className="nav-link" onClick={toggleMenu}>
-          Product
+
+      {/* Mobile Navigation Panel */}
+      <div className={`mobile-nav-panel ${isMenuOpen ? "is-open" : ""}`}>
+        <Link href="/#features" className="nav-link">
+          Features
         </Link>
-        <Link href="/pricing" className="nav-link" onClick={toggleMenu}>
+        <Link href="/pricing" className="nav-link">
           Pricing
         </Link>
-        <Link href="/contact" className="nav-link" onClick={toggleMenu}>
+        <Link href="/contact" className="nav-link">
           Contact
         </Link>
-        {loggedIn ? (
-          <button onClick={handleLogout} className="nav-link">
-            Sign Out
-          </button>
-        ) : (
-          <Link href="/admin/login" className="nav-link">
-            Sign In
-          </Link>
-        )}
-      </nav>
+        <Link href="/admin" className="nav-link">
+          Admin Login
+        </Link>
+      </div>
     </header>
   );
 }
