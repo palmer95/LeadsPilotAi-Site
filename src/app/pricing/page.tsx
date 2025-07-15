@@ -3,7 +3,17 @@
 import Link from "next/link";
 import { useState, useRef } from "react";
 
-// The checkmark icon for feature lists
+type Tier = {
+  name: string;
+  price: string;
+  pricePeriod: string;
+  description: string;
+  features: string[];
+  cta: string;
+  isMostPopular?: boolean; // The '?' makes this property optional
+  isHolographic?: boolean; // This one too
+};
+
 const CheckIcon = () => (
   <svg
     className="feature-check-icon"
@@ -19,8 +29,16 @@ const CheckIcon = () => (
   </svg>
 );
 
-// New component for the holographic card to keep logic clean
-const HolographicPlanCard = ({ tier, isSelected, onSelect }) => {
+// 2. Apply the 'Tier' type to the component's props
+const HolographicPlanCard = ({
+  tier,
+  isSelected,
+  onSelect,
+}: {
+  tier: Tier;
+  isSelected: boolean;
+  onSelect: (name: string) => void;
+}) => {
   const cardRef = useRef<HTMLDivElement>(null);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -46,8 +64,7 @@ const HolographicPlanCard = ({ tier, isSelected, onSelect }) => {
         <div className="plan-header">
           <h3 className="plan-name">{tier.name}</h3>
           <p className="plan-price">
-            {tier.price}
-            {tier.pricePeriod && <span>{tier.pricePeriod}</span>}
+            {tier.price} {tier.pricePeriod && <span>{tier.pricePeriod}</span>}
           </p>
           <p className="plan-description">{tier.description}</p>
         </div>
