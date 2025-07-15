@@ -1,7 +1,6 @@
 // app/contact/page.tsx
 "use client";
 import { useEffect } from "react";
-import Link from "next/link";
 
 // We declare the function on the window type for TypeScript
 declare global {

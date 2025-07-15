@@ -1,7 +1,7 @@
 // app/pricing/page.tsx
 "use client";
 import Link from "next/link";
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef } from "react";
 
 // The checkmark icon for feature lists
 const CheckIcon = () => (
@@ -234,7 +234,7 @@ export default function PricingPage() {
               <p>
                 It&apos;s simple! We start with a 1-hour call to understand your
                 business, then we train and tune Clyde on your website content.
-                We'll help you install the one-line script on your site and
+                We will help you install the one-line script on your site and
                 ensure everything is perfect before going live.
               </p>
             </div>
