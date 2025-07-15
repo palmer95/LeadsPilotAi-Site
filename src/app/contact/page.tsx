@@ -1,99 +1,52 @@
 // app/contact/page.tsx
 "use client";
-import { useState } from "react";
+import { useEffect } from "react";
+import Link from "next/link";
+
+// We declare the function on the window type for TypeScript
+declare global {
+  interface Window {
+    openLeadsPilotWidget?: () => void;
+  }
+}
 
 export default function ContactPage() {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    message: "",
-  });
-  const [status, setStatus] = useState<
-    "idle" | "sending" | "success" | "error"
-  >("idle");
-
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setStatus("sending");
-
-    try {
-      const res = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
-      });
-
-      if (res.ok) {
-        setFormData({ name: "", email: "", message: "" });
-        setStatus("success");
-      } else {
-        setStatus("error");
+  useEffect(() => {
+    // Set a timer to open the widget after 2 seconds (2000 milliseconds)
+    const timer = setTimeout(() => {
+      // Check if the widget and its function are available on the window object
+      if (window.openLeadsPilotWidget) {
+        window.openLeadsPilotWidget();
       }
-    } catch {
-      setStatus("error");
-    }
-  };
+    }, 3500); // 2-second delay
+
+    // Cleanup: If the user navigates away before 2 seconds, clear the timer
+    return () => clearTimeout(timer);
+  }, []); // The empty array ensures this runs only once when the page loads
 
   return (
     <main>
-      <section className="contact">
-        <h1 className="hero-title">Contact Us</h1>
-        <p className="hero-text">
-          Have a question or want to collaborate? Reach out, and we’ll get back
-          to you promptly.
-        </p>
-        <form className="contact-form" onSubmit={handleSubmit}>
-          <input
-            type="text"
-            name="name"
-            placeholder="Your name"
-            required
-            value={formData.name}
-            onChange={handleChange}
-            className="contact-input"
-          />
-          <input
-            type="email"
-            name="email"
-            placeholder="Your email"
-            required
-            value={formData.email}
-            onChange={handleChange}
-            className="contact-input"
-          />
-          <textarea
-            name="message"
-            placeholder="Your message"
-            rows={5}
-            required
-            value={formData.message}
-            onChange={handleChange}
-            className="contact-textarea"
-          />
-          <button
-            type="submit"
-            disabled={status === "sending"}
-            className="contact-button"
-          >
-            {status === "sending" ? "Sending..." : "Send Message"}
-          </button>
-          {status === "success" && (
-            <p className="contact-status success">
-              ✅ Message sent successfully!
+      <section className="contact-hero-section">
+        <div className="container text-center">
+          <div className="contact-content-wrapper">
+            <h1 className="contact-headline">Talk to Us. Instantly.</h1>
+            <p className="contact-subheadline">
+              The best way to reach us is through our AI assistant, Clyde.
+              He&apos;s opening up to greet you now...
             </p>
-          )}
-          {status === "error" && (
-            <p className="contact-status error">
-              ❌ Something went wrong. Please try again.
-            </p>
-          )}
-        </form>
+            {/* The old CTA is removed to focus attention on the auto-opening widget */}
+            <div className="contact-failsafe">
+              <p>
+                If the chat widget doesn&apos;t open, you can click the bubble
+                in the corner or reach us directly at{" "}
+                <a href="mailto:hello@leadspilotai.com">
+                  hello@leadspilotai.com
+                </a>
+                .
+              </p>
+            </div>
+          </div>
+        </div>
       </section>
     </main>
   );

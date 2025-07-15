@@ -1,11 +1,12 @@
-// src/app/admin/login/page.tsx
+// app/admin/login/page.tsx
 "use client";
-
 import { useState } from "react";
-import { useRouter } from "next/navigation";
+import { useAuth } from "@/app/context/AuthContext"; // Use our new Auth hook
+import Link from "next/link";
+import "./login.css";
 
 export default function AdminLoginPage() {
-  const router = useRouter();
+  const { login } = useAuth(); // Get the login function from the context
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState<string | null>(null);
@@ -16,55 +17,73 @@ export default function AdminLoginPage() {
     setLoading(true);
     setError(null);
 
-    localStorage.removeItem("authToken"); // Clear any stale token
-    const res = await fetch(
-      "https://leadspilotai.onrender.com/api/admin/login",
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, password }),
+    try {
+      const res = await fetch(
+        "https://leadspilotai.onrender.com/api/admin/login",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email, password }),
+        }
+      );
+      const data = await res.json();
+      if (res.ok && data.token) {
+        login(data.token); // <-- Use the login function from our context
+      } else {
+        setError(data.error || "Login failed.");
+        setLoading(false);
       }
-    );
-
-    const data = await res.json();
-    if (res.ok && data.token) {
-      localStorage.setItem("authToken", data.token);
-      router.push("/admin");
-    } else {
-      setError(data.error || "Login failed");
+    } catch {
+      setError("An unexpected error occurred.");
       setLoading(false);
     }
   };
 
   return (
-    <main className="contact">
-      <section className="contact-form">
-        <h1 className="section-title">Admin Login</h1>
+    <div className="login-container">
+      <div className="login-card">
+        <div className="login-header">
+          <Link href="/" className="login-logo">
+            LeadsPilotAI
+          </Link>
+          <h2>Admin Portal</h2>
+          <p>Please sign in to continue.</p>
+        </div>
 
-        {error && <p className="contact-status error">{error}</p>}
+        <form className="login-form" onSubmit={handleSubmit}>
+          {error && <p className="login-error">{error}</p>}
 
-        <form onSubmit={handleSubmit}>
-          <input
-            type="email"
-            placeholder="Your email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            className="contact-input"
-            required
-          />
-          <input
-            type="password"
-            placeholder="Your password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            className="contact-input"
-            required
-          />
-          <button type="submit" className="contact-button" disabled={loading}>
-            {loading ? "Logging in…" : "Log In"}
+          <div className="form-group">
+            <label htmlFor="email">Email Address</label>
+            <input
+              id="email"
+              type="email"
+              name="email"
+              placeholder="you@example.com"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+          </div>
+
+          <div className="form-group">
+            <label htmlFor="password">Password</label>
+            <input
+              id="password"
+              type="password"
+              name="password"
+              placeholder="••••••••"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+          </div>
+
+          <button type="submit" className="login-button" disabled={loading}>
+            {loading ? "Signing In…" : "Sign In"}
           </button>
         </form>
-      </section>
-    </main>
+      </div>
+    </div>
   );
 }

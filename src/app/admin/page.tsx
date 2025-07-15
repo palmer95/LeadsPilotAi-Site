@@ -1,64 +1,67 @@
+// app/admin/page.tsx
 "use client";
 
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 
+// Define a type for our lead data for better code quality
+type Lead = {
+  _id: string;
+  name: string;
+  email: string;
+  interested_package: string;
+  created_at: string;
+};
+
 export default function AdminDashboard() {
   const router = useRouter();
-  const [leadCount, setLeadCount] = useState<number | null>(null);
+  const [leads, setLeads] = useState<Lead[]>([]);
   const [calendarConnected, setCalendarConnected] = useState<boolean | null>(
     null
   );
   const [loading, setLoading] = useState(true);
   const [oauthLoading, setOauthLoading] = useState(false);
+  const [userName, setUserName] = useState("");
 
   useEffect(() => {
-    (async () => {
+    const fetchData = async () => {
       try {
         const token = localStorage.getItem("authToken");
-        if (!token) {
-          throw new Error("No token found");
-        }
+        if (!token) throw new Error("No token found");
 
-        // Verify token
-        const verifyRes = await fetch(
-          "https://leadspilotai.onrender.com/api/admin/verify-token",
-          {
-            headers: { Authorization: `Bearer ${token}` },
-          }
-        );
-        if (!verifyRes.ok) {
-          throw new Error("Unauthorized");
+        const headers = { Authorization: `Bearer ${token}` };
+
+        // Fetch all data in parallel for better performance
+        const [verifyRes, leadsRes, calRes] = await Promise.all([
+          fetch("https://leadspilotai.onrender.com/api/admin/verify-token", {
+            headers,
+          }),
+          fetch("https://leadspilotai.onrender.com/api/admin/data/leads", {
+            headers,
+          }),
+          fetch("https://leadspilotai.onrender.com/api/admin/calendar/", {
+            headers,
+          }),
+        ]);
+
+        if (!verifyRes.ok || !leadsRes.ok || !calRes.ok) {
+          // Log specific errors if possible
+          if (!verifyRes.ok)
+            console.error("Verify token failed:", verifyRes.status);
+          if (!leadsRes.ok)
+            console.error("Leads fetch failed:", leadsRes.status);
+          if (!calRes.ok)
+            console.error("Calendar fetch failed:", calRes.status);
+          throw new Error("Failed to fetch all dashboard data");
         }
 
         const verifyData = await verifyRes.json();
-        if (!verifyData.logged_in) {
-          throw new Error("Not logged in");
-        }
+        if (!verifyData.logged_in) throw new Error("Not logged in");
+        setUserName(verifyData.email || "Admin");
 
-        // Fetch leads count
-        const leadsRes = await fetch(
-          "https://leadspilotai.onrender.com/api/admin/data/leads",
-          {
-            headers: { Authorization: `Bearer ${token}` },
-          }
-        );
-        if (!leadsRes.ok) {
-          throw new Error("Failed to fetch leads");
-        }
         const leadsData = await leadsRes.json();
-        setLeadCount(leadsData.length);
+        setLeads(leadsData);
 
-        // Fetch calendar status
-        const calRes = await fetch(
-          "https://leadspilotai.onrender.com/api/admin/calendar/",
-          {
-            headers: { Authorization: `Bearer ${token}` },
-          }
-        );
-        if (!calRes.ok) {
-          throw new Error("Failed to fetch calendar status");
-        }
         const calData = await calRes.json();
         setCalendarConnected(calData.connected);
       } catch (err) {
@@ -66,9 +69,10 @@ export default function AdminDashboard() {
         localStorage.removeItem("authToken");
         router.push("/admin/login");
       } finally {
-        setLoading(false); // only runs once all data is fetched or error occurs
+        setLoading(false);
       }
-    })();
+    };
+    fetchData();
   }, [router]);
 
   const startCalendarOauth = () => {
@@ -82,43 +86,89 @@ export default function AdminDashboard() {
   };
 
   if (loading) {
-    return (
-      <div role="status" className="section-text text-center mt-20">
-        Loading dashboard…
-      </div>
-    );
+    return <div className="loading-state">Loading Dashboard...</div>;
   }
 
   return (
-    <section className="benefits p-6">
-      <h1 className="section-title mb-4">Admin Dashboard</h1>
-      <div className="benefits-grid">
-        <div className="benefit-card">
-          <h2 className="benefit-title">Leads Captured</h2>
-          <p className="benefit-text text-2xl">{leadCount}</p>
+    <div className="admin-dashboard">
+      <header className="dashboard-header">
+        <h1>Welcome back, {userName.split("@")[0]}</h1>
+        <p>Here&apos;s a snapshot of your AI assistant&apos;s performance.</p>
+      </header>
+
+      {/* STAT CARDS */}
+      <div className="stat-cards-grid">
+        <div className="stat-card">
+          <h4>Total Leads Captured</h4>
+          <p className="stat-value">{leads.length}</p>
         </div>
-        <div className="benefit-card">
-          <h2 className="benefit-title">Calendar Connected</h2>
-          <p
-            className={`benefit-text text-2xl ${
-              calendarConnected ? "text-green-600" : "text-red-600"
-            }`}
-          >
-            {calendarConnected ? "Yes" : "No"}
-          </p>
+        <div className="stat-card">
+          <h4>Calendar Status</h4>
+          <div className="stat-value-flex">
+            <span
+              className={`status-dot ${
+                calendarConnected ? "connected" : "disconnected"
+              }`}
+            ></span>
+            <p>{calendarConnected ? "Connected" : "Not Connected"}</p>
+          </div>
           {!calendarConnected && (
             <button
               onClick={startCalendarOauth}
               disabled={oauthLoading}
-              className={`text-blue-600 underline text-sm mt-2 inline-block ${
-                oauthLoading ? "opacity-50 cursor-not-allowed" : ""
-              }`}
+              className="connect-button"
             >
-              {oauthLoading ? "Connecting..." : "Connect Google Calendar →"}
+              {oauthLoading ? "Redirecting..." : "Connect Google Calendar"}
             </button>
           )}
         </div>
+        <div className="stat-card">
+          <h4>Appointments Booked</h4>
+          <p className="stat-value">--</p>
+          <p className="stat-note">Feature coming soon</p>
+        </div>
       </div>
-    </section>
+
+      {/* LEADS TABLE (MINI-CRM) */}
+      <div className="leads-table-container">
+        <h2 className="table-title">Recent Leads</h2>
+        <div className="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Interested In</th>
+                <th>Date Captured</th>
+              </tr>
+            </thead>
+            <tbody>
+              {leads.length > 0 ? (
+                leads.slice(0, 10).map(
+                  (
+                    lead // Show top 10 recent leads
+                  ) => (
+                    <tr key={lead._id}>
+                      <td>{lead.name}</td>
+                      <td>
+                        <a href={`mailto:${lead.email}`}>{lead.email}</a>
+                      </td>
+                      <td>{lead.interested_package || "N/A"}</td>
+                      <td>{new Date(lead.created_at).toLocaleDateString()}</td>
+                    </tr>
+                  )
+                )
+              ) : (
+                <tr>
+                  <td colSpan={4} className="empty-state">
+                    No leads captured yet. Your first leads will appear here!
+                  </td>
+                </tr>
+              )}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
   );
 }
