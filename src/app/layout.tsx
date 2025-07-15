@@ -1,6 +1,5 @@
 // app/layout.tsx
 import "./globals.css";
-import { Inter } from "next/font/google";
 import Script from "next/script";
 import { AuthProvider } from "./context/AuthContext";
 import Header from "@/components/Header";
