@@ -3,7 +3,6 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { usePathname } from "next/navigation";
 
 export default function Header() {
@@ -19,12 +18,10 @@ export default function Header() {
       <div className="container">
         <div className="header-content">
           <Link href="/" className="logo" passHref>
-            {/* The simplest possible structure */}
-            <Image
+            <img
               src="/logo.png"
               alt="LeadsPilotAI Logo"
-              width={50} // Base width for aspect ratio
-              height={50} // Base height for aspect ratio
+              className="logo-image"
             />
             <span>LeadsPilotAI</span>
           </Link>

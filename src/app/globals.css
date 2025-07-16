@@ -57,19 +57,18 @@ body {
   align-items: center;
 }
 .logo {
-  display: inline-flex; /* Use inline-flex for tight wrapping */
+  display: inline-flex;
   align-items: center;
-  gap: 0.5rem; /* Reduced gap to bring text closer */
+  gap: 0.75rem;
   text-decoration: none;
   color: var(--dark-navy);
-  font-size: 1.75rem; /* Increased font size for a bolder look */
+  font-size: 1.5rem; /* ~24px */
   font-weight: 700;
 }
 
-.logo img {
-  /* This 'em' unit sizes the logo relative to the new, larger font size */
-  height: 1.2em;
-  width: auto; /* Width will scale automatically */
+.logo-image {
+  height: 40px; /* Set a direct pixel height */
+  width: 40px; /* Set a direct pixel width */
 }
 .main-nav {
   display: flex;
