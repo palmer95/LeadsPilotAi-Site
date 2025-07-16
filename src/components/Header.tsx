@@ -20,11 +20,10 @@ export default function Header() {
       <div className="container">
         <div className="header-content">
           <Image
-            src="/logo.png" // We're assuming you get the SVG. If not, use "/logo_transparent.png"
+            src="/logo.png"
             alt="LeadsPilotAI Logo"
-            width={40} // Set a base width
-            height={40} // Set a base height
-            className="logo-image"
+            fill={true} // Use the 'fill' prop
+            sizes="48px" // Helps Next.js optimize for the rendered size
           />
           <Link href="/" passHref>
             <div className="logo">LeadsPilotAI</div>

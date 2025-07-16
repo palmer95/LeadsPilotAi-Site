@@ -42,20 +42,18 @@ body {
 /* --- HEADER & NAVIGATION --- */
 .logo {
   font-weight: 700;
-  font-size: 1.5rem; /* This is ~24px */
+  font-size: 1.5rem; /* ~24px */
   color: var(--dark-navy);
   text-decoration: none;
   display: flex;
   align-items: center;
-  /* gap: 0.75rem; */ /* <-- We are removing this line to bring them together */
+  gap: 0.75rem; /* This now correctly creates the space */
 }
 
-.logo .logo-image {
-  /* This 'em' unit sizes the logo directly relative to the text's font-size. 
-     1.5em here will make the logo's height match the full line-height of the text. */
-  height: 1.5em;
-  width: auto; /* This maintains the aspect ratio */
-  margin-right: 0.5rem; /* Use margin for precise spacing instead of gap */
+.logo-image-container {
+  position: relative; /* Required for the fill <Image> to work */
+  width: 44px; /* Set the desired size here */
+  height: 44px; /* Set the desired size here */
 }
 
 .header-cta-group {
