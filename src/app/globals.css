@@ -40,19 +40,22 @@ body {
 }
 
 /* --- HEADER & NAVIGATION --- */
-.logo .logo-image {
-  height: 2.5rem; /* This is 40px, a great starting point */
-  width: auto; /* This makes sure the width scales proportionally */
-}
-
 .logo {
   font-weight: 700;
-  font-size: 1.5rem;
+  font-size: 1.5rem; /* This is ~24px */
   color: var(--dark-navy);
   text-decoration: none;
-  display: flex; /* This is new */
-  align-items: center; /* This is new */
-  gap: 0.75rem; /* This adds space between the image and text */
+  display: flex;
+  align-items: center;
+  /* gap: 0.75rem; */ /* <-- We are removing this line to bring them together */
+}
+
+.logo .logo-image {
+  /* This 'em' unit sizes the logo directly relative to the text's font-size. 
+     1.5em here will make the logo's height match the full line-height of the text. */
+  height: 1.5em;
+  width: auto; /* This maintains the aspect ratio */
+  margin-right: 0.5rem; /* Use margin for precise spacing instead of gap */
 }
 
 .header-cta-group {
