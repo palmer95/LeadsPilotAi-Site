@@ -705,7 +705,8 @@ body {
 
   .showcase-visual {
     /* On mobile, the visual should come before the text for the first item */
-    order: -1;
+    /*order: -1;*/
+    display: none;
   }
 
   .showcase-item.reverse .showcase-visual {
