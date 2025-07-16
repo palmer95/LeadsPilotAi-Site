@@ -3,8 +3,8 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -18,20 +18,17 @@ export default function Header() {
     <header className="site-header">
       <div className="container">
         <div className="header-content">
-          {/* --- CORRECTED STRUCTURE HERE --- */}
           <Link href="/" className="logo" passHref>
-            <div className="logo-image-container">
-              <Image
-                src="/logo.png" // Switched to SVG for best quality
-                alt="LeadsPilotAI Logo"
-                fill={true}
-                sizes="48px"
-              />
-            </div>
+            {/* The simplest possible structure */}
+            <Image
+              src="/logo.png"
+              alt="LeadsPilotAI Logo"
+              width={50} // Base width for aspect ratio
+              height={50} // Base height for aspect ratio
+            />
             <span>LeadsPilotAI</span>
           </Link>
 
-          {/* Desktop Navigation */}
           <nav className="main-nav">
             <Link href="/#features" className="nav-link">
               Features
@@ -64,7 +61,6 @@ export default function Header() {
         </div>
       </div>
 
-      {/* Mobile Navigation Panel */}
       <div className={`mobile-nav-panel ${isMenuOpen ? "is-open" : ""}`}>
         <Link href="/#features" className="nav-link">
           Features
