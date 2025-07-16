@@ -67,8 +67,8 @@ body {
 }
 
 .logo-image {
-  height: 40px; /* Set a direct pixel height */
-  width: 40px; /* Set a direct pixel width */
+  height: 100px; /* Set a direct pixel height */
+  width: 100px; /* Set a direct pixel width */
 }
 .main-nav {
   display: flex;
