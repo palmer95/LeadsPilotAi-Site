@@ -29,17 +29,17 @@ export default function Home() {
                   </button>
                 </Link>
               </div>
-              <div className="social-proof">
+              {/* <div className="social-proof">
                 <p className="social-proof-title">
                   TRUSTED BY HIGH-GROWTH FIRMS
                 </p>
                 <div className="social-proof-logos">
-                  {/* Replace these with <img> tags of your client logos later */}
-                  <span>Virtour Media</span>
-                  {/* <span>Client Two</span>
-                  <span>Client Three</span> */}
+                  {/* Replace these with <img> tags of your client logos later 
+              <span>Virtour Media</span>
+              <span>Client Two</span>
+                  <span>Client Three</span> 
                 </div>
-              </div>
+              </div> */}
             </div>
 
             {/* Right Column: Visual Mockup */}
