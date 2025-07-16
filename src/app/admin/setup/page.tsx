@@ -1,12 +1,13 @@
-"use client";
-
+// app/setup/page.tsx
 import { Suspense } from "react";
-import LoginForm from "./LoginForm";
+import SetupForm from "./setupform";
+import "./setup.css"; // We will create this new CSS file
 
-export default function AdminLoginPageWrapper() {
+export default function SetupPage() {
   return (
-    <Suspense fallback={<div>Loading...</div>}>
-      <LoginForm />
+    // Suspense is great for handling components that rely on client-side hooks like useSearchParams
+    <Suspense fallback={<div className="loading-state">Loading...</div>}>
+      <SetupForm />
     </Suspense>
   );
 }
