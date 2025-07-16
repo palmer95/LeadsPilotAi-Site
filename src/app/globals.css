@@ -40,6 +40,11 @@ body {
 }
 
 /* --- HEADER & NAVIGATION --- */
+.logo .logo-image {
+  height: 2.5rem; /* This is 40px, a great starting point */
+  width: auto; /* This makes sure the width scales proportionally */
+}
+
 .logo {
   font-weight: 700;
   font-size: 1.5rem;

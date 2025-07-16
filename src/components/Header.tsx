@@ -22,8 +22,9 @@ export default function Header() {
           <Image
             src="/logo.png" // We're assuming you get the SVG. If not, use "/logo_transparent.png"
             alt="LeadsPilotAI Logo"
-            width={32} // Set a base width
-            height={32} // Set a base height
+            width={40} // Set a base width
+            height={40} // Set a base height
+            className="logo-image"
           />
           <Link href="/" passHref>
             <div className="logo">LeadsPilotAI</div>
