@@ -19,12 +19,14 @@ export default function Header() {
     <header className="site-header">
       <div className="container">
         <div className="header-content">
-          <Image
-            src="/logo.png"
-            alt="LeadsPilotAI Logo"
-            fill={true} // Use the 'fill' prop
-            sizes="48px" // Helps Next.js optimize for the rendered size
-          />
+          <div className="logo-image-container">
+            <Image
+              src="/logo.png"
+              alt="LeadsPilotAI Logo"
+              fill={true} // Use the 'fill' prop
+              sizes="48px" // Helps Next.js optimize for the rendered size
+            />
+          </div>
           <Link href="/" passHref>
             <div className="logo">LeadsPilotAI</div>
           </Link>
