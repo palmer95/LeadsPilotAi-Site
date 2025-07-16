@@ -1,5 +1,5 @@
 // app/components/Header.tsx
-"use client"; // This must be a client component to use state and events
+"use client";
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
@@ -10,7 +10,6 @@ export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const pathname = usePathname();
 
-  // Close the mobile menu whenever the page changes
   useEffect(() => {
     setIsMenuOpen(false);
   }, [pathname]);
@@ -19,16 +18,17 @@ export default function Header() {
     <header className="site-header">
       <div className="container">
         <div className="header-content">
-          <div className="logo-image-container">
-            <Image
-              src="/logo.png"
-              alt="LeadsPilotAI Logo"
-              fill={true} // Use the 'fill' prop
-              sizes="48px" // Helps Next.js optimize for the rendered size
-            />
-          </div>
-          <Link href="/" passHref>
-            <div className="logo">LeadsPilotAI</div>
+          {/* --- CORRECTED STRUCTURE HERE --- */}
+          <Link href="/" className="logo" passHref>
+            <div className="logo-image-container">
+              <Image
+                src="/logo.svg" // Switched to SVG for best quality
+                alt="LeadsPilotAI Logo"
+                fill={true}
+                sizes="48px"
+              />
+            </div>
+            <span>LeadsPilotAI</span>
           </Link>
 
           {/* Desktop Navigation */}
@@ -52,12 +52,10 @@ export default function Header() {
               <button className="btn btn-primary">Get Started</button>
             </Link>
 
-            {/* Hamburger Menu Button */}
             <button
               className="hamburger-menu"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
             >
-              {/* This creates the three lines of the icon */}
               <div className="bar"></div>
               <div className="bar"></div>
               <div className="bar"></div>
