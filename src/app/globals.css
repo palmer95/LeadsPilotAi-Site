@@ -40,6 +40,16 @@ body {
 }
 
 /* --- HEADER & NAVIGATION --- */
+.logo {
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: var(--dark-navy);
+  text-decoration: none;
+  display: flex; /* This is new */
+  align-items: center; /* This is new */
+  gap: 0.75rem; /* This adds space between the image and text */
+}
+
 .header-cta-group {
   display: flex;
   align-items: center;

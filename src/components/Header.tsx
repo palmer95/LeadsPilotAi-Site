@@ -4,6 +4,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import Image from "next/image";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -18,6 +19,12 @@ export default function Header() {
     <header className="site-header">
       <div className="container">
         <div className="header-content">
+          <Image
+            src="/logo.png" // We're assuming you get the SVG. If not, use "/logo_transparent.png"
+            alt="LeadsPilotAI Logo"
+            width={32} // Set a base width
+            height={32} // Set a base height
+          />
           <Link href="/" passHref>
             <div className="logo">LeadsPilotAI</div>
           </Link>
