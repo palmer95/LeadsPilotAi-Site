@@ -36,8 +36,8 @@ export default function Home() {
                 <div className="social-proof-logos">
                   {/* Replace these with <img> tags of your client logos later */}
                   <span>Virtour Media</span>
-                  <span>Client Two</span>
-                  <span>Client Three</span>
+                  {/* <span>Client Two</span>
+                  <span>Client Three</span> */}
                 </div>
               </div>
             </div>
