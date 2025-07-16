@@ -144,28 +144,28 @@ export default function AdminDashboard() {
             </thead>
             <tbody>
               {leads.length > 0 ? (
-                leads.slice(0, 10).map(
-                  (
-                    lead // Show top 10 recent leads
-                  ) => (
-                    <tr key={lead._id}>
-                      <td>{lead.name}</td>
-                      <td>
-                        <a href={`mailto:${lead.email}`}>{lead.email}</a>
-                      </td>
-                      <td>{lead.interested_package || "N/A"}</td>
-                      <td>{new Date(lead.created_at).toLocaleDateString()}</td>
-                    </tr>
-                  )
-                )
+                leads.map((lead) => (
+                  <tr key={lead._id}>
+                    <td data-label="Name">{lead.name}</td>
+                    <td data-label="Email">
+                      <a href={`mailto:${lead.email}`}>{lead.email}</a>
+                    </td>
+                    <td data-label="Interested In">
+                      {lead.interested_package || "N/A"}
+                    </td>
+                    <td data-label="Date Captured">
+                      {new Date(lead.created_at).toLocaleDateString()}
+                    </td>
+                  </tr>
+                ))
               ) : (
                 <tr>
                   <td colSpan={4} className="empty-state">
-                    No leads captured yet. Your first leads will appear here!
+                    No leads captured yet.
                   </td>
                 </tr>
               )}
-            </tbody>
+            </tbody>{" "}
           </table>
         </div>
       </div>

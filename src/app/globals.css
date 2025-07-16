@@ -750,3 +750,70 @@ body {
     opacity: 1;
   }
 }
+
+/* --- MOBILE RESPONSIVENESS --- */
+@media (max-width: 992px) {
+  .admin-layout {
+    flex-direction: column; /* Stack sidebar and content */
+  }
+
+  .admin-sidebar {
+    width: 100%;
+    height: auto;
+    flex-direction: row; /* Make sidebar items horizontal */
+    justify-content: space-between;
+    padding: 1rem 1.5rem;
+  }
+
+  .sidebar-nav {
+    flex-direction: row; /* Horizontal navigation */
+  }
+
+  .admin-main-content {
+    padding: 1.5rem;
+  }
+
+  .stat-cards-grid {
+    grid-template-columns: 1fr 1fr; /* Two cards per row on tablet */
+  }
+}
+
+@media (max-width: 768px) {
+  .stat-cards-grid {
+    grid-template-columns: 1fr; /* One card per row on phone */
+  }
+
+  /* Responsive Table to Card View */
+  .leads-table-container table thead {
+    display: none; /* Hide the table headers */
+  }
+
+  .leads-table-container table tr {
+    display: block;
+    margin-bottom: 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 0.5rem;
+    padding: 1rem;
+  }
+
+  .leads-table-container table td {
+    display: block;
+    text-align: right; /* Align data to the right */
+    padding: 0.5rem;
+    border-bottom: 1px dashed var(--border-color);
+    position: relative;
+  }
+
+  .leads-table-container table td:last-child {
+    border-bottom: none;
+  }
+
+  /* Use the data-label attribute to create a label on the left */
+  .leads-table-container table td::before {
+    content: attr(data-label);
+    position: absolute;
+    left: 1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+}
