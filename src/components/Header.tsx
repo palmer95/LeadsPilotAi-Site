@@ -22,7 +22,7 @@ export default function Header() {
           <Link href="/" className="logo" passHref>
             <div className="logo-image-container">
               <Image
-                src="/logo.svg" // Switched to SVG for best quality
+                src="/logo.png" // Switched to SVG for best quality
                 alt="LeadsPilotAI Logo"
                 fill={true}
                 sizes="48px"
