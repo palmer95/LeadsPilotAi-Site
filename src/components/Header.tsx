@@ -23,7 +23,6 @@ export default function Header() {
               alt="LeadsPilotAI Logo"
               className="logo-image"
             />
-            <span>LeadsPilotAI</span>
           </Link>
 
           <nav className="main-nav">
