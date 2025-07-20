@@ -44,15 +44,15 @@ export default function Home() {
 
             {/* Right Column: Visual Mockup */}
             <div className="hero-visual-content">
+              {/* The extra div is now removed. The iframe is directly inside the wrapper. */}
               <div className="product-mockup-wrapper">
-                <Image
-                  src="/calendar.png" // Using the generated image as a placeholder
-                  alt="LeadsPilotAI chatbot interface"
-                  width={400}
-                  height={815}
-                  className="product-mockup-image"
-                  priority
-                />
+                <iframe
+                  className="loom-embed-iframe"
+                  src="https://www.loom.com/embed/0386893ab3e34a43b5b4c1810fe6c4cb?sid=63dc46e8-2c3a-4f37-b626-3419d65ee43b&hide_owner=true&hide_share=true&hide_title=true&hideEmbedTopBar=true&autoplay=1"
+                  frameBorder="0"
+                  allow="autoplay; fullscreen" // Added autoplay to permissions
+                  loading="lazy"
+                ></iframe>
               </div>
             </div>
           </div>
