@@ -32,6 +32,7 @@ export default function TrainingPage() {
         const trainingData = await res.json();
         setData(trainingData);
       } catch (err) {
+        console.error("failed to load: ", err);
         setError("Failed to load training data.");
       } finally {
         setLoading(false);
@@ -64,6 +65,7 @@ export default function TrainingPage() {
       setNewQuestion("");
       setNewAnswer("");
     } catch (err) {
+      console.error("failed to add: ", err);
       setError("Failed to add new entry.");
     } finally {
       setIsSubmitting(false);
@@ -85,6 +87,7 @@ export default function TrainingPage() {
       if (!res.ok) throw new Error("Server responded with an error");
       setData((prevData) => prevData.filter((item) => item._id !== id));
     } catch (err) {
+      console.error("failed to delete: ", err);
       setError("Failed to delete entry.");
     }
   };
