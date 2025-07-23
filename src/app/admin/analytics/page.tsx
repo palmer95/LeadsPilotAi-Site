@@ -41,6 +41,7 @@ export default function AnalyticsPage() {
         setStats(data.stats);
         setConversations(data.recentConversations);
       } catch (err) {
+        console.error("could not load: ", err);
         setError("Could not load analytics.");
       } finally {
         setLoading(false);
