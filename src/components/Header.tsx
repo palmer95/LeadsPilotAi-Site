@@ -25,6 +25,7 @@ export default function Header() {
             />
           </Link>
 
+          {/* Desktop Navigation */}
           <nav className="main-nav">
             <Link href="/#features" className="nav-link">
               Features
@@ -37,6 +38,7 @@ export default function Header() {
             </Link>
           </nav>
 
+          {/* Desktop CTA Group */}
           <div className="header-cta-group">
             <Link href="/admin" className="nav-link admin-link">
               Admin Login
@@ -44,19 +46,21 @@ export default function Header() {
             <Link href="/contact" passHref>
               <button className="btn btn-primary">Get Started</button>
             </Link>
-
-            <button
-              className="hamburger-menu"
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-            >
-              <div className="bar"></div>
-              <div className="bar"></div>
-              <div className="bar"></div>
-            </button>
           </div>
+
+          {/* Hamburger Menu Button (now separate) */}
+          <button
+            className="hamburger-menu"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+          >
+            <div className="bar"></div>
+            <div className="bar"></div>
+            <div className="bar"></div>
+          </button>
         </div>
       </div>
 
+      {/* Mobile Navigation Panel */}
       <div className={`mobile-nav-panel ${isMenuOpen ? "is-open" : ""}`}>
         <Link href="/#features" className="nav-link">
           Features

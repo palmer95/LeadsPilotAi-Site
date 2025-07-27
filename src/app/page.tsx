@@ -58,6 +58,25 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Problem section */}
+      <section className="problem-solution-section">
+        <div className="container text-center">
+          <div className="section-header">
+            <h2 className="section-title">
+              Your Contact Form is a Conversion Killer
+            </h2>
+            <p className="section-subtitle">
+              Every day, high-intent prospects visit your site, consider your
+              services, and leave. Why? Because filling out a form and waiting
+              for an email is slow, impersonal, and full of friction. Every hour
+              you wait to respond, that lead gets colder. The solution? Meet
+              Clyde!
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* SHOWCASE SECTION */}
       <section id="features" className="showcase-section">
         <div className="container">
