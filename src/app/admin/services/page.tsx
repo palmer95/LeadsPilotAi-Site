@@ -157,7 +157,7 @@ export default function ServicesPage() {
               ) : (
                 <tr>
                   <td colSpan={4} className="empty-state">
-                    You haven't added any services yet.
+                    You have not added any services yet.
                   </td>
                 </tr>
               )}
