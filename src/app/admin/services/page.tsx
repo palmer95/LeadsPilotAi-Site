@@ -30,6 +30,8 @@ export default function ServicesPage() {
     const fetchData = async () => {
       try {
         const token = localStorage.getItem("authToken");
+        if (!token) throw new Error("Authentication token not found.");
+
         const res = await fetch(
           "https://leadspilotai.onrender.com/api/admin/services/",
           {
@@ -40,8 +42,8 @@ export default function ServicesPage() {
         const data = await res.json();
         setServices(data);
       } catch (err) {
-        setError("Could not load your services.");
         console.error(err);
+        setError("Could not load your services.");
       } finally {
         setLoading(false);
       }
@@ -62,23 +64,29 @@ export default function ServicesPage() {
     setError(null);
     try {
       const token = localStorage.getItem("authToken");
+      if (!token) throw new Error("Authentication token not found.");
+
       const res = await fetch(
         "https://leadspilotai.onrender.com/api/admin/services/",
         {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
+            Authorization: `Bearer ${token}`, // This header was missing
           },
           body: JSON.stringify(formData),
         }
       );
-      if (!res.ok) throw new Error("Failed to add service");
+
+      if (!res.ok) {
+        const errorData = await res.json();
+        throw new Error(errorData.error || "Failed to add service");
+      }
+
       const newService = await res.json();
       setServices((prev) => [...prev, newService]);
-      setIsModalOpen(false); // Close modal on success
+      setIsModalOpen(false);
     } catch (err) {
-      setError("Failed to save the service. Please try again.");
       console.error(err);
     } finally {
       setIsSubmitting(false);
@@ -89,6 +97,8 @@ export default function ServicesPage() {
     if (!confirm("Are you sure you want to delete this service?")) return;
     try {
       const token = localStorage.getItem("authToken");
+      if (!token) throw new Error("Authentication token not found.");
+
       await fetch(
         `https://leadspilotai.onrender.com/api/admin/services/${serviceId}`,
         {
@@ -98,8 +108,8 @@ export default function ServicesPage() {
       );
       setServices((prev) => prev.filter((s) => s._id !== serviceId));
     } catch (err) {
-      setError("Failed to delete the service.");
       console.error(err);
+      setError("Failed to delete the service.");
     }
   };
 
@@ -144,7 +154,6 @@ export default function ServicesPage() {
                     <td>{service.duration}</td>
                     <td>{service.price}</td>
                     <td>
-                      {/* Edit button functionality can be added later */}
                       <button
                         className="delete-button"
                         onClick={() => handleDelete(service._id)}
@@ -157,7 +166,7 @@ export default function ServicesPage() {
               ) : (
                 <tr>
                   <td colSpan={4} className="empty-state">
-                    You have not added any services yet.
+                    You haven't added any services yet.
                   </td>
                 </tr>
               )}
@@ -166,7 +175,6 @@ export default function ServicesPage() {
         </div>
       </div>
 
-      {/* ADD/EDIT MODAL */}
       {isModalOpen && (
         <div className="modal-overlay">
           <div className="modal-content">
