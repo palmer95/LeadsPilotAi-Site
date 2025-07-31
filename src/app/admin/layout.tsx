@@ -38,6 +38,19 @@ export default function AdminLayout({
             </svg>
             <span>Dashboard</span>
           </Link>
+          <Link href="/admin/services" className="nav-item active">
+            {" "}
+            {/* Set to active for now */}
+            {/* SVG Icon for Services */}
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+            >
+              <path d="M7 21h10c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2H7c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2zM9 5h6v2H9V5zm0 4h6v2H9V9zm0 4h6v2H9v-2z" />
+            </svg>
+            <span>Services</span>
+          </Link>
           <Link href="/admin/training" className="nav-item">
             {/* SVG Icon for Training */}
             <svg
