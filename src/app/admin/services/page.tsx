@@ -31,7 +31,7 @@ export default function ServicesPage() {
       try {
         const token = localStorage.getItem("authToken");
         const res = await fetch(
-          "https://leadspilotai.onrender.com/api/admin/service/",
+          "https://leadspilotai.onrender.com/api/admin/services/",
           {
             headers: { Authorization: `Bearer ${token}` },
           }
@@ -63,7 +63,7 @@ export default function ServicesPage() {
     try {
       const token = localStorage.getItem("authToken");
       const res = await fetch(
-        "https://leadspilotai.onrender.com/api/admin/service/",
+        "https://leadspilotai.onrender.com/api/admin/services/",
         {
           method: "POST",
           headers: {
@@ -90,7 +90,7 @@ export default function ServicesPage() {
     try {
       const token = localStorage.getItem("authToken");
       await fetch(
-        `https://leadspilotai.onrender.com/api/admin/service/${serviceId}`,
+        `https://leadspilotai.onrender.com/api/admin/services/${serviceId}`,
         {
           method: "DELETE",
           headers: { Authorization: `Bearer ${token}` },
