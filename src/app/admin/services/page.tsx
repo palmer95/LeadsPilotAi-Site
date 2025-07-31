@@ -41,6 +41,7 @@ export default function ServicesPage() {
         setServices(data);
       } catch (err) {
         setError("Could not load your services.");
+        console.error(err);
       } finally {
         setLoading(false);
       }
@@ -78,6 +79,7 @@ export default function ServicesPage() {
       setIsModalOpen(false); // Close modal on success
     } catch (err) {
       setError("Failed to save the service. Please try again.");
+      console.error(err);
     } finally {
       setIsSubmitting(false);
     }
@@ -97,6 +99,7 @@ export default function ServicesPage() {
       setServices((prev) => prev.filter((s) => s._id !== serviceId));
     } catch (err) {
       setError("Failed to delete the service.");
+      console.error(err);
     }
   };
 
