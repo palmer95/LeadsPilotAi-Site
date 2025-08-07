@@ -91,31 +91,33 @@ export default function PricingPage() {
 
   const tiers = [
     {
-      name: "Professional",
-      price: "$499",
+      name: "Starter",
+      price: "$199",
       pricePeriod: "/ month",
       description:
-        "For professionals who need a powerful, automated lead capture and booking solution.",
+        "The essential toolkit to stop missing leads and start booking more jobs.",
       features: [
-        "Everything in our core platform",
-        "Direct Google Calendar integration",
-        "Priority email support",
+        "24/7 AI Chat Assistant",
+        "Direct Google Calendar Booking",
+        "Automated Lead Capture",
+        "Email & SMS Lead Alerts",
       ],
-      cta: "Choose Professional",
+      cta: "Choose Starter",
     },
     {
-      name: "Prestige",
-      price: "$799",
+      name: "Pro",
+      price: "$399",
       pricePeriod: "/ month",
       description:
-        "For established firms that require seamless integration and perfect brand alignment.",
+        "The complete platform to automate your client intake and manage your services.",
       features: [
-        "Everything in Professional, plus:",
-        "Direct CRM & Zapier Integrations",
-        "Advanced Brand & Voice Customization",
-        "Dedicated Onboarding Specialist",
+        "Everything in Starter, plus:",
+        "Custom AI Training (Services & Pricing)",
+        "Multi-Service Booking Flow",
+        "Analytics & Performance Dashboard",
+        "Zapier Integration",
       ],
-      cta: "Choose Prestige",
+      cta: "Choose Pro",
       isMostPopular: true,
     },
     {
@@ -209,7 +211,7 @@ export default function PricingPage() {
       </section>
 
       {/* "ALL PLANS INCLUDE" SECTION */}
-      <section className="all-plans-include-section">
+      {/* <section className="all-plans-include-section">
         <div className="container">
           <div className="section-header text-center">
             <h2 className="section-title">
@@ -237,10 +239,10 @@ export default function PricingPage() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* FAQ SECTION */}
-      <section className="faq-section">
+      {/* <section className="faq-section">
         <div className="container">
           <div className="section-header text-center">
             <h2 className="section-title">Frequently Asked Questions</h2>
@@ -282,7 +284,7 @@ export default function PricingPage() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
     </main>
   );
 }
