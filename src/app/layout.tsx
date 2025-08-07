@@ -29,7 +29,6 @@ export default function RootLayout({
           strategy="afterInteractive"
           data-company="leadspilotai"
         />
-        {/* The old chatbot.css link is correctly removed */}
       </head>
 
       {/* The <body> tag contains ALL visible content */}

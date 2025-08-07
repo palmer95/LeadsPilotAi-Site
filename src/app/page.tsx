@@ -115,21 +115,6 @@ export default function Home() {
 
           {/* Showcase Item 2: Qualify & Convert */}
           <div className="showcase-item reverse">
-            <div className="showcase-text">
-              <span className="showcase-kicker">Qualify & Convert</span>
-              <h2 className="showcase-title">A Frictionless Path to Booking</h2>
-              <p className="showcase-description">
-                Stop losing leads to cumbersome contact forms and email tag.
-                When a prospect is ready, Clyde presents your real-time
-                availability and books a qualified consultation directly into
-                your Google Calendar.
-              </p>
-              <ul className="showcase-checklist">
-                <li>✅ Direct Google Calendar integration</li>
-                <li>✅ Eliminates back-and-forth scheduling</li>
-                <li>✅ Converts high-intent visitors instantly</li>
-              </ul>
-            </div>
             <div className="showcase-visual">
               <div className="product-mockup-simple">
                 {/* Use the great calendar mockup image here */}
@@ -139,8 +124,23 @@ export default function Home() {
                   width={400}
                   height={600}
                   className="product-mockup-image"
+                  quality={100}
                 />
               </div>
+            </div>
+            <div className="showcase-text">
+              <span className="showcase-kicker">Qualify & Convert</span>
+              <h2 className="showcase-title">A Frictionless Path to Booking</h2>
+              <p className="showcase-description">
+                Stop losing leads to cumbersome contact forms. When a prospect
+                is ready, Clyde presents your real-time availability and books a
+                qualified consultation directly into your Google Calendar.
+              </p>
+              <ul className="showcase-checklist">
+                <li>✅ Direct Google Calendar integration</li>
+                <li>✅ Eliminates back-and-forth scheduling</li>
+                <li>✅ Converts high-intent visitors instantly</li>
+              </ul>
             </div>
           </div>
 
