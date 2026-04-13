@@ -16,6 +16,10 @@ export default function TrainingPage() {
   const [newAnswer, setNewAnswer] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [uploadFile, setUploadFile] = useState<File | null>(null);
+  const [isUploading, setIsUploading] = useState(false);
+  const [uploadResult, setUploadResult] = useState<string | null>(null);
+  const [uploadError, setUploadError] = useState<string | null>(null);
 
   // --- Refactored to use fetch ---
   useEffect(() => {
@@ -69,6 +73,41 @@ export default function TrainingPage() {
       setError("Failed to add new entry.");
     } finally {
       setIsSubmitting(false);
+    }
+  };
+
+  const handleUpload = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!uploadFile) return;
+    setIsUploading(true);
+    setUploadError(null);
+    setUploadResult(null);
+    try {
+      const text = await uploadFile.text();
+      const parsed = JSON.parse(text);
+      if (!Array.isArray(parsed)) throw new Error("File must contain a JSON array.");
+      const token = localStorage.getItem("authToken");
+      const res = await fetch(
+        "https://leadspilotai.onrender.com/api/admin/training/upload",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify(parsed),
+        }
+      );
+      const result = await res.json();
+      if (!res.ok) throw new Error(result.error || "Upload failed.");
+      setData((prev) => [...prev, ...result.items]);
+      setUploadResult(`Successfully added ${result.inserted} entries.`);
+      setUploadFile(null);
+      (e.target as HTMLFormElement).reset();
+    } catch (err: unknown) {
+      setUploadError(err instanceof Error ? err.message : "Upload failed.");
+    } finally {
+      setIsUploading(false);
     }
   };
 
@@ -138,6 +177,41 @@ export default function TrainingPage() {
             disabled={isSubmitting}
           >
             {isSubmitting ? "Adding..." : "Add to Knowledge Base"}
+          </button>
+        </form>
+      </div>
+
+      <div className="training-form-container">
+        <h2 className="table-title">Bulk Upload via JSON</h2>
+        <p style={{ marginBottom: "1rem", color: "var(--text-secondary, #666)", fontSize: "0.9rem" }}>
+          Upload a <code>.json</code> file containing an array of{" "}
+          <code>{`[{ "question": "...", "answer": "..." }]`}</code> objects.
+        </p>
+        <form onSubmit={handleUpload}>
+          <div className="form-group">
+            <label htmlFor="faq-upload">JSON File</label>
+            <input
+              id="faq-upload"
+              type="file"
+              accept=".json,application/json"
+              onChange={(e) => {
+                setUploadFile(e.target.files?.[0] ?? null);
+                setUploadResult(null);
+                setUploadError(null);
+              }}
+              required
+            />
+          </div>
+          {uploadError && <p className="form-error">{uploadError}</p>}
+          {uploadResult && (
+            <p style={{ color: "green", marginBottom: "0.75rem" }}>{uploadResult}</p>
+          )}
+          <button
+            type="submit"
+            className="connect-button"
+            disabled={isUploading || !uploadFile}
+          >
+            {isUploading ? "Uploading..." : "Upload JSON"}
           </button>
         </form>
       </div>
