@@ -59,6 +59,7 @@ export default function AdminLoginPage() {
               id="email"
               type="email"
               name="email"
+              autoComplete="email"
               placeholder="you@example.com"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
@@ -72,6 +73,7 @@ export default function AdminLoginPage() {
               id="password"
               type="password"
               name="password"
+              autoComplete="current-password"
               placeholder="••••••••"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
