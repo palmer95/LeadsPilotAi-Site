@@ -2,6 +2,22 @@
 import Link from "next/link";
 import Image from "next/image";
 
+const CheckIcon = () => (
+  <svg
+    className="check-icon"
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 20 20"
+    fill="currentColor"
+    aria-hidden="true"
+  >
+    <path
+      fillRule="evenodd"
+      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+      clipRule="evenodd"
+    />
+  </svg>
+);
+
 export default function Home() {
   return (
     <>
@@ -11,8 +27,15 @@ export default function Home() {
           <div className="hero-grid">
             {/* Left Column: Text Content */}
             <div className="hero-text-content">
+              <div className="hero-badge">
+                <span className="badge-pill">
+                  <span className="badge-dot"></span>
+                  AI sales assistant for service businesses
+                </span>
+              </div>
               <h1 className="hero-headline">
-                Your Best Salesperson Works 24/7. And it&apos;s an AI.
+                Your best salesperson works 24/7.{" "}
+                <span className="text-gradient">And it&apos;s an AI.</span>
               </h1>
               <p className="hero-subheadline">
                 LeadsPilotAI is the premium AI sales assistant for elite service
@@ -20,38 +43,32 @@ export default function Home() {
                 appointments.
               </p>
               <div className="hero-cta-group">
-                <Link href="/contact" passHref>
-                  <button className="btn btn-primary">Book a Demo</button>
+                <Link href="/contact" className="btn btn-brand btn-lg">
+                  Book a Demo
+                  <span className="btn-arrow" aria-hidden="true">
+                    →
+                  </span>
                 </Link>
-                <Link href="#features" passHref>
-                  <button className="btn btn-secondary">
-                    Explore Features
-                  </button>
+                <Link href="#features" className="btn btn-secondary btn-lg">
+                  Explore Features
                 </Link>
               </div>
-              {/* <div className="social-proof">
-                <p className="social-proof-title">
-                  TRUSTED BY HIGH-GROWTH FIRMS
-                </p>
-                <div className="social-proof-logos">
-                  {/* Replace these with <img> tags of your client logos later 
-              <span>Virtour Media</span>
-              <span>Client Two</span>
-                  <span>Client Three</span> 
-                </div>
-              </div> */}
+              <div className="hero-microcopy">
+                <span>✓ White-glove onboarding</span>
+                <span>✓ Live on your site in under an hour</span>
+              </div>
             </div>
 
             {/* Right Column: Visual Mockup */}
             <div className="hero-visual-content">
-              {/* The extra div is now removed. The iframe is directly inside the wrapper. */}
               <div className="product-mockup-wrapper">
                 <iframe
                   className="loom-embed-iframe"
                   src="https://www.loom.com/embed/0386893ab3e34a43b5b4c1810fe6c4cb?sid=63dc46e8-2c3a-4f37-b626-3419d65ee43b&hide_owner=true&hide_share=true&hide_title=true&hideEmbedTopBar=true&autoplay=1"
                   frameBorder="0"
-                  allow="autoplay; fullscreen" // Added autoplay to permissions
+                  allow="autoplay; fullscreen"
                   loading="lazy"
+                  title="LeadsPilotAI product demo"
                 ></iframe>
               </div>
             </div>
@@ -63,15 +80,16 @@ export default function Home() {
       <section className="problem-solution-section">
         <div className="container text-center">
           <div className="section-header">
+            <span className="section-kicker">The Problem</span>
             <h2 className="section-title">
-              Your Contact Form is a Conversion Killer
+              Your contact form is a conversion killer
             </h2>
             <p className="section-subtitle">
               Every day, high-intent prospects visit your site, consider your
               services, and leave. Why? Because filling out a form and waiting
               for an email is slow, impersonal, and full of friction. Every hour
               you wait to respond, that lead gets colder. The solution? Meet
-              Clyde!
+              Clyde.
             </p>
           </div>
         </div>
@@ -85,7 +103,7 @@ export default function Home() {
             <div className="showcase-text">
               <span className="showcase-kicker">Engage & Educate</span>
               <h2 className="showcase-title">
-                Answer Every Question, Instantly
+                Answer every question, instantly
               </h2>
               <p className="showcase-description">
                 Clyde is trained on your website content, turning it into an
@@ -94,90 +112,95 @@ export default function Home() {
                 before they even speak to a human.
               </p>
               <ul className="showcase-checklist">
-                <li>✅ 24/7/365 availability</li>
-                <li>✅ Handles complex, multi-part questions</li>
-                <li>✅ Reduces bounce rates and increases engagement</li>
+                <li>
+                  <CheckIcon />
+                  <span>24/7/365 availability</span>
+                </li>
+                <li>
+                  <CheckIcon />
+                  <span>Handles complex, multi-part questions</span>
+                </li>
+                <li>
+                  <CheckIcon />
+                  <span>Reduces bounce rates and increases engagement</span>
+                </li>
               </ul>
             </div>
             <div className="showcase-visual">
-              <div className="product-mockup-simple">
-                {/* Replace with an image of the bot answering a question */}
-                <Image
-                  src="/qa.png"
-                  alt="LeadsPilotAI chatbot answering a customer question"
-                  width={500}
-                  height={400}
-                  className="product-mockup-image"
-                />
-              </div>
+              <Image
+                src="/qa.png"
+                alt="LeadsPilotAI chatbot answering a customer question"
+                width={500}
+                height={400}
+                className="product-mockup-image"
+              />
             </div>
           </div>
 
           {/* Showcase Item 2: Qualify & Convert */}
           <div className="showcase-item reverse">
             <div className="showcase-visual">
-              <div className="product-mockup-simple">
-                {/* Use the great calendar mockup image here */}
-                <Image
-                  src="/calendar.png" // The local mockup image
-                  alt="LeadsPilotAI in-chat booking calendar"
-                  width={400}
-                  height={600}
-                  className="product-mockup-image"
-                  quality={100}
-                />
-              </div>
+              <Image
+                src="/calendar.png"
+                alt="LeadsPilotAI in-chat booking calendar"
+                width={400}
+                height={600}
+                className="product-mockup-image"
+                quality={100}
+              />
             </div>
             <div className="showcase-text">
               <span className="showcase-kicker">Qualify & Convert</span>
-              <h2 className="showcase-title">A Frictionless Path to Booking</h2>
+              <h2 className="showcase-title">
+                A frictionless path to booking
+              </h2>
               <p className="showcase-description">
                 Stop losing leads to cumbersome contact forms. When a prospect
                 is ready, Clyde presents your real-time availability and books a
                 qualified consultation directly into your Google Calendar.
               </p>
               <ul className="showcase-checklist">
-                <li>✅ Direct Google Calendar integration</li>
-                <li>✅ Eliminates back-and-forth scheduling</li>
-                <li>✅ Converts high-intent visitors instantly</li>
+                <li>
+                  <CheckIcon />
+                  <span>Direct Google Calendar integration</span>
+                </li>
+                <li>
+                  <CheckIcon />
+                  <span>Eliminates back-and-forth scheduling</span>
+                </li>
+                <li>
+                  <CheckIcon />
+                  <span>Converts high-intent visitors instantly</span>
+                </li>
               </ul>
             </div>
           </div>
+        </div>
+      </section>
 
-          {/* Showcase Item 3: Integrate & Analyze */}
-
-          {/* 
-          uncomment after admin dashboard up and working
-          <div className="showcase-item">
-            <div className="showcase-text">
-              <span className="showcase-kicker">Integrate & Analyze</span>
-              <h2 className="showcase-title">A Seamless Part of Your Brand</h2>
-              <p className="showcase-description">
-                Clyde is designed to feel like a native part of your website,
-                not a clunky third-party widget. Customize the look, feel, and
-                voice to perfectly match your brand, and gain valuable insights
-                from customer conversations.
-              </p>
-              <ul className="showcase-checklist">
-                <li>✅ Fully customizable branding and colors</li>
-                <li>
-                  ✅ Review conversation logs to understand your customers
-                </li>
-                <li>✅ Simple, one-line script installation</li>
-              </ul>
+      {/* FINAL CTA */}
+      <section className="cta-band">
+        <div className="container">
+          <div className="cta-band-content">
+            <h2 className="cta-band-title">
+              Put your lead generation on autopilot
+            </h2>
+            <p className="cta-band-subtitle">
+              See exactly how Clyde would work on your website. Book a live demo
+              and we&apos;ll have you up and running in under an hour.
+            </p>
+            <div className="cta-band-actions">
+              <Link href="/contact" className="btn btn-brand btn-lg">
+                Book a Demo
+                <span className="btn-arrow" aria-hidden="true">
+                  →
+                </span>
+              </Link>
+              <Link href="/pricing" className="btn btn-secondary btn-lg">
+                View Pricing
+              </Link>
             </div>
-            <div className="showcase-visual">
-              <div className="product-mockup-simple">
-                <Image
-                  src="/admin.png"
-                  alt="LeadsPilotAI admin dashboard showing customization options"
-                  width={500}
-                  height={400}
-                  className="product-mockup-image"
-                />
-              </div>
-            </div>
-          </div> */}
+          </div>
         </div>
       </section>
     </>

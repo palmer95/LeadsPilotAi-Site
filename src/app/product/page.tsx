@@ -163,11 +163,11 @@ export default function ProductPage() {
           Transform your website into a 24/7 sales machine with Clyde.
         </p>
         <div className="hero-cta">
-          <Link href="/pricing">
-            <button className="btn-primary">View Pricing</button>
+          <Link href="/pricing" className="btn btn-primary btn-lg">
+            View Pricing
           </Link>
-          <Link href="/contact">
-            <button className="btn-secondary">Request a Demo</button>
+          <Link href="/contact" className="btn btn-secondary btn-lg">
+            Request a Demo
           </Link>
         </div>
       </section>

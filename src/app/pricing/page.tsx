@@ -77,8 +77,8 @@ const HolographicPlanCard = ({
           ))}
         </ul>
         <div className="plan-cta">
-          <Link href="/contact" passHref>
-            <button className="btn btn-primary">{tier.cta}</button>
+          <Link href="/contact" className="btn btn-brand">
+            {tier.cta}
           </Link>
         </div>
       </div>
@@ -87,7 +87,7 @@ const HolographicPlanCard = ({
 };
 
 export default function PricingPage() {
-  const [selected, setSelected] = useState("Prestige");
+  const [selected, setSelected] = useState("Pro");
 
   const tiers = [
     {
@@ -191,16 +191,13 @@ export default function PricingPage() {
                     ))}
                   </ul>
                   <div className="plan-cta">
-                    <Link href="/contact" passHref>
-                      <button
-                        className={`btn ${
-                          selected === tier.name
-                            ? "btn-primary"
-                            : "btn-secondary"
-                        }`}
-                      >
-                        {tier.cta}
-                      </button>
+                    <Link
+                      href="/contact"
+                      className={`btn ${
+                        selected === tier.name ? "btn-brand" : "btn-secondary"
+                      }`}
+                    >
+                      {tier.cta}
                     </Link>
                   </div>
                 </div>

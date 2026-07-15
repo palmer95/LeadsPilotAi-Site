@@ -8,6 +8,7 @@ type Lead = {
   _id: string;
   name: string;
   email: string;
+  phone: string;
   interested_package: string;
   created_at: string;
 };
@@ -50,10 +51,11 @@ function PackageBadge({ pkg }: { pkg: string }) {
 }
 
 function exportCSV(leads: Lead[]) {
-  const headers = ["Name", "Email", "Interested In", "Date Captured"];
+  const headers = ["Name", "Email", "Phone", "Interested In", "Date Captured"];
   const rows = leads.map((l) => [
     l.name,
     l.email,
+    l.phone || "N/A",
     l.interested_package || "N/A",
     new Date(l.created_at).toLocaleDateString("en-US", {
       month: "short",
@@ -80,6 +82,8 @@ export default function AdminDashboard() {
   const [loading, setLoading] = useState(true);
   const [oauthLoading, setOauthLoading] = useState(false);
   const [userName, setUserName] = useState("");
+  const [clientSlug, setClientSlug] = useState("");
+  const [copied, setCopied] = useState(false);
   const [search, setSearch] = useState("");
   const [sortKey, setSortKey] = useState<SortKey>("created_at");
   const [sortDir, setSortDir] = useState<SortDir>("desc");
@@ -108,6 +112,7 @@ export default function AdminDashboard() {
         const verifyData = await verifyRes.json();
         if (!verifyData.logged_in) throw new Error("Not logged in");
         setUserName(verifyData.email || "Admin");
+        setClientSlug(verifyData.client_slug || "");
 
         const leadsData = await leadsRes.json();
         setLeads(leadsData);
@@ -138,6 +143,7 @@ export default function AdminDashboard() {
           (l) =>
             l.name.toLowerCase().includes(q) ||
             l.email.toLowerCase().includes(q) ||
+            (l.phone || "").toLowerCase().includes(q) ||
             (l.interested_package || "").toLowerCase().includes(q)
         )
       : leads;
@@ -179,6 +185,7 @@ export default function AdminDashboard() {
   const sortableCols: { key: SortKey; label: string }[] = [
     { key: "name", label: "Name" },
     { key: "email", label: "Email" },
+    { key: "phone", label: "Phone" },
     { key: "interested_package", label: "Interested In" },
     { key: "created_at", label: "Date Captured" },
   ];
@@ -326,6 +333,13 @@ export default function AdminDashboard() {
                     <td data-label="Email">
                       <a href={`mailto:${lead.email}`}>{lead.email}</a>
                     </td>
+                    <td data-label="Phone">
+                      {lead.phone ? (
+                        <a href={`tel:${lead.phone}`}>{lead.phone}</a>
+                      ) : (
+                        <span style={{ color: "var(--text-secondary, #9ca3af)" }}>—</span>
+                      )}
+                    </td>
                     <td data-label="Interested In">
                       <PackageBadge pkg={lead.interested_package} />
                     </td>
@@ -340,7 +354,7 @@ export default function AdminDashboard() {
                 ))
               ) : (
                 <tr>
-                  <td colSpan={4} className="empty-state">
+                  <td colSpan={5} className="empty-state">
                     {search ? "No leads match your search." : "No leads captured yet."}
                   </td>
                 </tr>
@@ -349,6 +363,46 @@ export default function AdminDashboard() {
           </table>
         </div>
       </div>
+
+      {/* EMBED SNIPPET */}
+      {clientSlug && (
+        <div className="leads-table-container">
+          <div className="table-header-row">
+            <div>
+              <h2 className="table-title">Install on Your Website</h2>
+              <p className="table-subtitle">
+                Paste this single line of code before the closing <code>&lt;/body&gt;</code> tag on any page.
+              </p>
+            </div>
+          </div>
+          <div style={{
+            background: "#0f172a",
+            borderRadius: "8px",
+            padding: "1rem 1.25rem",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+            gap: "1rem",
+          }}>
+            <code style={{ color: "#7dd3fc", fontSize: "0.85rem", wordBreak: "break-all", flex: 1 }}>
+              {`<script src="https://www.leadspilotai.com/chatbot.js" data-company="${clientSlug}" defer></script>`}
+            </code>
+            <button
+              onClick={() => {
+                navigator.clipboard.writeText(
+                  `<script src="https://www.leadspilotai.com/chatbot.js" data-company="${clientSlug}" defer></script>`
+                );
+                setCopied(true);
+                setTimeout(() => setCopied(false), 2500);
+              }}
+              className="export-button"
+              style={{ flexShrink: 0 }}
+            >
+              {copied ? "✓ Copied!" : "Copy"}
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

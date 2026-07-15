@@ -4,6 +4,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import Logo from "./Logo";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -17,13 +18,7 @@ export default function Header() {
     <header className="site-header">
       <div className="container">
         <div className="header-content">
-          <Link href="/" className="logo" passHref>
-            <img
-              src="/logo.png"
-              alt="LeadsPilotAI Logo"
-              className="logo-image"
-            />
-          </Link>
+          <Logo />
 
           {/* Desktop Navigation */}
           <nav className="main-nav">
@@ -41,17 +36,19 @@ export default function Header() {
           {/* Desktop CTA Group */}
           <div className="header-cta-group">
             <Link href="/admin" className="nav-link admin-link">
-              Admin Login
+              Log in
             </Link>
-            <Link href="/contact" passHref>
-              <button className="btn btn-primary">Get Started</button>
+            <Link href="/contact" className="btn btn-primary btn-sm">
+              Get Started
             </Link>
           </div>
 
-          {/* Hamburger Menu Button (now separate) */}
+          {/* Hamburger Menu Button */}
           <button
-            className="hamburger-menu"
+            className={`hamburger-menu ${isMenuOpen ? "is-open" : ""}`}
             onClick={() => setIsMenuOpen(!isMenuOpen)}
+            aria-label="Toggle navigation menu"
+            aria-expanded={isMenuOpen}
           >
             <div className="bar"></div>
             <div className="bar"></div>
@@ -72,7 +69,10 @@ export default function Header() {
           Contact
         </Link>
         <Link href="/admin" className="nav-link">
-          Admin Login
+          Log in
+        </Link>
+        <Link href="/contact" className="btn btn-primary">
+          Get Started
         </Link>
       </div>
     </header>
